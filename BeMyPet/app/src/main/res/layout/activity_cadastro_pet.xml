@@ -14,12 +14,14 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/CustomFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lblCadastroPet"
                 android:text="@string/submenu_pet"/>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtNome"
@@ -31,12 +33,14 @@
                 android:id="@+id/spinEspecie" />
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtIdadeAproximada"
                 android:hint="@string/idade_aproximada"/>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtPesoAproximado"
@@ -48,12 +52,14 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
+                    style="@style/CustomFontStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblSexo"
                     android:text="@string/sexo_pet"/>
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbMacho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,6 +67,7 @@
                     android:text="@string/sexo_pet_macho" />
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbFemea"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,6 +76,7 @@
             </RadioGroup>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtSaude"
@@ -81,12 +89,14 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
+                    style="@style/CustomFontStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblCastrado"
                     android:text="@string/castrado"/>
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbCastradoSim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,12 +104,14 @@
                     android:text="@string/sim" />
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbCastradoNao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nao" />
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbCastradoNaoSei"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -108,18 +120,21 @@
             </RadioGroup>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtTemperamento"
                 android:hint="@string/temperamento"/>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtSociavel"
                 android:hint="@string/sociavel"/>
 
             <EditText
+                style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtHistorico"
@@ -131,12 +146,14 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
+                    style="@style/CustomFontStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblCadastroPetAtivo"
                     android:text="@string/cadastro_pet_ativo"/>
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbCadastroPetAtivo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,6 +161,7 @@
                     android:text="@string/sim" />
 
                 <RadioButton
+                    style="@style/CustomFontStyle"
                     android:id="@+id/rbCadastroPetInativo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

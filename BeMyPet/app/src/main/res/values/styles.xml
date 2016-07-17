@@ -8,5 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BeMyPetTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="android:colorForeground">@color/background_material_light</item>
+        <item name="colorPrimaryDark">@color/abc_tint_switch_track</item>
+        <item name="colorAccent">@color/seagull</item>
+        <item name="colorPrimary">@color/hippieBlue</item>
+    </style>
+
+    <style name="BeMyPetTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/anakiwa</item>
+        <item name="colorPrimaryDark">@color/ebonyClay</item>
+        <item name="colorAccent">@color/orangePeel</item>
+    </style>
+
+    <style name="CustomFontStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
 
 </resources>

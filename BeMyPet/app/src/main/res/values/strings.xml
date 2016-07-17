@@ -2,14 +2,14 @@
     <string name="app_name">BeMyPet</string>
 
     <!--Cadastro Pet-->
-    <string name="submenu_pet">Cadastro Pett</string>
+    <string name="submenu_pet">Cadastro Pet</string>
     <string name="nome_pet">Nome do Pet</string>
     <string name="especie">Espécie</string>
     <string name="idade_aproximada">Idade Aproximada</string>
     <string name="peso_aproximado">Peso Aproximado</string>
     <string name="sexo_pet">Sexo</string>
     <string name="sexo_pet_macho">Macho</string>
-    <string name="sexo_pet_femea">Femea</string>
+    <string name="sexo_pet_femea">Fêmea</string>
     <string name="saude">Saúde (vacinas, vermifugos, antipulgas)</string>
     <string name="castrado">Castrado?</string>
     <string name="temperamento">Temperamento</string>
