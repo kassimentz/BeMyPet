@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.bemypet.bemypet.CadastroPet"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblCadastroPet"
+        android:text="@string/submenu_pet"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNome"
+        android:hint="@string/nome_pet"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinEspecie" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIdadeAproximada"
+        android:hint="@string/idade_aproximada"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPesoAproximado"
+        android:hint="@string/peso_aproximado"/>
+
+    <RadioGroup
+        android:id="@+id/rgOpcoesSexoPet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblSexo"
+            android:text="@string/sexo_pet"/>
+
+        <RadioButton
+            android:id="@+id/rbMacho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/sexo_pet_macho" />
+
+        <RadioButton
+            android:id="@+id/rbFemea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sexo_pet_femea" />
+
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSaude"
+        android:hint="@string/saude"/>
+
+
+    <RadioGroup
+        android:id="@+id/rgOpcoesCastrado"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblCastrado"
+            android:text="@string/castrado"/>
+
+        <RadioButton
+            android:id="@+id/rbCastradoSim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/sim" />
+
+        <RadioButton
+            android:id="@+id/rbCastradoNao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nao" />
+
+        <RadioButton
+            android:id="@+id/rbCastradoNaoSei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nao_sei" />
+
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTemperamento"
+        android:hint="@string/temperamento"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSociavel"
+        android:hint="@string/sociavel"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtHistorico"
+        android:hint="@string/historico"/>
+
+    <RadioGroup
+        android:id="@+id/rgOpcoesCadastroPetAtivo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblCadastroPetAtivo"
+            android:text="@string/cadastro_pet_ativo"/>
+
+        <RadioButton
+            android:id="@+id/rbCadastroPetAtivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/sim" />
+
+        <RadioButton
+            android:id="@+id/rbCadastroPetInativo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nao" />
+
+    </RadioGroup>
+
+
+</LinearLayout>

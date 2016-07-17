@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BeMyPet</string>
+
+    <!--Cadastro Pet-->
+    <string name="submenu_pet">Cadastro Pett</string>
+    <string name="nome_pet">Nome do Pet</string>
+    <string name="especie">Espécie</string>
+    <string name="idade_aproximada">Idade Aproximada</string>
+    <string name="peso_aproximado">Peso Aproximado</string>
+    <string name="sexo_pet">Sexo</string>
+    <string name="sexo_pet_macho">Macho</string>
+    <string name="sexo_pet_femea">Femea</string>
+    <string name="saude">Saúde (vacinas, vermifugos, antipulgas)</string>
+    <string name="castrado">Castrado?</string>
+    <string name="temperamento">Temperamento</string>
+    <string name="sociavel">Sociável com... (cães, gatos, fêmeas, machos)</string>
+    <string name="historico">Histórico (onde foi encontrado, situação em que estava, etc)</string>
+    <string name="cadastro_pet_ativo">Cadastro Ativo</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="nao_sei">Não Sei</string>
+
+</resources>
