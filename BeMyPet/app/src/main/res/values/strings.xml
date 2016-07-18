@@ -10,10 +10,10 @@
     <string name="sexo_pet">Sexo</string>
     <string name="sexo_pet_macho">Macho</string>
     <string name="sexo_pet_femea">Fêmea</string>
-    <string name="saude">Saúde (vacinas, vermifugos, antipulgas)</string>
+    <string name="saude">Saúde (vacinas, vermífugos, antipulgas)</string>
     <string name="castrado">Castrado?</string>
     <string name="temperamento">Temperamento</string>
-    <string name="sociavel">Sociável com... (cães, gatos, fêmeas, machos)</string>
+    <string name="sociavel">Sociável com... (cães, gatos, crianças, fêmeas, machos)</string>
     <string name="historico">Histórico (onde foi encontrado, situação em que estava, etc)</string>
     <string name="cadastro_pet_ativo">Cadastro Ativo</string>
     <string name="sim">Sim</string>

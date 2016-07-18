@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtNome"
+                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                 android:hint="@string/nome_pet"/>
 
             <Spinner
@@ -37,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtIdadeAproximada"
+                android:drawableLeft="@android:drawable/ic_menu_week"
                 android:hint="@string/idade_aproximada"/>
 
             <EditText
@@ -44,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtPesoAproximado"
+                android:drawableLeft="@android:drawable/ic_menu_week"
                 android:hint="@string/peso_aproximado"/>
 
             <RadioGroup
@@ -80,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtSaude"
+                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                 android:hint="@string/saude"/>
 
 
@@ -131,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtSociavel"
+                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                 android:hint="@string/sociavel"/>
 
             <EditText
@@ -138,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtHistorico"
+                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                 android:hint="@string/historico"/>
 
             <RadioGroup
