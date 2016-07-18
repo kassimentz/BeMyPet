@@ -1,11 +1,12 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Be My Pet - Find Your New Best Friend.
+Rede social para adoção de pets.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
+* Be My Pet é um aplicativo destinado a facilitar o acesso para doadores de pets encontrarem pessoas dispostas a adotarem, bem como ajudar pessoas que querem encontrar um novo amigo a entrar em contato com doadores.
+* Em Desenvolvimento)
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
