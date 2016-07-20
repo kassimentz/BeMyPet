@@ -3,62 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="br.com.bemypet.bemypet.CadastroPet">
+    tools:context="br.com.bemypet.bemypet.CadastroPet"
+    android:background="@color/newLightYellow">
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:weightSum="1">
 
             <TextView
-                style="@style/CustomFontStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblCadastroPet"
-                android:text="@string/submenu_pet"/>
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/submenu_pet"
+                android:id="@+id/textView"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/anakiwaDarker"
+                android:textAlignment="center"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:id="@+id/txtNome"
                 android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/nome_pet"/>
+                android:hint="@string/nome_pet"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinEspecie" />
+                android:id="@+id/spinEspecie"
+                android:layout_marginTop="5dp"/>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtIdadeAproximada"
                 android:drawableLeft="@android:drawable/ic_menu_week"
-                android:hint="@string/idade_aproximada"/>
+                android:hint="@string/idade_aproximada"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtPesoAproximado"
                 android:drawableLeft="@android:drawable/ic_menu_week"
-                android:hint="@string/peso_aproximado"/>
+                android:hint="@string/peso_aproximado"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <RadioGroup
                 android:id="@+id/rgOpcoesSexoPet"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     style="@style/CustomFontStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblSexo"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/anakiwaDarker"
                     android:text="@string/sexo_pet"/>
 
                 <RadioButton
@@ -67,25 +96,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/sexo_pet_macho" />
+                    android:text="@string/sexo_pet_macho"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
                     android:id="@+id/rbFemea"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sexo_pet_femea" />
+                    android:text="@string/sexo_pet_femea"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
             </RadioGroup>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtSaude"
                 android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/saude"/>
-
+                android:hint="@string/saude"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <RadioGroup
                 android:id="@+id/rgOpcoesCastrado"
@@ -97,7 +133,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblCastrado"
-                    android:text="@string/castrado"/>
+                    android:text="@string/castrado"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
@@ -105,46 +144,64 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/sim" />
+                    android:text="@string/sim"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
                     android:id="@+id/rbCastradoNao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nao" />
+                    android:text="@string/nao"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
                     android:id="@+id/rbCastradoNaoSei"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nao_sei" />
+                    android:text="@string/nao_sei"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
             </RadioGroup>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtTemperamento"
-                android:hint="@string/temperamento"/>
+                android:hint="@string/temperamento"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtSociavel"
                 android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/sociavel"/>
+                android:hint="@string/sociavel"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <EditText
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtHistorico"
                 android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/historico"/>
+                android:hint="@string/historico"
+                android:textColorHint="@color/anakiwaDarker"
+                android:singleLine="true"
+                android:background="@drawable/border"
+                android:layout_marginTop="5dp"
+                android:layout_height="60dp"/>
 
             <RadioGroup
                 android:id="@+id/rgOpcoesCadastroPetAtivo"
@@ -156,7 +213,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblCadastroPetAtivo"
-                    android:text="@string/cadastro_pet_ativo"/>
+                    android:text="@string/cadastro_pet_ativo"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
@@ -164,18 +224,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/sim" />
+                    android:text="@string/sim"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
                 <RadioButton
                     style="@style/CustomFontStyle"
                     android:id="@+id/rbCadastroPetInativo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nao" />
+                    android:text="@string/nao"
+                    android:textSize="18dp"
+                    android:textColor="@color/anakiwaDarker"/>
 
             </RadioGroup>
-        </LinearLayout>
-    </ScrollView>
 
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

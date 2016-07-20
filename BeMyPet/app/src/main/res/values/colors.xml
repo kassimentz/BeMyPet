@@ -24,8 +24,11 @@
     <color name="hippieBlue">#6496bf</color>
     <color name="bismark">#43647F</color>
     <color name="anakiwa">#85c8ff</color>
-    <color name="ebonyClay">#213240</color>
+    <color name="ebonyClay">#98fff95a</color>
     <color name="seagull">#78b4e5</color>
+    <color name="lightYellow">#66fff95a</color>
+    <color name="newLightYellow">#66fdf763</color>
+    <color name="anakiwaDarker">#2889d9</color>
 
 </resources>
 

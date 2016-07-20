@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.0.0_60948044f55837bafae7cbd772c4eb9e16d76850/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_cc5f6b23086e071d5b3a212c6bfaa6dff3810154/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="aa4989bcfcf50b042a1be1cf790006c89b66725a">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d2f26da8502e12f176f902fc6c14afac4cc3f599/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_39b72d5204908c18d06fbc46bebf71e0e6fdc7f0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_ed18eb41843fef22ae1035c814885d413d041a3b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_db2b564a593cc5726658d37968ec1dd5010baf61/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3abc29cf04daf1de37a24968fc106f331e4802bb">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3eaa5cb793f73d3bd95fa2c7f3e9630f2ac4224d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/design/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.0.0_e00651145e9c59ca463681784d790d42d1a0fac0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.0.0/2943c74db6d4346ab8c6531adac91fa05c137c40/support-annotations-24.0.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_27ae29b60ee63bb1f4c69bc0c69a7fa8f115aef4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_c2a923888bba2c752066a1701e5a3c53d7a084d0/classes.dex" />
+    </item>
+
+</items>
