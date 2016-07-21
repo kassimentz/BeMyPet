@@ -6,7 +6,7 @@
 
 
     <color name="textColorPrimary">#FFFFFF</color>
-    <color name="windowBackground">#FFFFFF</color>
+    <color name="windowBackground">#ffffff</color>
     <color name="navigationBarColor">#213240</color>
 
 
@@ -16,11 +16,11 @@
     <color name="orangePeel">#ff9800</color>
     <color name="cola">#402600</color>
     <color name="goldDrop">#E58900</color>
-    <color name="silverTree">#5EBF85</color>
-    <color name="amazon">#3E7F59</color>
-    <color name="aquamarine">#7DFFB1</color>
+    <color name="silverTree">#5ebf85</color>
+    <color name="amazon">#3e7f59</color>
+    <color name="aquamarine">#7dffb1</color>
     <color name="everglade">#1F402C</color>
-    <color name="pastelGreen">#70E59F</color>
+    <color name="pastelGreen">#70e59f</color>
     <color name="hippieBlue">#6496bf</color>
     <color name="bismark">#43647F</color>
     <color name="anakiwa">#85c8ff</color>
@@ -29,6 +29,7 @@
     <color name="lightYellow">#66fff95a</color>
     <color name="newLightYellow">#66fdf763</color>
     <color name="anakiwaDarker">#2889d9</color>
+    <color name="lilas">#aa66cc</color>
 
 </resources>
 
