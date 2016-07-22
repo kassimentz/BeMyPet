@@ -8,6 +8,6 @@ public class CadastroPet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_pet_branco_azul_borda_lilas);
+        setContentView(R.layout.activity_cadastro_pet);
     }
 }
