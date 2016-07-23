@@ -14,6 +14,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:paddingTop="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -46,9 +48,14 @@
 
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/spinEspecie"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:background="@drawable/purple_border"
+                android:layout_height="60dp"
+                android:spinnerMode="dialog"
+                android:singleLine="true"
+                android:layout_marginBottom="10dp"
+                android:popupTheme="@color/lilas" />
 
             <EditText
                 style="@style/CustomFontStyle"
@@ -204,6 +211,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="60dp"/>
 
+
             <RadioGroup
                 android:id="@+id/rgOpcoesCadastroPetAtivo"
                 android:layout_width="fill_parent"
@@ -240,8 +248,27 @@
 
             </RadioGroup>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
     </ScrollView>
+
+
 
 </LinearLayout>
