@@ -21,5 +21,7 @@
     <string name="nao_sei">Não Sei</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="voltar">Voltar</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Fechar</string>
 
 </resources>
