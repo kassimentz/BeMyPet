@@ -6,269 +6,294 @@
     tools:context="br.com.bemypet.bemypet.CadastroPet"
     android:background="@color/windowBackground">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:paddingTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/submenu_pet"
-                android:id="@+id/textView"
-                android:gravity="center_vertical|center_horizontal"
-                android:textColor="@color/anakiwaDarker"
-                android:textAlignment="center"
-                android:textSize="28dp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"/>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/txtNome"
-                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/nome_pet"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:id="@+id/spinEspecie"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/purple_border"
-                android:layout_height="60dp"
-                android:spinnerMode="dialog"
-                android:singleLine="true"
-                android:layout_marginBottom="10dp"
-                android:popupTheme="@color/lilas" />
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtIdadeAproximada"
-                android:drawableLeft="@android:drawable/ic_menu_week"
-                android:hint="@string/idade_aproximada"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtPesoAproximado"
-                android:drawableLeft="@android:drawable/ic_menu_month"
-                android:hint="@string/peso_aproximado"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-            <RadioGroup
-                android:id="@+id/rgOpcoesSexoPet"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    style="@style/CustomFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblSexo"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/anakiwaDarker"
-                    android:text="@string/sexo_pet"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbMacho"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/sexo_pet_macho"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbFemea"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sexo_pet_femea"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-            </RadioGroup>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtSaude"
-                android:drawableLeft="@android:drawable/ic_menu_add"
-                android:hint="@string/saude"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-            <RadioGroup
-                android:id="@+id/rgOpcoesCastrado"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    style="@style/CustomFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblCastrado"
-                    android:text="@string/castrado"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbCastradoSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/sim"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbCastradoNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nao"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbCastradoNaoSei"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nao_sei"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-            </RadioGroup>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtTemperamento"
-                android:hint="@string/temperamento"
-                android:drawableLeft="@android:drawable/ic_menu_help"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtSociavel"
-                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/sociavel"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-            <EditText
-                style="@style/CustomFontStyle"
-                android:layout_width="match_parent"
-                android:id="@+id/txtHistorico"
-                android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                android:hint="@string/historico"
-                android:textColorHint="@color/anakiwaDarker"
-                android:singleLine="true"
-                android:background="@drawable/purple_border"
-                android:layout_marginTop="5dp"
-                android:layout_height="60dp"/>
-
-
-            <RadioGroup
-                android:id="@+id/rgOpcoesCadastroPetAtivo"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    style="@style/CustomFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblCadastroPetAtivo"
-                    android:text="@string/cadastro_pet_ativo"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbCadastroPetAtivo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/sim"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-                <RadioButton
-                    style="@style/CustomFontStyle"
-                    android:id="@+id/rbCadastroPetInativo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nao"
-                    android:textSize="18dp"
-                    android:textColor="@color/anakiwaDarker"/>
-
-            </RadioGroup>
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:weightSum="1">
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="39dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/submenu_pet"
+                    android:id="@+id/textView"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/anakiwaDarker"
+                    android:textAlignment="center"
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"/>
 
-                <Button
+                <EditText
+                    style="@style/CustomFontStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="60dp"
+                    android:id="@+id/txtNome"
+                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                    android:hint="@string/nome_pet"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/spinEspecie"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/purple_border"
+                    android:layout_height="60dp"
+                    android:spinnerMode="dialog"
+                    android:singleLine="true"
+                    android:layout_marginBottom="10dp"
+                    android:popupTheme="@color/lilas" />
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtIdadeAproximada"
+                    android:drawableLeft="@android:drawable/ic_menu_week"
+                    android:hint="@string/idade_aproximada"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtPesoAproximado"
+                    android:drawableLeft="@android:drawable/ic_menu_month"
+                    android:hint="@string/peso_aproximado"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgOpcoesSexoPet"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/CustomFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lblSexo"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/anakiwaDarker"
+                        android:text="@string/sexo_pet"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbMacho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/sexo_pet_macho"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbFemea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sexo_pet_femea"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                </RadioGroup>
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtSaude"
+                    android:drawableLeft="@android:drawable/ic_menu_add"
+                    android:hint="@string/saude"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgOpcoesCastrado"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/CustomFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lblCastrado"
+                        android:text="@string/castrado"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbCastradoSim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/sim"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbCastradoNao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nao"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbCastradoNaoSei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nao_sei"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                </RadioGroup>
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtTemperamento"
+                    android:hint="@string/temperamento"
+                    android:drawableLeft="@android:drawable/ic_menu_help"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtSociavel"
+                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                    android:hint="@string/sociavel"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+                <EditText
+                    style="@style/CustomFontStyle"
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtHistorico"
+                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                    android:hint="@string/historico"
+                    android:textColorHint="@color/anakiwaDarker"
+                    android:singleLine="true"
+                    android:background="@drawable/purple_border"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="60dp"/>
+
+
+                <RadioGroup
+                    android:id="@+id/rgOpcoesCadastroPetAtivo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/CustomFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lblCadastroPetAtivo"
+                        android:text="@string/cadastro_pet_ativo"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbCadastroPetAtivo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/sim"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                    <RadioButton
+                        style="@style/CustomFontStyle"
+                        android:id="@+id/rbCadastroPetInativo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nao"
+                        android:textSize="18dp"
+                        android:textColor="@color/anakiwaDarker"/>
+
+                </RadioGroup>
 
             </LinearLayout>
+        </ScrollView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_border"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/lilas"
+                android:text="@string/voltar"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_border"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/lilas"
+                android:text="@string/cadastrar"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
-    </ScrollView>
 
-
+    </LinearLayout>
 
 </LinearLayout>

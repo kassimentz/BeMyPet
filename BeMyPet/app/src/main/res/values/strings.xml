@@ -19,5 +19,7 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="nao_sei">Não Sei</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="voltar">Voltar</string>
 
 </resources>
