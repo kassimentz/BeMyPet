@@ -41,27 +41,35 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
 
                 switch (id){
-                    case R.id.home:
-                        Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
+                    case R.id.menu_quero_adotar:
+                        Toast.makeText(getApplicationContext(),"Quero Adotar",Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
-                    case R.id.settings:
-                        Toast.makeText(getApplicationContext(),"Settings",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.trash:
-                        Toast.makeText(getApplicationContext(),"Trash",Toast.LENGTH_SHORT).show();
+                    case R.id.menu_quero_doar:
+                        //Toast.makeText(getApplicationContext(),"Quero Doar",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, CadastroPet.class);
+                        startActivity(intent);
                         drawerLayout.closeDrawers();
                         break;
-                    case R.id.logout:
-                        finish();
+                    case R.id.menu_meus_pets:
+                        Toast.makeText(getApplicationContext(),"Meus Pets",Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.menu_meu_perfil:
+                        Toast.makeText(getApplicationContext(),"Meu Perfil",Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.menu_politica_adocao:
+                        Toast.makeText(getApplicationContext(),"Política de Adoção",Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawers();
+                        break;
 
                 }
                 return true;
             }
         });
         View header = navigationView.getHeaderView(0);
-        TextView tv_email = (TextView)header.findViewById(R.id.tv_email);
-        tv_email.setText("kassimentz@gmail.com");
+
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){

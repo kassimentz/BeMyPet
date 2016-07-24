@@ -24,4 +24,10 @@
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Fechar</string>
 
+    <string name="quero_adotar">Quero Adotar</string>
+    <string name="quero_doar">Quero Doar</string>
+    <string name="meus_pets">Meus Pets</string>
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="politica_adocao">Política de Adoção</string>
+
 </resources>

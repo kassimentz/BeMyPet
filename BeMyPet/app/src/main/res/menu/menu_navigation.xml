@@ -3,20 +3,25 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
-            android:title="Home"
-            android:icon="@drawable/ic_home_black_24px"/>
+            android:id="@+id/menu_quero_adotar"
+            android:title="@string/quero_adotar"
+            android:icon="@drawable/ic_loyalty_white_24px"/>
         <item
-            android:id="@+id/settings"
-            android:title="Settings"
-            android:icon="@drawable/ic_settings_black_24px"/>
+            android:id="@+id/menu_quero_doar"
+            android:title="@string/quero_doar"
+            android:icon="@drawable/ic_control_point_duplicate_white_24px"/>
         <item
-            android:id="@+id/trash"
-            android:title="Trash"
-            android:icon="@drawable/ic_file_download_black_24px"/>
+            android:id="@+id/menu_meus_pets"
+            android:title="@string/meus_pets"
+            android:icon="@drawable/ic_pets_white_24px"/>
         <item
-            android:id="@+id/logout"
-            android:title="Logout"
-            android:icon="@drawable/ic_favorite_black_24px"/>
+            android:id="@+id/menu_meu_perfil"
+            android:title="@string/meu_perfil"
+            android:icon="@drawable/ic_person_white_24px"/>
+
+        <item
+            android:id="@+id/menu_politica_adocao"
+            android:title="@string/politica_adocao"
+            android:icon="@drawable/ic_assignment_white_24px"/>
     </group>
 </menu>

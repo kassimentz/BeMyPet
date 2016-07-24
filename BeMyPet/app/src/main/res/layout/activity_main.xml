@@ -41,6 +41,7 @@
     android:layout_width="wrap_content"
     android:layout_gravity="start"
     app:headerLayout="@layout/nav_header"
+    app:itemTextColor="@color/anakiwaDarker"
     app:menu="@menu/menu_navigation"/>
 
 </android.support.v4.widget.DrawerLayout>
