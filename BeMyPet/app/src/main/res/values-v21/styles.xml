@@ -18,9 +18,8 @@
         <item name="android:textColorSecondary">@color/anakiwaDarker</item>
     </style>
 
-    <style name="BeMyPetTheme.Base" parent="android:Theme.Material.Light.DarkActionBar">
+    <style name="BeMyPetTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
         <item name="colorPrimary">@color/anakiwa</item>
         <item name="colorPrimaryDark">@color/ebonyClay</item>
         <item name="colorAccent">@color/orangePeel</item>
