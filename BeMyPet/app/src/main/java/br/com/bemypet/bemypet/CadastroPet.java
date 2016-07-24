@@ -21,6 +21,9 @@ public class CadastroPet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_pet);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.cadastroPetToolbar);
+        setSupportActionBar(myToolbar);
+
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
