@@ -9,11 +9,25 @@
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.0.0_60948044f55837bafae7cbd772c4eb9e16d76850/classes.dex" />
     </item>
     <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5337354083e89ed67151859ab0b6b80935c60eaf">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-9.2.1_1319c622992fcd1e19fd3c3033962fb85bc1852a/classes.dex" />
+    </item>
+    <item
         jar="/Users/kassi/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-applinks-1.4.0_6ecb9241bee012878674f8e85b73e6f272bd85b9/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6b896c1067633db41e9c10a3a5d0919c5c4cfc8c">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.2.1_a495ec2582c58c49f538b3d40a228812d6b38775/classes.dex" />
     </item>
     <item
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/jars/classes.jar"
@@ -51,11 +65,32 @@
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-tasks-1.4.0_e865c9291d5081faf976edf8c2230cc8fa9d4285/classes.dex" />
     </item>
     <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="48917c60ea81213ea39cbd7123996a5401106dc3">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-9.2.1_94c1fde1402f75e3e3d01fa011a0f74017c2ba13/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="421b36cf4f0d3bbd75e8f28647fccf36674ef049">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.2.1_202efb15c30420044b5ce941b4998131c85e19e6/classes.dex" />
+    </item>
+    <item
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="0d9843b844a731529d68863c95e56eefdb02351e">
+        sha1="16e8c33d15bb75a6ac17a152b07da74d161d26c1">
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3eaa5cb793f73d3bd95fa2c7f3e9630f2ac4224d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d41b5d21cc9dd7d210f0ae82ac509ba7f091d611">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-9.2.1_d623c252ed002b892b0bf7798bc97ff1cf94abf9/classes.dex" />
     </item>
     <item
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/design/24.0.0/jars/classes.jar"
@@ -72,6 +107,13 @@
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_cc5f6b23086e071d5b3a212c6bfaa6dff3810154/classes.dex" />
     </item>
     <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3627eacd7f7cafb5e8ae683992e7b2f9b7dcab1a">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-9.2.1_a9cc1b68346f7b07564b4fa0d28490318326f014/classes.dex" />
+    </item>
+    <item
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.14.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.3"
@@ -82,8 +124,22 @@
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="553057af9e50235c8c9337784177b3d7af24adbb">
+        sha1="426206f070f32e0bd16f9a347e96bdc7ca8fe3e4">
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d2f26da8502e12f176f902fc6c14afac4cc3f599/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e1bec33f1ec5367e25676638b430b9d585f3dbec">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-9.2.1_1bb6d81b80a9804f2fe66016381ffca8ca012c4b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6a0f2d219f82db499ac03d5a985c4eb3e83fc422">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-9.2.1_cfd154e96d7f1d8808469898bcb6acfadc9c8829/classes.dex" />
     </item>
     <item
         jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
@@ -91,6 +147,13 @@
         revision="23.0.3"
         sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
         <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.4.0_25ea5ed2a2fe1b73d63d0faaa254a8e80af9c8f5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="819c2c3a4fb135e085445d11131d069cf9c32b2a">
+        <dex dex="/Users/kassi/Documents/workspaceEDM/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.2.1_43551477c6863483905dfd97ee62732457933bd5/classes.dex" />
     </item>
     <item
         jar="/Users/kassi/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.0.0/2943c74db6d4346ab8c6531adac91fa05c137c40/support-annotations-24.0.0.jar"

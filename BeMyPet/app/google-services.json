@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "444560656502",
+    "project_id": "bemypet-61485"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444560656502:android:f684f47d4fe157c1",
+        "android_client_info": {
+          "package_name": "br.com.bemypet.bemypet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444560656502-c23np41489b7iecs1jcg8o8bje2abhfk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.bemypet.bemypet",
+            "certificate_hash": "1EF8928E5688FC7F5294D587CFEDC5E60904E8F2"
+          }
+        },
+        {
+          "client_id": "444560656502-ielaj7c6p6cpr3n4ae5s8au0rlpako13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC3K76h3K_95rtxbnOrPTpF4gqP-OY_wM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
