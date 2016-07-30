@@ -1,16 +1,16 @@
 package br.com.bemypet.bemypet;
 
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 
 import br.com.bemypet.bemypet.enums.Especie;
+import butterknife.BindView;
 
 public class CadastroPet extends AppCompatActivity {
 
@@ -27,6 +27,7 @@ public class CadastroPet extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
 
 
         spinEspecie = (Spinner) findViewById(R.id.spinEspecie);

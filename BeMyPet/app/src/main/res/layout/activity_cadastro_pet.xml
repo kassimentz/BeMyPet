@@ -8,7 +8,6 @@
     android:background="@color/windowBackground">
 
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -41,6 +40,7 @@
                 android:paddingRight="10dp"
                 android:weightSum="1">
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
@@ -54,17 +54,22 @@
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"/>
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_nome"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:id="@+id/txtNome"
-                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                    android:hint="@string/nome_pet"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:id="@+id/txtNome"
+                        android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                        android:hint="@string/nome_pet"
+                        android:layout_marginTop="5dp"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -77,29 +82,38 @@
                     android:layout_marginBottom="10dp"
                     android:popupTheme="@color/lilas" />
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_idade"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtIdadeAproximada"
-                    android:drawableLeft="@android:drawable/ic_menu_week"
-                    android:hint="@string/idade_aproximada"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtIdadeAproximada"
+                        android:drawableLeft="@android:drawable/ic_menu_week"
+                        android:hint="@string/idade_aproximada"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_peso"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtPesoAproximado"
-                    android:drawableLeft="@android:drawable/ic_menu_month"
-                    android:hint="@string/peso_aproximado"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtPesoAproximado"
+                        android:drawableLeft="@android:drawable/ic_menu_month"
+                        android:hint="@string/peso_aproximado"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <RadioGroup
                     android:id="@+id/rgOpcoesSexoPet"
@@ -138,17 +152,22 @@
 
                 </RadioGroup>
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_saude"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtSaude"
-                    android:drawableLeft="@android:drawable/ic_menu_add"
-                    android:hint="@string/saude"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtSaude"
+                        android:drawableLeft="@android:drawable/ic_menu_add"
+                        android:hint="@string/saude"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <RadioGroup
                     android:id="@+id/rgOpcoesCastrado"
@@ -195,42 +214,56 @@
 
                 </RadioGroup>
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_temperamento"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtTemperamento"
-                    android:hint="@string/temperamento"
-                    android:drawableLeft="@android:drawable/ic_menu_help"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtTemperamento"
+                        android:hint="@string/temperamento"
+                        android:drawableLeft="@android:drawable/ic_menu_help"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_sociavel"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtSociavel"
-                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                    android:hint="@string/sociavel"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    style="@style/CustomFontStyle"
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtSociavel"
+                        android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                        android:hint="@string/sociavel"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_historico"
                     android:layout_width="match_parent"
-                    android:id="@+id/txtHistorico"
-                    android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
-                    android:hint="@string/historico"
-                    android:textColorHint="@color/anakiwaDarker"
-                    android:singleLine="true"
-                    android:background="@drawable/purple_border"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="60dp"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
 
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtHistorico"
+                        android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
+                        android:hint="@string/historico"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+
+                </android.support.design.widget.TextInputLayout>
 
                 <RadioGroup
                     android:id="@+id/rgOpcoesCadastroPetAtivo"
@@ -270,45 +303,6 @@
 
             </LinearLayout>
         </ScrollView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/button_border"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/lilas"
-                android:text="@string/voltar"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/button_border"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/lilas"
-                android:text="@string/cadastrar"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>
