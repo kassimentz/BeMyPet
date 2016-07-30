@@ -1,7 +1,7 @@
-package br.com.bemypet.bemypet;
+package br.com.bemypet.bemypet.model;
 
 /**
- * Created by Cassio on 30/07/16.
+ * Created by Kassi on 30/07/16.
  */
 public class Hamster extends Pet {
 

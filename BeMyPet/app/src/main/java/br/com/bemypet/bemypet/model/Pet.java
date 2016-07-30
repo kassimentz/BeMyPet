@@ -1,6 +1,4 @@
-package br.com.bemypet.bemypet;
-
-import java.util.List;
+package br.com.bemypet.bemypet.model;
 
 import br.com.bemypet.bemypet.enums.Especie;
 import br.com.bemypet.bemypet.enums.Sexo;

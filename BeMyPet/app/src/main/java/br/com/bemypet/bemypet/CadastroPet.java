@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 
 import br.com.bemypet.bemypet.enums.Especie;
-import butterknife.BindView;
 
 public class CadastroPet extends AppCompatActivity {
 

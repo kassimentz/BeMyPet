@@ -1,4 +1,4 @@
-package br.com.bemypet.bemypet;
+package br.com.bemypet.bemypet.model;
 
 import br.com.bemypet.bemypet.enums.Operadora;
 
