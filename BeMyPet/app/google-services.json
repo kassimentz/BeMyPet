@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "444560656502",
-    "project_id": "bemypet-61485"
+    "firebase_url": "https://bemypet-61485.firebaseio.com",
+    "project_id": "bemypet-61485",
+    "storage_bucket": "bemypet-61485.appspot.com"
   },
   "client": [
     {
@@ -21,6 +23,10 @@
           }
         },
         {
+          "client_id": "444560656502-1702671ho4b89ugf450k8dg7973bsc6k.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "444560656502-ielaj7c6p6cpr3n4ae5s8au0rlpako13.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -35,11 +41,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444560656502-1702671ho4b89ugf450k8dg7973bsc6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

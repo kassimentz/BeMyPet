@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
+        <dex dex="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.2.1_66e5329da650b3a80c582265c577dca3aff8c1dc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Cassio/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.2.1/d6f54d76edfbe779a50a8636b10fd3f555d8f780/butterknife-annotations-8.2.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
+        <dex dex="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.2.1_cff61ec68e4727489f1efc4afc76493c608a5d51/classes.dex" />
+    </item>
+
+</items>
