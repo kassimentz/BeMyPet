@@ -171,6 +171,7 @@ public class Login extends AppCompatActivity {
 
             telaPrincipal();
         } else {
+            Log.d("CURSO", result.getStatus().toString());
             Log.d("CURSO", "sign out");
         }
     }
