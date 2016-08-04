@@ -64,7 +64,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtNome"
+                        android:id="@+id/txtNomePet"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/nome_pet"
                         android:layout_marginTop="5dp"/>

@@ -24,11 +24,29 @@
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Fechar</string>
 
+    <!--menu drawer-->
     <string name="quero_adotar">Quero Adotar</string>
     <string name="quero_doar">Quero Doar</string>
     <string name="meus_pets">Meus Pets</string>
     <string name="meu_perfil">Meu Perfil</string>
     <string name="politica_adocao">Política de Adoção</string>
+
+    <!--Cadastro Usuário Doador-->
+    <string name="submenu_doador">Cadastro Doador</string>
+    <string name="nome">Nome</string>
+    <string name="cpf">CPF</string>
+    <string name="logradouro">Logradouro</string>
+    <string name="nro_lougradouro">Nro</string>
+    <string name="complemento">Complemento</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="estado">Estado</string>
+    <string name="pais">País</string>
+    <string name="telefone">Telefone</string>
+    <string name="email">Email</string>
+
+
+
 
     <string name="facebook_app_id">598689693637456</string>
 

@@ -33,7 +33,7 @@
         jar="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="eb7e81ccd6e915e3147778dd93c9bb7ea8b85a01">
+        sha1="80370b4ae92499940fc7f7fabc2c23cebefe91a3">
         <dex dex="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7e9bf7ca3fbd5ad19e572c66c7b6bfebef11fdaf/classes.dex" />
     </item>
     <item
@@ -131,7 +131,7 @@
         jar="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="b9eaf450e305e82aa528a2517a62f1e95837dd16">
+        sha1="d8744ed074f99b13fc74c8883dd720d2dea3c61d">
         <dex dex="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_cdf6ae9a469204499cee262db3c58d881ffbb553/classes.dex" />
     </item>
     <item
