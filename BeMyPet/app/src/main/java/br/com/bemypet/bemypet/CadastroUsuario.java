@@ -8,14 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class CadastroUsuarioDoador extends AppCompatActivity {
+public class CadastroUsuario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_usuario_doador);
+        setContentView(R.layout.activity_cadastro_usuario);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.cadastroUsuarioDoadorToolbar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.cadastroUsuarioToolbar);
         setSupportActionBar(myToolbar);
 
         ActionBar ab = getSupportActionBar();

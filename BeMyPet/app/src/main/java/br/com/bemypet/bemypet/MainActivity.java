@@ -11,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_quero_doar:
 
-                        Intent iNewDoador = new Intent(MainActivity.this, CadastroUsuarioDoador.class);
+                        Intent iNewDoador = new Intent(MainActivity.this, CadastroUsuario.class);
                         startActivity(iNewDoador);
                         drawerLayout.closeDrawers();
                         break;

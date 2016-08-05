@@ -31,8 +31,8 @@
     <string name="meu_perfil">Meu Perfil</string>
     <string name="politica_adocao">Política de Adoção</string>
 
-    <!--Cadastro Usuário Doador-->
-    <string name="submenu_doador">Cadastro Doador</string>
+    <!--Cadastro Usuário-->
+    <string name="submenu_usuario">Cadastro Usuário</string>
     <string name="nome">Nome</string>
     <string name="cpf">CPF</string>
     <string name="logradouro">Logradouro</string>
@@ -46,7 +46,23 @@
     <string name="email">Email</string>
 
 
+    <!--Verificacao Adocao-->
+    <string name="texto_verificacao_adocao">Antes de prosseguirmos para a adoção, precisamos fazer algumas perguntas:</string>
+    <string name="jaTevePets">Tem ou já teve pets?</string>
+    <string name="telaNasJanelas">Possui Telas ou Redes nas Janelas?</string>
+    <string name="tenho">Tenho</string>
+    <string name="jaTive">Já Tive</string>
+    <string name="nunca">Nunca Tive</string>
 
+
+    <!--Termos de Adocao-->
+    <string name="quero_adotar_termos">Quero Adotar - Termos de Adoção</string>
+    <string name="termos_aviso">Este aplicativo não se responsabiliza pela veracidade das informações cadastradas pelos usuários. Não somos responsáveis pelo processo de adoção ou cuidados dos animais cadastrados neste aplicativo.</string>
+    <string name="criterios1">1. Só doamos pets para casas e apartamentos seguros, de onde o pet não possa sair ou fugir.</string>
+    <string name="criterios2">2. O adotante precisa ter condições de alimentar o pet, vaciná-lo anualmente e levá-lo ao veterinário sempre que necessário.</string>
+    <string name="criterios3">3. O adotante precisa estar comprometido com o pet e disposto a cuidar e se responsabilizar por ele até o final da sua vida.</string>
+    <string name="aceito_termos">Aceito</string>
+    <string name="nao_aceito_termos">Não Aceito</string>
 
     <string name="facebook_app_id">598689693637456</string>
 

@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        tools:context=".CadastroUsuarioDoador"
+        tools:context=".CadastroUsuario"
         android:background="@color/windowBackground">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/cadastroUsuarioDoadorToolbar"
+            android:id="@+id/cadastroUsuarioToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/submenu_doador"
+                    android:text="@string/submenu_usuario"
                     android:id="@+id/textView"
                     android:gravity="center_vertical|center_horizontal"
                     android:textColor="@color/anakiwaDarker"
@@ -53,7 +53,7 @@
                     android:layout_marginTop="5dp"/>
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_nome_doador"
+                    android:id="@+id/input_layout_nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/TextLabel">
@@ -62,7 +62,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtNomeDoador"
+                        android:id="@+id/txtNomeUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/nome"
                         android:layout_marginTop="5dp"/>
@@ -79,7 +79,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtCpfDoador"
+                        android:id="@+id/txtCpfUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/cpf"
                         android:layout_marginTop="5dp"/>
@@ -96,7 +96,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtLogradouroDoador"
+                        android:id="@+id/txtLogradouroUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/logradouro"
                         android:layout_marginTop="5dp"/>
@@ -120,7 +120,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtLogradouroNroDoador"
+                        android:id="@+id/txtLogradouroNroUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/nro_lougradouro"
                         android:layout_weight="1"
@@ -139,7 +139,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtLogradouroComplementoDoador"
+                        android:id="@+id/txtLogradouroComplementoUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/complemento"
                         android:layout_weight="1"
@@ -166,7 +166,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtBairroDoador"
+                        android:id="@+id/txtBairroUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/bairro"
                         android:layout_weight="1"
@@ -185,7 +185,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtCidadeDoador"
+                        android:id="@+id/txtCidadeUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/cidade"
                         android:layout_weight="1"
@@ -212,7 +212,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtEstadoDoador"
+                        android:id="@+id/txtEstadoUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/estado"
                         android:layout_weight="1"
@@ -231,7 +231,7 @@
                         style="@style/CustomFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:id="@+id/txtPaisDoador"
+                        android:id="@+id/txtPaisUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/pais"
                         android:layout_weight="1"
@@ -251,7 +251,7 @@
                     style="@style/CustomFontStyle"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/txtTelefoneDoador"
+                    android:id="@+id/txtTelefoneUsuario"
                     android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                     android:hint="@string/telefone"
                     android:layout_marginTop="5dp"/>
@@ -268,7 +268,7 @@
                     style="@style/CustomFontStyle"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/txtEmailDoador"
+                    android:id="@+id/txtEmailUsuario"
                     android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                     android:hint="@string/email"
                     android:layout_marginTop="5dp"/>
