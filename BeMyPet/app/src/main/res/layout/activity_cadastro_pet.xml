@@ -81,6 +81,22 @@
                     android:popupTheme="@color/lilas" />
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_raca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        style="@style/CustomFontStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/txtRaca"
+                        android:drawableLeft="@android:drawable/ic_menu_week"
+                        android:hint="@string/raca"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="60dp"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_idade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

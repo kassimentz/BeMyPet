@@ -1,32 +1,33 @@
 package br.com.bemypet.bemypet.model;
 
-import br.com.bemypet.bemypet.enums.Especie;
-import br.com.bemypet.bemypet.enums.Sexo;
 import br.com.bemypet.bemypet.enums.StatusAdocao;
 
 /**
  * Created by Kassi on 30/07/16.
  */
-public abstract class Pet {
+public class Pet {
 
+    private String id;
     private String nome;
-    private Especie especie;
+    private String especie;
     private Integer idadeAproximade;
     private Double pesoAproximado;
-    private Sexo sexo;
+    private String sexo;
     private String raca;
     private String saude;
     private String temperamento;
     private String sociavelCom;
     private String historico;
     private Boolean cadastroAtivo;
-    private Doador doador;
-    private Adotante adotante;
+    private Usuario doador;
+    private Usuario adotante;
     private int imagens[];
     private Usuario dono;
     private StatusAdocao statusAdocao;
+    private Boolean castrado;
 
-
+    public Pet() {
+    }
 
     public String getNome() {
         return nome;
@@ -36,11 +37,11 @@ public abstract class Pet {
         this.nome = nome;
     }
 
-    public Especie getEspecie() {
+    public String getEspecie() {
         return especie;
     }
 
-    public void setEspecie(Especie especie) {
+    public void setEspecie(String especie) {
         this.especie = especie;
     }
 
@@ -60,11 +61,11 @@ public abstract class Pet {
         this.pesoAproximado = pesoAproximado;
     }
 
-    public Sexo getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(Sexo sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -116,19 +117,19 @@ public abstract class Pet {
         this.cadastroAtivo = cadastroAtivo;
     }
 
-    public Doador getDoador() {
+    public Usuario getDoador() {
         return doador;
     }
 
-    public void setDoador(Doador doador) {
+    public void setDoador(Usuario doador) {
         this.doador = doador;
     }
 
-    public Adotante getAdotante() {
+    public Usuario getAdotante() {
         return adotante;
     }
 
-    public void setAdotante(Adotante adotante) {
+    public void setAdotante(Usuario adotante) {
         this.adotante = adotante;
     }
 
@@ -154,5 +155,21 @@ public abstract class Pet {
 
     public void setStatusAdocao(StatusAdocao statusAdocao) {
         this.statusAdocao = statusAdocao;
+    }
+
+    public Boolean getCastrado() {
+        return castrado;
+    }
+
+    public void setCastrado(Boolean castrado) {
+        this.castrado = castrado;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

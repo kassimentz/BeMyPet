@@ -2,8 +2,6 @@ package br.com.bemypet.bemypet.controller;
 
 import br.com.bemypet.bemypet.enums.ConfBuscaCastrado;
 import br.com.bemypet.bemypet.enums.ConfBuscaComFoto;
-import br.com.bemypet.bemypet.enums.Especie;
-import br.com.bemypet.bemypet.enums.Sexo;
 import br.com.bemypet.bemypet.model.Pet;
 
 /**
@@ -16,10 +14,10 @@ public class Busca {
     private String estado;
     private String pais;
     private Integer idadeAproximada;
-    private Sexo sexo;
+    private String sexo;
     private ConfBuscaCastrado castrado;
     private ConfBuscaComFoto comFoto;
-    private Especie especie;
+    private String especie;
     private String raca;
 
     public Busca() {
@@ -70,11 +68,11 @@ public class Busca {
         this.idadeAproximada = idadeAproximada;
     }
 
-    public Sexo getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(Sexo sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -94,11 +92,11 @@ public class Busca {
         this.comFoto = comFoto;
     }
 
-    public Especie getEspecie() {
+    public String getEspecie() {
         return especie;
     }
 
-    public void setEspecie(Especie especie) {
+    public void setEspecie(String especie) {
         this.especie = especie;
     }
 

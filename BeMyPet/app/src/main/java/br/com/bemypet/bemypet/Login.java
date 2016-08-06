@@ -88,10 +88,13 @@ public class Login extends AppCompatActivity {
                     });
 
                     Bundle parameters = new Bundle();
-                    parameters.putString("fields", "id, first_name, last_name, email, gender, birthday, location"); // Parametros que quero
+                    parameters.putString("fields", "id, first_name, last_name, email"); // Parametros que quero
                     request.setParameters(parameters);
                     request.executeAsync();
-                    telaPrincipal();
+                    String nome = parameters.getString("first_name") + " " + parameters.getString("last_name");
+                    String email = parameters.getString("email");
+                    cadastroUsuario(nome, email);
+                    //inicial();
                 }
 
 
@@ -107,7 +110,7 @@ public class Login extends AppCompatActivity {
             });
 
         }else{
-            telaPrincipal();
+            //jogar para a tela de login com mensagem de erro.
         }
 
     }
@@ -135,12 +138,6 @@ public class Login extends AppCompatActivity {
                 bundle.putString("last_name", object.getString("last_name"));
             if (object.has("email"))
                 bundle.putString("email", object.getString("email"));
-            if (object.has("gender"))
-                bundle.putString("gender", object.getString("gender"));
-            if (object.has("birthday"))
-                bundle.putString("birthday", object.getString("birthday"));
-            if (object.has("location"))
-                bundle.putString("location", object.getJSONObject("location").getString("name"));
 
             return bundle;
 
@@ -169,18 +166,36 @@ public class Login extends AppCompatActivity {
             Log.i("BeMyPet", "displayname: " + acct.getDisplayName());
             Log.i("BeMyPet", "displayname: " + acct.getEmail());
 
-            telaPrincipal();
+            cadastroUsuario(acct.getDisplayName(), acct.getEmail());
+            //inicial();
         } else {
             Log.d("CURSO", result.getStatus().toString());
             Log.d("CURSO", "sign out");
         }
     }
 
-    public void telaPrincipal(){
-        Intent intent = new Intent(this, MainActivity.class);
+    //montar o bundle com nome e email e passar para a tela de cadastro de usuario, dizendo para finalizar o cadastro
+
+    public void inicial(){
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void cadastroUsuario(String nome, String email){
+        Bundle bundle = new Bundle();
+        bundle.putString("nome", nome);
+        bundle.putString("email", email);
+        Intent intent = new Intent(getApplicationContext(), CadastroUsuario.class);
+        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
 
+    public void queroMeCadastrar(View v){
+        Intent i = new Intent(getApplicationContext(), CadastroUsuario.class);
+        startActivity(i);
+        finish();
+    }
 
 }

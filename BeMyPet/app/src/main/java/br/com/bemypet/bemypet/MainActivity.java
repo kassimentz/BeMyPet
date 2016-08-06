@@ -45,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.menu_quero_doar:
 
-                        Intent iNewDoador = new Intent(MainActivity.this, CadastroUsuario.class);
+                        Intent iNewDoador = new Intent(MainActivity.this, CadastroPet.class);
                         startActivity(iNewDoador);
                         drawerLayout.closeDrawers();
                         break;
 
                     case R.id.menu_meus_pets:
 
-                        Intent iNewPet = new Intent(MainActivity.this, CadastroPet.class);
-                        startActivity(iNewPet);
+                        Toast.makeText(getApplicationContext(),"Lista de Pets do Usuario",Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
 

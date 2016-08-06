@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BeMyPet</string>
 
+    <string name="quero_cadastrar">Quero Me Cadastrar</string>
+
     <!--Cadastro Pet-->
     <string name="submenu_pet">Cadastro Pet</string>
     <string name="nome_pet">Nome do Pet</string>
@@ -23,6 +25,7 @@
     <string name="voltar">Voltar</string>
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Fechar</string>
+    <string name="raca">Raça</string>
 
     <!--menu drawer-->
     <string name="quero_adotar">Quero Adotar</string>
@@ -44,6 +47,7 @@
     <string name="pais">País</string>
     <string name="telefone">Telefone</string>
     <string name="email">Email</string>
+    <string name="cep">CEP</string>
 
 
     <!--Verificacao Adocao-->
@@ -66,4 +70,14 @@
 
     <string name="facebook_app_id">598689693637456</string>
 
+
+    <!--spinner especie-->
+    <string name="escolha_especie">Escolha a Espécie</string>
+
+    <string-array name="especie_array">
+        <item>Cachorro</item>
+        <item>Gato</item>
+        <item>Hamster</item>
+        <item>Pássaro</item>
+    </string-array>
 </resources>
