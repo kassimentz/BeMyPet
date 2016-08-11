@@ -109,7 +109,8 @@
                         android:drawableLeft="@android:drawable/ic_menu_week"
                         android:hint="@string/idade_aproximada"
                         android:layout_marginTop="5dp"
-                        android:layout_height="60dp"/>
+                        android:layout_height="60dp"
+                        android:inputType="number"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -125,7 +126,8 @@
                         android:drawableLeft="@android:drawable/ic_menu_month"
                         android:hint="@string/peso_aproximado"
                         android:layout_marginTop="5dp"
-                        android:layout_height="60dp"/>
+                        android:layout_height="60dp"
+                        android:inputType="numberDecimal"/>
 
                 </android.support.design.widget.TextInputLayout>
 

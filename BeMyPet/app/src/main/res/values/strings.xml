@@ -80,4 +80,14 @@
         <item>Hamster</item>
         <item>Pássaro</item>
     </string-array>
+
+    <!--error messages-->
+    <string name="required_email_message">Digite o email</string>
+    <string name="required_nome_message">Digite o nome</string>
+    <string name="required_cpf_message">Digite o CPF</string>
+    <string name="required_telefone_message">Digite o telefone</string>
+    <string name="required_cep_message">Digite o CEP</string>
+    <string name="required_logradouro_message">Digite o logradouro</string>
+    <string name="required_numero_message">Digite o numero</string>
+
 </resources>

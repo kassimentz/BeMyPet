@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if(accessToken == null){
 
-            LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+            final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
             List<String> permissions = new ArrayList<>();
             permissions.add("public_profile");
             permissions.add("email");
@@ -81,6 +81,7 @@ public class Login extends AppCompatActivity {
                             Log.i("BeMyPet", "ToString: "+ response.toString());
                             // get facebook data from login
                             Bundle bFacebookData = getFacebookData(object);
+                            Log.i("log", bFacebookData.toString());
                             //{"id":"1138061596265568","first_name":"Kassiane","last_name":"Mentz","email":"kassimentz@gmail.com","gender":"female","birthday":"01\/08\/1987"}
                             //redirecionar aqui passando o bundle para a proxima activity
 
@@ -90,9 +91,13 @@ public class Login extends AppCompatActivity {
                     Bundle parameters = new Bundle();
                     parameters.putString("fields", "id, first_name, last_name, email"); // Parametros que quero
                     request.setParameters(parameters);
+
                     request.executeAsync();
-                    String nome = parameters.getString("first_name") + " " + parameters.getString("last_name");
-                    String email = parameters.getString("email");
+
+                    Log.i("parametros",request.getParameters().toString());
+                    Bundle resposta = request.getParameters();
+                    String nome = resposta.getString("first_name") + " " + resposta.getString("last_name");
+                    String email = resposta.getString("email");
                     cadastroUsuario(nome, email);
                     //inicial();
                 }

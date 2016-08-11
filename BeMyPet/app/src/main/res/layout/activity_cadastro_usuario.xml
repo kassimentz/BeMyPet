@@ -82,7 +82,9 @@
                         android:id="@+id/txtCpfUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/cpf"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:inputType="number"
+                        android:maxLength="11"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -124,7 +126,8 @@
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/nro_lougradouro"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:inputType="number" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -262,7 +265,8 @@
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/cep"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:inputType="number"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -281,7 +285,8 @@
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/telefone"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:inputType="number"/>
 
                 </android.support.design.widget.TextInputLayout>
 

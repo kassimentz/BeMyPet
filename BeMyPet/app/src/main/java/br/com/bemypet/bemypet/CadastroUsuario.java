@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.model.Endereco;
 import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
@@ -78,8 +79,6 @@ public class CadastroUsuario extends AppCompatActivity {
                 return true;
             case R.id.menuSave:
                 cadastrarUsuario();
-                Toast.makeText(getApplicationContext(), "Usuário Cadastrado Com Sucesso", Toast.LENGTH_LONG);
-                inicial();
 
 
         }
@@ -88,21 +87,73 @@ public class CadastroUsuario extends AppCompatActivity {
 
     public void cadastrarUsuario(){
 
+        Boolean erro;
+
         Usuario user = new Usuario();
-        user.setEmail(txtEmailUsuario.getText().toString());
-        user.setNome(txtNomeUsuario.getText().toString());
-        user.setCpf(txtCpfUsuario.getText().toString());
-        user.setTelefone(txtTelefoneUsuario.getText().toString());
+        if(StringUtils.isNullOrEmpty(txtEmailUsuario.getText().toString())){
+            txtEmailUsuario.setError(getString(R.string.required_email_message));
+            erro = true;
+        }else {
+            user.setEmail(txtEmailUsuario.getText().toString());
+            erro = false;
+        }
+
+        if(StringUtils.isNullOrEmpty(txtNomeUsuario.getText().toString())){
+            txtNomeUsuario.setError(getString(R.string.required_nome_message));
+            erro = true;
+        }else {
+            user.setNome(txtNomeUsuario.getText().toString());
+            erro = false;
+        }
+
+        if(StringUtils.isNullOrEmpty(txtCpfUsuario.getText().toString())){
+            txtCpfUsuario.setError(getString(R.string.required_cpf_message));
+            erro = true;
+        }else{
+            user.setCpf(txtCpfUsuario.getText().toString());
+            erro = false;
+        }
+
+        if(StringUtils.isNullOrEmpty((txtTelefoneUsuario.getText().toString()))){
+            txtTelefoneUsuario.setError(getString(R.string.required_telefone_message));
+            erro = true;
+        }else {
+            user.setTelefone(txtTelefoneUsuario.getText().toString());
+            erro = false;
+        }
 
         Endereco endereco = new Endereco();
-        endereco.setCep(Integer.valueOf(txtCepUsuario.getText().toString()));
+        if(StringUtils.isNullOrEmpty(txtCepUsuario.getText().toString())){
+            txtCepUsuario.setError(getString(R.string.required_cep_message));
+            erro = true;
+        }else{
+            endereco.setCep(Integer.valueOf(txtCepUsuario.getText().toString()));
+            erro = false;
+        }
+
         endereco.setComplemento(txtLogradouroComplementoUsuario.getText().toString());
-        endereco.setLogradouro(txtLogradouroUsuario.getText().toString());
-        endereco.setNumero(Integer.valueOf(txtLogradouroNroUsuario.getText().toString()));
+        if(StringUtils.isNullOrEmpty(txtLogradouroUsuario.getText().toString())){
+            txtLogradouroUsuario.setError(getString(R.string.required_logradouro_message));
+            erro = true;
+        }else {
+            endereco.setLogradouro(txtLogradouroUsuario.getText().toString());
+            erro = false;
+        }
+        if(StringUtils.isNullOrEmpty(txtLogradouroNroUsuario.getText().toString())){
+            txtLogradouroNroUsuario.setError(getString(R.string.required_numero_message));
+            erro = true;
+        }else {
+            endereco.setNumero(Integer.valueOf(txtLogradouroNroUsuario.getText().toString()));
+            erro = false;
+        }
 
         user.setEndereco(endereco);
 
-        salvarUsuario(user);
+        if(!erro) {
+            salvarUsuario(user);
+            Toast.makeText(getApplicationContext(), "Usuário Cadastrado Com Sucesso", Toast.LENGTH_LONG);
+            inicial();
+        }
 
     }
 
