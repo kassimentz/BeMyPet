@@ -89,6 +89,7 @@ public class CadastroPet extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //validar campos aqui TODO
     private void cadastrarPet() {
 
         Pet pet = new Pet();
