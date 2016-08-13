@@ -77,8 +77,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_height="60dp"
                     android:spinnerMode="dialog"
-                    android:layout_marginBottom="10dp"
-                    android:popupTheme="@color/lilas" />
+                    android:layout_marginBottom="10dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_layout_raca"

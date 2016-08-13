@@ -214,10 +214,5 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-    public void queroMeCadastrar(View v){
-        Intent i = new Intent(getApplicationContext(), CadastroUsuario.class);
-        startActivity(i);
-        finish();
-    }
 
 }

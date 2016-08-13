@@ -56,9 +56,11 @@ public class CadastroPet extends AppCompatActivity {
 
 
         spinEspecie = (Spinner) findViewById(R.id.spinEspecie);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.especie_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,
+                R.array.especie_array, R.layout.spinner_item);
+
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinEspecie.setAdapter(adapter);
 
 
