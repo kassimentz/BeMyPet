@@ -1,6 +1,7 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.bemypet.bemypet.controller.Constants;
+import br.com.bemypet.bemypet.controller.ManagerPreferences;
+
 public class Login extends AppCompatActivity {
 
     private CallbackManager callbackManager;
@@ -39,6 +43,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if(ManagerPreferences.getBoolean(this, Constants.LOGADO_NO_SISTEMA)){
+
+            String nome = ManagerPreferences.getString(this, Constants.USUARIO_NOME);
+            String email = ManagerPreferences.getString(this, Constants.USUARIO_EMAIL);
+            CreateBundleLogado(nome, email);
+        }
 
         //Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -61,7 +72,7 @@ public class Login extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        if(accessToken == null){
+   //     if(accessToken == null){
 
             final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
             List<String> permissions = new ArrayList<>();
@@ -82,9 +93,11 @@ public class Login extends AppCompatActivity {
                             // get facebook data from login
                             Bundle bFacebookData = getFacebookData(object);
                             Log.i("log", bFacebookData.toString());
+                            String nome = bFacebookData.getString("first_name") + " " + bFacebookData.getString("last_name");
+                            String email = bFacebookData.getString("email");
+                            cadastroUsuario(nome, email);
                             //{"id":"1138061596265568","first_name":"Kassiane","last_name":"Mentz","email":"kassimentz@gmail.com","gender":"female","birthday":"01\/08\/1987"}
                             //redirecionar aqui passando o bundle para a proxima activity
-
                         }
                     });
 
@@ -94,11 +107,6 @@ public class Login extends AppCompatActivity {
 
                     request.executeAsync();
 
-                    Log.i("parametros",request.getParameters().toString());
-                    Bundle resposta = request.getParameters();
-                    String nome = resposta.getString("first_name") + " " + resposta.getString("last_name");
-                    String email = resposta.getString("email");
-                    cadastroUsuario(nome, email);
                     //inicial();
                 }
 
@@ -114,9 +122,9 @@ public class Login extends AppCompatActivity {
                 }
             });
 
-        }else{
+       // }else{
             //jogar para a tela de login com mensagem de erro.
-        }
+        //}
 
     }
 
@@ -188,6 +196,15 @@ public class Login extends AppCompatActivity {
     }
 
     public void cadastroUsuario(String nome, String email){
+
+        ManagerPreferences.saveBoolean(this, Constants.LOGADO_NO_SISTEMA, true);
+        ManagerPreferences.saveString(this, Constants.USUARIO_NOME, nome);
+        ManagerPreferences.saveString(this, Constants.USUARIO_EMAIL, email);
+
+        CreateBundleLogado(nome, email);
+    }
+
+    private void CreateBundleLogado(String nome, String email) {
         Bundle bundle = new Bundle();
         bundle.putString("nome", nome);
         bundle.putString("email", email);

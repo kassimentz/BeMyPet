@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.bemypet.bemypet.api.StringUtils;
+import br.com.bemypet.bemypet.controller.Constants;
+import br.com.bemypet.bemypet.controller.ManagerPreferences;
 import br.com.bemypet.bemypet.model.Endereco;
 import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
@@ -32,6 +34,7 @@ public class CadastroUsuario extends AppCompatActivity {
     @BindView(R.id.txtTelefoneUsuario) public EditText txtTelefoneUsuario;
     @BindView(R.id.txtCepUsuario) public EditText txtCepUsuario;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,10 @@ public class CadastroUsuario extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
+        if(ManagerPreferences.getBoolean(this, Constants.CADASTRADO_NO_SISTEMA)){
+            inicial();
+        }
 
         getBundle();
     }
@@ -150,6 +157,7 @@ public class CadastroUsuario extends AppCompatActivity {
         user.setEndereco(endereco);
 
         if(!erro) {
+            ManagerPreferences.saveBoolean(this, Constants.CADASTRADO_NO_SISTEMA, true);
             salvarUsuario(user);
             Toast.makeText(getApplicationContext(), "Usuário Cadastrado Com Sucesso", Toast.LENGTH_LONG);
             inicial();
