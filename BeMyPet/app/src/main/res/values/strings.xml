@@ -26,6 +26,7 @@
     <string name="drawer_open">Abrir</string>
     <string name="drawer_close">Fechar</string>
     <string name="raca">Raça</string>
+    <string name="escolher_imagens">Escolher imagens</string>
 
     <!--menu drawer-->
     <string name="quero_adotar">Quero Adotar</string>
@@ -89,5 +90,17 @@
     <string name="required_cep_message">Digite o CEP</string>
     <string name="required_logradouro_message">Digite o logradouro</string>
     <string name="required_numero_message">Digite o numero</string>
+
+    <!--//nome,especie,raca,idade,peso,sexo,castrado,cadastro ativo-->
+
+    <string name="required_nome_pet_message">Digite o Nome</string>
+    <string name="required_especie_pet_message">Escolha a Espécie</string>
+    <string name="required_raca_pet_message">Digite a Raça</string>
+    <string name="required_idade_pet_message">Digite a Idade</string>
+    <string name="required_peso_pet_message">Digite o Peso</string>
+    <string name="required_sexo_pet_message">Informe o Sexo</string>
+    <string name="required_castrado_pet_message">Informe se é Castrado</string>
+    <string name="required_cadastro_pet_ativo_message">Informe se o cadastro está ativo</string>
+
 
 </resources>

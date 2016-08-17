@@ -1,5 +1,6 @@
 package br.com.bemypet.bemypet;
 
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v4.util.TimeUtils;
 import android.support.v7.app.ActionBar;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.Timer;
 
+import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.model.Pet;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -89,28 +92,65 @@ public class CadastroPet extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //validar campos aqui TODO
+
     private void cadastrarPet() {
 
+        Boolean erro;
+
         Pet pet = new Pet();
-        pet.setNome(txtNomePet.getText().toString());
-        final Boolean cadastroAtivo = ((RadioButton)findViewById(rgOpcoesCadastroPetAtivo.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Sim");
+        if(StringUtils.isNullOrEmpty(txtNomePet.getText().toString())){
+            txtNomePet.setError(getString(R.string.required_nome_pet_message));
+            erro = true;
+        }else{
+            pet.setNome(txtNomePet.getText().toString());
+            erro = false;
+        }
+
+        final Boolean cadastroAtivo = ((RadioButton)findViewById(rgOpcoesCadastroPetAtivo.getCheckedRadioButtonId())).getText().toString().equalsIgnoreCase("Sim");
         pet.setCadastroAtivo(cadastroAtivo);
         final Boolean castrado = ((RadioButton)findViewById(rgOpcoesCastrado.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Sim");
         pet.setCastrado(castrado);
+
         pet.setEspecie(spinEspecie.getSelectedItem().toString());
         pet.setHistorico(txtHistorico.getText().toString());
-        pet.setIdadeAproximade(Integer.valueOf(txtIdadeAproximada.getText().toString()));
-        pet.setPesoAproximado(Double.valueOf(txtPesoAproximado.getText().toString()));
-        pet.setRaca(txtRaca.getText().toString());
+
+        if(StringUtils.isNullOrEmpty(txtIdadeAproximada.getText().toString())){
+            txtIdadeAproximada.setError(getString(R.string.required_idade_pet_message));
+            erro = true;
+        }else{
+            pet.setIdadeAproximade(Integer.valueOf(txtIdadeAproximada.getText().toString()));
+            erro = false;
+        }
+
+        if(StringUtils.isNullOrEmpty(txtPesoAproximado.getText().toString())){
+            txtPesoAproximado.setError(getString(R.string.required_peso_pet_message));
+            erro = true;
+        }else{
+            pet.setPesoAproximado(Double.valueOf(txtPesoAproximado.getText().toString()));
+            erro = false;
+        }
+
+        if(StringUtils.isNullOrEmpty(txtRaca.getText().toString())){
+            txtRaca.setError(getString(R.string.required_raca_pet_message));
+            erro = true;
+        }else{
+            pet.setRaca(txtRaca.getText().toString());
+            erro = false;
+        }
+
+
         pet.setSaude(txtSaude.getText().toString());
         final String sexo = ((RadioButton)findViewById(rgOpcoesSexoPet.getCheckedRadioButtonId() )).getText().toString();
         pet.setSexo(sexo);
+
         pet.setSociavelCom(txtSociavel.getText().toString());
         pet.setTemperamento(txtTemperamento.getText().toString());
         pet.setId(String.valueOf(System.currentTimeMillis()));
-        salvarPet(pet);
-        finish();
+
+        if(!erro){
+            salvarPet(pet);
+            finish();
+        }
 
     }
 
@@ -119,4 +159,12 @@ public class CadastroPet extends AppCompatActivity {
     }
 
 
+    public void escolherImagens(View v){
+        // For multiple images
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Escolha as imagens"),200);
+    }
 }
