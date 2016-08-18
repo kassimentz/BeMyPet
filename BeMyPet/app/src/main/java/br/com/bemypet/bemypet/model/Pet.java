@@ -1,5 +1,7 @@
 package br.com.bemypet.bemypet.model;
 
+import java.util.List;
+
 import br.com.bemypet.bemypet.enums.StatusAdocao;
 
 /**
@@ -21,7 +23,7 @@ public class Pet {
     private Boolean cadastroAtivo;
     private Usuario doador;
     private Usuario adotante;
-    private int imagens[];
+    private List<String> imagens;
     private Usuario dono;
     private StatusAdocao statusAdocao;
     private Boolean castrado;
@@ -133,11 +135,11 @@ public class Pet {
         this.adotante = adotante;
     }
 
-    public int[] getImagens() {
+    public List<String> getImagens() {
         return imagens;
     }
 
-    public void setImagens(int[] imagens) {
+    public void setImagens(List<String> imagens) {
         this.imagens = imagens;
     }
 

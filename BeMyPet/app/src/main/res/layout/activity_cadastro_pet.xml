@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/cadastroPetToolbar"
@@ -328,7 +328,13 @@
                     android:text="@string/escolher_imagens"
                     android:textStyle="bold"
                     android:textSize="16dp"
+                    android:id="@+id/btnAddImage"
                     android:onClick="escolherImagens"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout"/>
 
             </LinearLayout>
         </ScrollView>

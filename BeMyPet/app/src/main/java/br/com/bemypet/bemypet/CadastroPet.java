@@ -1,24 +1,39 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
-import android.support.v4.util.TimeUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 
-import java.util.Timer;
+import com.darsh.multipleimageselect.activities.AlbumSelectActivity;
+import com.darsh.multipleimageselect.helpers.Constants;
+import com.darsh.multipleimageselect.models.Image;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseError;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.model.Pet;
@@ -42,7 +57,7 @@ public class CadastroPet extends AppCompatActivity {
     @BindView(R.id.txtHistorico) public TextView txtHistorico;
     @BindView(R.id.txtRaca) public TextView txtRaca;
     @BindView(R.id.rgOpcoesCadastroPetAtivo) public RadioGroup rgOpcoesCadastroPetAtivo;
-
+    Pet pet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +71,7 @@ public class CadastroPet extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
-
+        pet = new Pet();
 
         spinEspecie = (Spinner) findViewById(R.id.spinEspecie);
 
@@ -97,7 +112,7 @@ public class CadastroPet extends AppCompatActivity {
 
         Boolean erro;
 
-        Pet pet = new Pet();
+
         if(StringUtils.isNullOrEmpty(txtNomePet.getText().toString())){
             txtNomePet.setError(getString(R.string.required_nome_pet_message));
             erro = true;
@@ -149,7 +164,7 @@ public class CadastroPet extends AppCompatActivity {
 
         if(!erro){
             salvarPet(pet);
-            finish();
+            this.finish();
         }
 
     }
@@ -161,10 +176,67 @@ public class CadastroPet extends AppCompatActivity {
 
     public void escolherImagens(View v){
         // For multiple images
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Escolha as imagens"),200);
+        int numberOfImagesToSelect = 10;
+        Intent intent = new Intent(this, AlbumSelectActivity.class);
+        //set limit on number of images that can be selected, default is 10
+        intent.putExtra(Constants.INTENT_EXTRA_LIMIT, numberOfImagesToSelect);
+        startActivityForResult(intent, Constants.REQUEST_CODE);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constants.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            //The array list has the image paths of the selected images
+            List<Image> images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
+            List<String> imgs = new ArrayList<>();
+            for (Image img : images) {
+                Log.i("images", img.name);
+                imgs.add(storeImageToFirebase(img));
+            }
+
+            pet.setImagens(imgs);
+
+        }
+    }
+
+    private String storeImageToFirebase(Image img) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 8; // shrink it down otherwise we will use stupid amounts of memory
+        Bitmap bitmap = BitmapFactory.decodeFile(img.path, options);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] bytes = baos.toByteArray();
+        String base64Image = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+        // we finally have our base64 string version of the image, save it.
+        return base64Image;
+    }
+
+
+    //verificar como percorrer cada imagem
+    private void previewStoredFirebaseImage() {
+        ((BeMyPetApplication)getApplication()).dbRef.child("pet").child(pet.getId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                String base64Image = (String) snapshot.getValue();
+                byte[] imageAsBytes = Base64.decode(base64Image.getBytes(), Base64.DEFAULT);
+                ImageView mThumbnailPreview = new ImageView(getApplicationContext());
+                mThumbnailPreview.setImageBitmap(
+                        BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
+                );
+                RelativeLayout layout = (RelativeLayout) findViewById(R.id.relativeLayout);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                layoutParams.addRule(RelativeLayout.BELOW, R.id.btnAddImage);
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                layout.addView(mThumbnailPreview, layoutParams);
+                System.out.println("Downloaded image with length: " + imageAsBytes.length);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {}
+        });
+    }
+
 }
