@@ -9,7 +9,7 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:background="@drawable/border"
-        android:onClick="visualizarPet"
+        android:id="@+id/llPetEncontrado"
         android:padding="10dp">
 
         <ImageView

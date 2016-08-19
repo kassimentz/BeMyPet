@@ -10,16 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +113,38 @@ public class PetsEncontrados extends AppCompatActivity {
                         TextView txtIdadeAproximada = (TextView) findViewById(R.id.txtIdadeAproximada);
                         txtIdadeAproximada.setText(pet.getIdadeAproximade().toString());
 
+
+                        LinearLayout llPetEncontrado = (LinearLayout) findViewById(R.id.llPetEncontrado);
+                        llPetEncontrado.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
+
+                                String bundleType = null;
+                                switch (pet.getEspecie()){
+                                    case "Cachorro":
+                                        bundleType = pet.getEspecie();
+                                        break;
+                                    case "Gato":
+                                        bundleType = pet.getEspecie();
+                                        break;
+                                    case "Hamster":
+                                        bundleType = pet.getEspecie();
+                                        break;
+                                    case "Pássaro":
+                                        bundleType = pet.getEspecie();
+                                        break;
+                                }
+                                
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable(bundleType, pet);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+
                         //add item_pet_encontrado to linear layout
                         linearLayout.addView(inflatedLayout);
                         setContentView(linearLayout);
@@ -162,15 +197,6 @@ public class PetsEncontrados extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void visualizarPet(View v){
-
-        Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
-        //TODO verificar o pet clicado e enviar no put extra
-        //intent.putExtras(b);
-        startActivity(intent);
-        finish();
     }
     
 }
