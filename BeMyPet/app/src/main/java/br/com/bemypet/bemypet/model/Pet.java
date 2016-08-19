@@ -1,5 +1,9 @@
 package br.com.bemypet.bemypet.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.bemypet.bemypet.enums.StatusAdocao;
@@ -7,7 +11,7 @@ import br.com.bemypet.bemypet.enums.StatusAdocao;
 /**
  * Created by Kassi on 30/07/16.
  */
-public class Pet {
+public class Pet implements Serializable{
 
     private String id;
     private String nome;
@@ -174,4 +178,6 @@ public class Pet {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }

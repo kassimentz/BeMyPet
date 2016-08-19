@@ -1,6 +1,7 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -233,4 +235,50 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void viewDogs(View v) {
+
+        if(!dogs.isEmpty()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("dogs", (Serializable) dogs);
+            callActivity(bundle);
+        }
+
+    }
+
+    public void viewCats(View v){
+
+        if(!cats.isEmpty()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("cats", (Serializable) cats);
+            callActivity(bundle);
+        }
+
+    }
+
+    public void viewHamsters(View v){
+
+        if(!hamsters.isEmpty()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("hamsters", (Serializable) hamsters);
+            callActivity(bundle);
+        }
+    }
+
+    public void viewBirds(View v){
+
+        if(!birds.isEmpty()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("birds", (Serializable) birds);
+            callActivity(bundle);
+        }
+
+    }
+
+    private void callActivity(Bundle b){
+        //trocar a classe a ser chamada
+        Intent intent = new Intent(getApplicationContext(), CadastroUsuario.class);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+    }
 }

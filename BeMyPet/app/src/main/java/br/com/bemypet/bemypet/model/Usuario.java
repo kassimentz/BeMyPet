@@ -1,11 +1,12 @@
 package br.com.bemypet.bemypet.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Kassi on 30/07/16.
  */
-public class Usuario {
+public class Usuario implements Serializable{
 
     private String nome;
     private String cpf;
