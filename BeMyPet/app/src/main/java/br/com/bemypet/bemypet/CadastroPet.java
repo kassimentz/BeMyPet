@@ -201,7 +201,6 @@ public class CadastroPet extends AppCompatActivity {
 
     private String storeImageToFirebase(Image img) {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 8; // shrink it down otherwise we will use stupid amounts of memory
         Bitmap bitmap = BitmapFactory.decodeFile(img.path, options);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -210,33 +209,6 @@ public class CadastroPet extends AppCompatActivity {
 
         // we finally have our base64 string version of the image, save it.
         return base64Image;
-    }
-
-
-    //verificar como percorrer cada imagem
-    private void previewStoredFirebaseImage() {
-        ((BeMyPetApplication)getApplication()).dbRef.child("pet").child(pet.getId()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                String base64Image = (String) snapshot.getValue();
-                byte[] imageAsBytes = Base64.decode(base64Image.getBytes(), Base64.DEFAULT);
-                ImageView mThumbnailPreview = new ImageView(getApplicationContext());
-                mThumbnailPreview.setImageBitmap(
-                        BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
-                );
-                RelativeLayout layout = (RelativeLayout) findViewById(R.id.relativeLayout);
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                layoutParams.addRule(RelativeLayout.BELOW, R.id.btnAddImage);
-                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                layout.addView(mThumbnailPreview, layoutParams);
-                System.out.println("Downloaded image with length: " + imageAsBytes.length);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {}
-        });
     }
 
 }
