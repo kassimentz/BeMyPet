@@ -61,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initNavigationDrawer();
 
-        ButterKnife.apply(imgDog, DISABLE);
-        ButterKnife.apply(imgCat, DISABLE);
-        ButterKnife.apply(imgBird, DISABLE);
-        ButterKnife.apply(imgHamster, DISABLE);
         
         getPets();
 
@@ -90,49 +86,55 @@ public class MainActivity extends AppCompatActivity {
                     switch (pet.getEspecie()){
                         case "Cachorro":
                             dogs.add(pet);
+                            Log.i("pets", pet.getNome() + " dog add");
                             break;
                         case "Gato":
                             cats.add(pet);
+                            Log.i("pets", pet.getNome() + " cat add");
                             break;
                         case "Hamster":
                             hamsters.add(pet);
+                            Log.i("pets", pet.getNome() + " hamster add");
                             break;
                         case "Pássaro":
                             birds.add(pet);
+                            Log.i("pets", pet.getNome() + " bird add");
                             break;
+
 
                     }
 
                 }
 
+                if(!dogs.isEmpty()){
+                    ButterKnife.apply(imgDog, ENABLE, false);
+                }else{
+                    ButterKnife.apply(imgDog, DISABLE);
+                }
+
+                if(!cats.isEmpty()){
+                    ButterKnife.apply(imgCat, ENABLE, false);
+                }else{
+                    ButterKnife.apply(imgCat, DISABLE);
+                }
+
+                if(!birds.isEmpty()){
+                    ButterKnife.apply(imgBird, ENABLE, false);
+                }else{
+                    ButterKnife.apply(imgBird, DISABLE);
+                }
+
+                if(!hamsters.isEmpty()){
+                    ButterKnife.apply(imgHamster, ENABLE, false);
+                }else{
+                    ButterKnife.apply(imgHamster, DISABLE);
+                }
 
             }
             public void onCancelled(DatabaseError databaseError) { }
         });
 
-        if(!dogs.isEmpty()){
-            ButterKnife.apply(imgDog, ENABLE, false);
-        }else{
-            ButterKnife.apply(imgDog, DISABLE);
-        }
 
-        if(!cats.isEmpty()){
-            ButterKnife.apply(imgCat, ENABLE, false);
-        }else{
-            ButterKnife.apply(imgCat, DISABLE);
-        }
-
-        if(!birds.isEmpty()){
-            ButterKnife.apply(imgBird, ENABLE, false);
-        }else{
-            ButterKnife.apply(imgBird, DISABLE);
-        }
-
-        if(!hamsters.isEmpty()){
-            ButterKnife.apply(imgHamster, ENABLE, false);
-        }else{
-            ButterKnife.apply(imgHamster, DISABLE);
-        }
     }
 
     public void initNavigationDrawer() {
@@ -275,8 +277,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callActivity(Bundle b){
-        //trocar a classe a ser chamada
-        Intent intent = new Intent(getApplicationContext(), CadastroUsuario.class);
+        Intent intent = new Intent(getApplicationContext(), PetsEncontrados.class);
         intent.putExtras(b);
         startActivity(intent);
         finish();

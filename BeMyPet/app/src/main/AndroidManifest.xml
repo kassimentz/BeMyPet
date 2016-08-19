@@ -16,7 +16,6 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <activity
             android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
             android:theme="@style/MultipleImageSelectTheme">
@@ -24,7 +23,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,17 +39,15 @@
         <activity
             android:name=".CadastroPet"
             android:parentActivityName=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action
-                    android:name="android.intent.action.SEND_MULTIPLE" />
-                <action
-                    android:name="android.intent.action.SEND" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:mimeType="image/*" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -73,12 +69,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".TermosAdocao"
+        <activity
+            android:name=".TermosAdocao"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".PetsEncontrados"></activity>
     </application>
 
 </manifest>
