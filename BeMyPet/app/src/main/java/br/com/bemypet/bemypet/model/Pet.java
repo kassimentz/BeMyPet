@@ -27,7 +27,7 @@ public class Pet implements Serializable{
     private Boolean cadastroAtivo;
     private Usuario doador;
     private Usuario adotante;
-    private List<String> imagens;
+    private List<Uri> imagens;
     private Usuario dono;
     private StatusAdocao statusAdocao;
     private Boolean castrado;
@@ -139,11 +139,11 @@ public class Pet implements Serializable{
         this.adotante = adotante;
     }
 
-    public List<String> getImagens() {
+    public List<Uri> getImagens() {
         return imagens;
     }
 
-    public void setImagens(List<String> imagens) {
+    public void setImagens(List<Uri> imagens) {
         this.imagens = imagens;
     }
 

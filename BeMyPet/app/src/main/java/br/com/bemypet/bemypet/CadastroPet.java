@@ -188,7 +188,7 @@ public class CadastroPet extends AppCompatActivity {
         if (requestCode == Constants.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             //The array list has the image paths of the selected images
             List<Image> images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
-            List<String> imgs = new ArrayList<>();
+            List<Uri> imgs = new ArrayList<>();
             for (Image img : images) {
                 Log.i("images", img.name);
                 imgs.add(storeImageToFirebase(img));
@@ -199,7 +199,7 @@ public class CadastroPet extends AppCompatActivity {
         }
     }
 
-    private String storeImageToFirebase(Image img) {
+    /*private String storeImageToFirebase(Image img) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(img.path, options);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -209,6 +209,27 @@ public class CadastroPet extends AppCompatActivity {
 
         // we finally have our base64 string version of the image, save it.
         return base64Image;
-    }
+    }*/
+   
+   private Uri storeImageToFirebase(Image img) {
+       
+        String fileName = img.name;
+        String storageRef = firebase.storage().ref('/images/' + fileName);
+       
+        UploadTask uploadTask = storageRef.putBytes(img);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                return downloadUrl;
+            }
+        });
+   }
 
 }
