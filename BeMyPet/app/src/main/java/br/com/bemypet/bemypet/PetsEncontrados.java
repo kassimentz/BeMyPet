@@ -136,7 +136,7 @@ public class PetsEncontrados extends AppCompatActivity {
                                         bundleType = pet.getEspecie();
                                         break;
                                 }
-                                
+
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable(bundleType, pet);
                                 intent.putExtras(bundle);
