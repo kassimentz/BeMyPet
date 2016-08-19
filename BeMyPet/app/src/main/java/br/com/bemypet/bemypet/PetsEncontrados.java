@@ -1,11 +1,21 @@
 package br.com.bemypet.bemypet;
 
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,19 +81,30 @@ public class PetsEncontrados extends AppCompatActivity {
 
     }
 
-    private void createImage(LinearLayout linearLayout, List<String> images) {
+    private void createImage(final LinearLayout linearLayout, List<Uri> images) {
 
         if(images != null) {
-            for (String img : images) {
-                byte[] imageAsBytes = Base64.decode(img.getBytes(), Base64.DEFAULT);
-                ImageView mThumbnailPreview = new ImageView(getApplicationContext());
-                mThumbnailPreview.setImageBitmap(
-                        BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
-                );
-                mThumbnailPreview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                linearLayout.addView(mThumbnailPreview);
-                setContentView(linearLayout);
+            for (Uri img : images) {
+
+                ((BeMyPetApplication)getApplication()).stRef.child("images/"+img).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        // Use the bytes to display the image
+                        ImageView mThumbnailPreview = new ImageView(getApplicationContext());
+                        mThumbnailPreview.setImageBitmap(
+                                BitmapFactory.decodeByteArray(bytes, 0, bytes.length)
+                        );
+                        mThumbnailPreview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT));
+                        linearLayout.addView(mThumbnailPreview);
+                        setContentView(linearLayout);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
             }
         }
 

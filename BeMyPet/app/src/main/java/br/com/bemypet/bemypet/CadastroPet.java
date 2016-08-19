@@ -3,23 +3,21 @@ package br.com.bemypet.bemypet;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,11 +25,13 @@ import android.widget.TextView;
 import com.darsh.multipleimageselect.activities.AlbumSelectActivity;
 import com.darsh.multipleimageselect.helpers.Constants;
 import com.darsh.multipleimageselect.models.Image;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +45,15 @@ public class CadastroPet extends AppCompatActivity {
     //tenho que ter um bundle que passe o usuario que esta cadastrando o pet
 
     Spinner spinEspecie;
+    private Uri uri;
+
+    public Uri getUri() {
+        return uri;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
+    }
 
     @BindView(R.id.txtNomePet) public EditText txtNomePet;
     @BindView(R.id.txtIdadeAproximada) public EditText txtIdadeAproximada;
@@ -199,37 +208,43 @@ public class CadastroPet extends AppCompatActivity {
         }
     }
 
-    /*private String storeImageToFirebase(Image img) {
+    /*private byte[] imageToBytes(Image img) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(img.path, options);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] bytes = baos.toByteArray();
-        String base64Image = Base64.encodeToString(bytes, Base64.DEFAULT);
 
-        // we finally have our base64 string version of the image, save it.
-        return base64Image;
+        return bytes;
     }*/
    
    private Uri storeImageToFirebase(Image img) {
-       
-        String fileName = img.name;
-        String storageRef = firebase.storage().ref('/images/' + fileName);
-       
-        UploadTask uploadTask = storageRef.putBytes(img);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                return downloadUrl;
-            }
-        });
+
+       Uri file = Uri.fromFile(new File(img.path));
+       StorageReference imgRef = ((BeMyPetApplication)getApplication()).stRef.child("images/"+file.getLastPathSegment());
+       UploadTask uploadTask = imgRef.putFile(file);
+
+       // Register observers to listen for when the download is done or if it fails
+       uploadTask.addOnFailureListener(new OnFailureListener() {
+           @Override
+           public void onFailure(@NonNull Exception exception) {
+               // Handle unsuccessful uploads
+           }
+       }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+           @Override
+           public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+               // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+               Uri downloadUrl = taskSnapshot.getDownloadUrl();
+               setUri(downloadUrl);
+           }
+       });
+
+       if(getUri() != null){
+           return getUri();
+       }else{
+           return null;
+       }
+
    }
 
 }
