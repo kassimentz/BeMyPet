@@ -8,5 +8,67 @@
     tools:context="br.com.bemypet.bemypet.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/ic_bird"
+                android:layout_margin="10dp"
+                android:id="@+id/imgBird"
+                android:background="@drawable/border"
+                android:layout_weight=".5"/>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_hamster"
+                android:background="@drawable/border"
+                android:id="@+id/imgHamster"
+                android:layout_weight=".5"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_dog"
+                android:background="@drawable/border"
+                android:id="@+id/imgDog"
+                android:layout_weight=".5"/>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_cat"
+                android:background="@drawable/border"
+                android:id="@+id/imgCat"
+                android:layout_weight=".5"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

@@ -8,25 +8,129 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.bemypet.bemypet.model.Pet;
+import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
 
+    @BindView(R.id.imgBird) public ImageView imgBird;
+    @BindView(R.id.imgHamster) public ImageView imgHamster;
+    @BindView(R.id.imgCat) public ImageView imgCat;
+    @BindView(R.id.imgDog) public ImageView imgDog;
+
+    private Unbinder unbinder;
+    final List<Pet> cats = new ArrayList<>();
+    final List<Pet> dogs = new ArrayList<>();
+    final List<Pet> birds = new ArrayList<>();
+    final List<Pet> hamsters = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initNavigationDrawer();
 
+        ButterKnife.apply(imgDog, DISABLE);
+        ButterKnife.apply(imgCat, DISABLE);
+        ButterKnife.apply(imgBird, DISABLE);
+        ButterKnife.apply(imgHamster, DISABLE);
+        
+        getPets();
+
+    }
+
+    /**
+     * Buscar no banco de dados
+     * Para os pets que nao tiver registro no banco,
+     * Desatuvar o botao correspondente
+     */
+    private void getPets() {
+
+        DatabaseReference myRef = ((BeMyPetApplication)getApplication()).dbRef.child("pet").getRef();
+        Query query = myRef.orderByChild("id");
+        final List<Pet> pets = new ArrayList<>();
+        query.addValueEventListener(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()){
+
+                    Pet pet = snap.getValue(Pet.class);
+                    pets.add(pet);
+
+                    switch (pet.getEspecie()){
+                        case "Cachorro":
+                            dogs.add(pet);
+                            break;
+                        case "Gato":
+                            cats.add(pet);
+                            break;
+                        case "Hamster":
+                            hamsters.add(pet);
+                            break;
+                        case "Pássaro":
+                            birds.add(pet);
+                            break;
+
+                    }
+
+                }
+
+
+            }
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+
+        if(!dogs.isEmpty()){
+            ButterKnife.apply(imgDog, ENABLE, false);
+        }else{
+            ButterKnife.apply(imgDog, DISABLE);
+        }
+
+        if(!cats.isEmpty()){
+            ButterKnife.apply(imgCat, ENABLE, false);
+        }else{
+            ButterKnife.apply(imgCat, DISABLE);
+        }
+
+        if(!birds.isEmpty()){
+            ButterKnife.apply(imgBird, ENABLE, false);
+        }else{
+            ButterKnife.apply(imgBird, DISABLE);
+        }
+
+        if(!hamsters.isEmpty()){
+            ButterKnife.apply(imgHamster, ENABLE, false);
+        }else{
+            ButterKnife.apply(imgHamster, DISABLE);
+        }
     }
 
     public void initNavigationDrawer() {
@@ -88,6 +192,18 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
+
+    static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>(){
+        @Override public void apply(View view, int index){
+            view.setEnabled(false);
+        }
+    };
+
+    static final ButterKnife.Setter<View, Boolean> ENABLE = new ButterKnife.Setter<View, Boolean>(){
+        @Override public void set(View view, Boolean value, int index){
+            view.setEnabled(true);
+        }
+    };
 
     public void cadastroPet(View v){
         Intent intent = new Intent(MainActivity.this, CadastroPet.class);
