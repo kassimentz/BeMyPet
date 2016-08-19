@@ -1,5 +1,6 @@
 package br.com.bemypet.bemypet;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -161,6 +162,15 @@ public class PetsEncontrados extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void visualizarPet(View v){
+
+        Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
+        //TODO verificar o pet clicado e enviar no put extra
+        //intent.putExtras(b);
+        startActivity(intent);
+        finish();
     }
     
 }
