@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,46 +59,58 @@ public class PetsEncontrados extends AppCompatActivity {
 
         if(!cats.isEmpty()){
             for (Pet cat : cats) {
-                createImage(linearLayout, cat.getImagens());
+                createImage(linearLayout, cat);
             }
 
         }
         if(!dogs.isEmpty()){
             for (Pet dog : dogs) {
-                createImage(linearLayout, dog.getImagens());
+                createImage(linearLayout, dog);
             }
         }
 
         if(!hamsters.isEmpty()){
             for (Pet hamster : hamsters) {
-                createImage(linearLayout, hamster.getImagens());
+                createImage(linearLayout, hamster);
             }
         }
 
         if(!birds.isEmpty()){
             for (Pet bird : birds) {
-                createImage(linearLayout, bird.getImagens());
+                createImage(linearLayout, bird);
             }
         }
 
     }
 
-    private void createImage(final LinearLayout linearLayout, List<Uri> images) {
+    private void createImage(final LinearLayout linearLayout, final Pet pet) {
 
-        if(images != null) {
-            for (Uri img : images) {
+        if(pet.getImagens() != null) {
+            for (Uri img : pet.getImagens()) {
 
                 ((BeMyPetApplication)getApplication()).stRef.child("images/"+img).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
                         // Use the bytes to display the image
-                        ImageView mThumbnailPreview = new ImageView(getApplicationContext());
+
+                        //get the item_pet_encontrado layout
+                        View inflatedLayout = getLayoutInflater().inflate(R.layout.item_pet_encontrado, null, false);
+
+                        ImageView mThumbnailPreview = (ImageView) findViewById(R.id.imgPetEncontrado);
                         mThumbnailPreview.setImageBitmap(
                                 BitmapFactory.decodeByteArray(bytes, 0, bytes.length)
                         );
                         mThumbnailPreview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT));
-                        linearLayout.addView(mThumbnailPreview);
+
+                        TextView txtNome = (TextView) findViewById(R.id.txtNomePetEncontrado);
+                        txtNome.setText(pet.getNome());
+
+                        TextView txtIdadeAproximada = (TextView) findViewById(R.id.txtIdadeAproximada);
+                        txtIdadeAproximada.setText(pet.getIdadeAproximade().toString());
+
+                        //add item_pet_encontrado to linear layout
+                        linearLayout.addView(inflatedLayout);
                         setContentView(linearLayout);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
