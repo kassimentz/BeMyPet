@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ import br.com.bemypet.bemypet.R;
 public class ImageAdapter extends PagerAdapter {
     Context context;
     private List<String> GalImages = new ArrayList<>();
-    
+
     public ImageAdapter(Context context, List<String> galImages){
         this.context = context;
         this.GalImages = galImages;
@@ -39,7 +41,8 @@ public class ImageAdapter extends PagerAdapter {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
         imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        imageView.setImageResource(GalImages.indexOf(position));
+        Picasso.with(context).load(GalImages.indexOf(position)).into(imageView);
+
         ((ViewPager) container).addView(imageView, 0);
         return imageView;
     }
