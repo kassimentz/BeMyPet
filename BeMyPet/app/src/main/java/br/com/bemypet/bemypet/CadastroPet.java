@@ -45,15 +45,6 @@ public class CadastroPet extends AppCompatActivity {
     //tenho que ter um bundle que passe o usuario que esta cadastrando o pet
 
     Spinner spinEspecie;
-    private Uri uri;
-
-    public Uri getUri() {
-        return uri;
-    }
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }
 
     @BindView(R.id.txtNomePet) public EditText txtNomePet;
     @BindView(R.id.txtIdadeAproximada) public EditText txtIdadeAproximada;
@@ -200,9 +191,10 @@ public class CadastroPet extends AppCompatActivity {
             List<Uri> imgs = new ArrayList<>();
             for (Image img : images) {
                 Log.i("images", img.name);
+
                 imgs.add(storeImageToFirebase(img));
             }
-
+            Log.i("imgs", imgs.toString());
             pet.setImagens(imgs);
 
         }
@@ -217,8 +209,10 @@ public class CadastroPet extends AppCompatActivity {
 
         return bytes;
     }*/
-   
+   //TODO as acoes do retorno da URI da imagem e do set da imagem no pet nao estao sincronizadas
    private Uri storeImageToFirebase(Image img) {
+
+       final Uri[] retorno = {null};
 
        Uri file = Uri.fromFile(new File(img.path));
        StorageReference imgRef = ((BeMyPetApplication)getApplication()).stRef.child("images/"+file.getLastPathSegment());
@@ -235,15 +229,12 @@ public class CadastroPet extends AppCompatActivity {
            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-               setUri(downloadUrl);
+               Log.i("url", downloadUrl.toString());
+               retorno[0] = downloadUrl;
            }
        });
 
-       if(getUri() != null){
-           return getUri();
-       }else{
-           return null;
-       }
+       return retorno[0];
 
    }
 
