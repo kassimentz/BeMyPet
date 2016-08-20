@@ -18,8 +18,10 @@ import br.com.bemypet.bemypet.R;
 public class ImageAdapter extends PagerAdapter {
     Context context;
     private List<String> GalImages = new ArrayList<>();
-    public ImageAdapter(Context context){
-        this.context=context;
+    
+    public ImageAdapter(Context context, List<String> galImages){
+        this.context = context;
+        this.GalImages = galImages;
     }
     @Override
     public int getCount() {
