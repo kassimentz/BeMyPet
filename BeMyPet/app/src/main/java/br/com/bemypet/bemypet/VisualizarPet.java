@@ -3,6 +3,7 @@ package br.com.bemypet.bemypet;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class VisualizarPet extends AppCompatActivity {
         getBundle();
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        Log.i("pet", pet.toString());
         ImageAdapter adapter = new ImageAdapter(this, pet.getImagens());
         viewPager.setAdapter(adapter);
     }

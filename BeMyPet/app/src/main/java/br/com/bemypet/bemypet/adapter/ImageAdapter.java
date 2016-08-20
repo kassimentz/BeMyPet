@@ -3,6 +3,7 @@ package br.com.bemypet.bemypet.adapter;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,7 +42,7 @@ public class ImageAdapter extends PagerAdapter {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
         imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        Picasso.with(context).load(GalImages.indexOf(position)).into(imageView);
+        Picasso.with(context).load(GalImages.get(position)).into(imageView);
 
         ((ViewPager) container).addView(imageView, 0);
         return imageView;
