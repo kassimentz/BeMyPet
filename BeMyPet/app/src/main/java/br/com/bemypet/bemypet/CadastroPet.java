@@ -188,15 +188,11 @@ public class CadastroPet extends AppCompatActivity {
         if (requestCode == Constants.REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             //The array list has the image paths of the selected images
             List<Image> images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
-            List<Uri> imgs = new ArrayList<>();
             for (Image img : images) {
                 Log.i("images", img.name);
 
-                imgs.add(storeImageToFirebase(img));
+                storeImageToFirebase(img);
             }
-            Log.i("imgs", imgs.toString());
-            pet.setImagens(imgs);
-
         }
     }
 
@@ -209,10 +205,8 @@ public class CadastroPet extends AppCompatActivity {
 
         return bytes;
     }*/
-   //TODO as acoes do retorno da URI da imagem e do set da imagem no pet nao estao sincronizadas
-   private Uri storeImageToFirebase(Image img) {
 
-       final Uri[] retorno = {null};
+   private void storeImageToFirebase(Image img) {
 
        Uri file = Uri.fromFile(new File(img.path));
        StorageReference imgRef = ((BeMyPetApplication)getApplication()).stRef.child("images/"+file.getLastPathSegment());
@@ -230,11 +224,10 @@ public class CadastroPet extends AppCompatActivity {
                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                Uri downloadUrl = taskSnapshot.getDownloadUrl();
                Log.i("url", downloadUrl.toString());
-               retorno[0] = downloadUrl;
+               pet.addImage(downloadUrl.toString());
            }
        });
 
-       return retorno[0];
 
    }
 

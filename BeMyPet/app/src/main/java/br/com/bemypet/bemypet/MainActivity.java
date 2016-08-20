@@ -1,6 +1,7 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
@@ -24,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.bemypet.bemypet.model.Pet;
@@ -44,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.imgDog) public ImageView imgDog;
 
     private Unbinder unbinder;
-    final List<Pet> cats = new ArrayList<>();
-    final List<Pet> dogs = new ArrayList<>();
-    final List<Pet> birds = new ArrayList<>();
-    final List<Pet> hamsters = new ArrayList<>();
+    final HashMap<String, Pet> cats = new HashMap<>();
+    final HashMap<String, Pet> dogs = new HashMap<>();
+    final HashMap<String, Pet> birds = new HashMap<>();
+    final HashMap<String, Pet> hamsters = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,19 +87,23 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (pet.getEspecie()){
                         case "Cachorro":
-                            dogs.add(pet);
+                            if (!dogs.containsKey(pet.getId()))
+                                dogs.put(pet.getId(), pet);
                             Log.i("pets", pet.getNome() + " dog add");
                             break;
                         case "Gato":
-                            cats.add(pet);
+                            if (!cats.containsKey(pet.getId()))
+                                cats.put(pet.getId(), pet);
                             Log.i("pets", pet.getNome() + " cat add");
                             break;
                         case "Hamster":
-                            hamsters.add(pet);
+                            if (!hamsters.containsKey(pet.getId()))
+                                hamsters.put(pet.getId(), pet);
                             Log.i("pets", pet.getNome() + " hamster add");
                             break;
                         case "Pássaro":
-                            birds.add(pet);
+                            if (!birds.containsKey(pet.getId()))
+                                birds.put(pet.getId(), pet);
                             Log.i("pets", pet.getNome() + " bird add");
                             break;
 
@@ -108,26 +114,34 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!dogs.isEmpty()){
                     ButterKnife.apply(imgDog, ENABLE, false);
+                    imgDog.setColorFilter(Color.argb(0, 200, 200, 200));
                 }else{
                     ButterKnife.apply(imgDog, DISABLE);
+                    imgDog.setColorFilter(Color.argb(200, 200, 200, 200));
                 }
 
                 if(!cats.isEmpty()){
                     ButterKnife.apply(imgCat, ENABLE, false);
+                    imgCat.setColorFilter(Color.argb(0, 200, 200, 200));
                 }else{
                     ButterKnife.apply(imgCat, DISABLE);
+                    imgCat.setColorFilter(Color.argb(200, 200, 200, 200));
                 }
 
                 if(!birds.isEmpty()){
                     ButterKnife.apply(imgBird, ENABLE, false);
+                    imgBird.setColorFilter(Color.argb(0, 200, 200, 200));
                 }else{
                     ButterKnife.apply(imgBird, DISABLE);
+                    imgBird.setColorFilter(Color.argb(200, 200, 200, 200));
                 }
 
                 if(!hamsters.isEmpty()){
                     ButterKnife.apply(imgHamster, ENABLE, false);
+                    imgHamster.setColorFilter(Color.argb(0, 200, 200, 200));
                 }else{
                     ButterKnife.apply(imgHamster, DISABLE);
+                    imgHamster.setColorFilter(Color.argb(200, 200, 200, 200));
                 }
 
             }
@@ -241,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!dogs.isEmpty()) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("dogs", (Serializable) dogs);
+            bundle.putSerializable("dogs", new ArrayList<Pet>(dogs.values()));
             callActivity(bundle);
         }
 
@@ -251,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!cats.isEmpty()) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("cats", (Serializable) cats);
+            bundle.putSerializable("cats", new ArrayList<Pet>(cats.values()));
             callActivity(bundle);
         }
 
@@ -261,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!hamsters.isEmpty()) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("hamsters", (Serializable) hamsters);
+            bundle.putSerializable("hamsters", new ArrayList<Pet>(hamsters.values()));
             callActivity(bundle);
         }
     }
@@ -270,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!birds.isEmpty()) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable("birds", (Serializable) birds);
+            bundle.putSerializable("birds", new ArrayList<Pet>(birds.values()));
             callActivity(bundle);
         }
 
@@ -280,6 +294,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), PetsEncontrados.class);
         intent.putExtras(b);
         startActivity(intent);
-        finish();
     }
 }

@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.bemypet.bemypet.enums.StatusAdocao;
@@ -28,7 +29,7 @@ public class Pet implements Serializable{
     private Boolean cadastroAtivo;
     private Usuario doador;
     private Usuario adotante;
-    private List<Uri> imagens;
+    private List<String> imagens;
     private Usuario dono;
     private StatusAdocao statusAdocao;
     private Boolean castrado;
@@ -140,11 +141,11 @@ public class Pet implements Serializable{
         this.adotante = adotante;
     }
 
-    public List<Uri> getImagens() {
+    public List<String> getImagens() {
         return imagens;
     }
 
-    public void setImagens(List<Uri> imagens) {
+    public void setImagens(List<String> imagens) {
         this.imagens = imagens;
     }
 
@@ -180,5 +181,34 @@ public class Pet implements Serializable{
         this.id = id;
     }
 
+    public void addImage(String img){
+        if(imagens == null){
+            imagens = new ArrayList<>();
+        }
+        this.imagens.add(img);
+    }
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", especie='" + especie + '\'' +
+                ", idadeAproximade=" + idadeAproximade +
+                ", pesoAproximado=" + pesoAproximado +
+                ", sexo='" + sexo + '\'' +
+                ", raca='" + raca + '\'' +
+                ", saude='" + saude + '\'' +
+                ", temperamento='" + temperamento + '\'' +
+                ", sociavelCom='" + sociavelCom + '\'' +
+                ", historico='" + historico + '\'' +
+                ", cadastroAtivo=" + cadastroAtivo +
+                ", doador=" + doador +
+                ", adotante=" + adotante +
+                ", imagens=" + imagens +
+                ", dono=" + dono +
+                ", statusAdocao=" + statusAdocao +
+                ", castrado=" + castrado +
+                '}';
+    }
 }

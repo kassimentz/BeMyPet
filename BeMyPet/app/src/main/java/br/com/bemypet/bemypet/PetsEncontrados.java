@@ -1,6 +1,8 @@
 package br.com.bemypet.bemypet;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -21,7 +23,11 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +55,8 @@ public class PetsEncontrados extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         
 
-        linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
-        
+        linearLayout = (LinearLayout) findViewById(R.id.llpets);
+
         getBundle();
         createThumbs();
 
@@ -62,101 +65,134 @@ public class PetsEncontrados extends AppCompatActivity {
     private void createThumbs() {
 
         if(!cats.isEmpty()){
-            for (Pet cat : cats) {
-                createImage(linearLayout, cat);
+            for (int i = 0; i < cats.size(); i+=2){
+                createImage(linearLayout, cats.get(i), i + 1 == cats.size() ? null : cats.get(i + 1));
+            }
+        }
+
+        if(!dogs.isEmpty()){
+            for (int i = 0; i < dogs.size(); i+=2){
+                createImage(linearLayout, dogs.get(i), i + 1 == dogs.size() ? null : dogs.get(i + 1));
             }
 
-        }
-        if(!dogs.isEmpty()){
-            for (Pet dog : dogs) {
-                createImage(linearLayout, dog);
-            }
         }
 
         if(!hamsters.isEmpty()){
-            for (Pet hamster : hamsters) {
-                createImage(linearLayout, hamster);
+            for (int i = 0; i < hamsters.size(); i+=2){
+                createImage(linearLayout, hamsters.get(i), i + 1 == hamsters.size() ? null : hamsters.get(i + 1));
             }
         }
 
         if(!birds.isEmpty()){
-            for (Pet bird : birds) {
-                createImage(linearLayout, bird);
+            for (int i = 0; i < birds.size(); i+=2){
+                createImage(linearLayout, birds.get(i), i + 1 == birds.size() ? null : birds.get(i + 1));
             }
         }
 
     }
 
-    private void createImage(final LinearLayout linearLayout, final Pet pet) {
+    private void createImage(final LinearLayout linearLayout, final Pet petLeft, final Pet petRight) {
+        View inflatedLayout = getLayoutInflater().inflate(R.layout.item_pet_encontrado, null, false);
 
-        if(pet.getImagens() != null) {
-            for (Uri img : pet.getImagens()) {
+        if(petLeft.getImagens() != null) {
 
-                ((BeMyPetApplication)getApplication()).stRef.child("images/"+img).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        // Use the bytes to display the image
+            String img = petLeft.getImagens().get(0);
 
-                        //get the item_pet_encontrado layout
-                        View inflatedLayout = getLayoutInflater().inflate(R.layout.item_pet_encontrado, null, false);
-
-                        ImageView mThumbnailPreview = (ImageView) findViewById(R.id.imgPetEncontrado);
-                        mThumbnailPreview.setImageBitmap(
-                                BitmapFactory.decodeByteArray(bytes, 0, bytes.length)
-                        );
-                        mThumbnailPreview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                        TextView txtNome = (TextView) findViewById(R.id.txtNomePetEncontrado);
-                        txtNome.setText(pet.getNome());
-
-                        TextView txtIdadeAproximada = (TextView) findViewById(R.id.txtIdadeAproximada);
-                        txtIdadeAproximada.setText(pet.getIdadeAproximade().toString());
-
-
-                        LinearLayout llPetEncontrado = (LinearLayout) findViewById(R.id.llPetEncontrado);
-                        llPetEncontrado.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
-
-                                String bundleType = null;
-                                switch (pet.getEspecie()){
-                                    case "Cachorro":
-                                        bundleType = pet.getEspecie();
-                                        break;
-                                    case "Gato":
-                                        bundleType = pet.getEspecie();
-                                        break;
-                                    case "Hamster":
-                                        bundleType = pet.getEspecie();
-                                        break;
-                                    case "Pássaro":
-                                        bundleType = pet.getEspecie();
-                                        break;
-                                }
-
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable(bundleType, pet);
-                                intent.putExtras(bundle);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-
-                        //add item_pet_encontrado to linear layout
-                        linearLayout.addView(inflatedLayout);
-                        setContentView(linearLayout);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle any errors
-                    }
-                });
-            }
+            ImageView mThumbnailPreview = (ImageView) inflatedLayout.findViewById(R.id.imgPetEncontrado1);
+            Picasso.with(this).load(img).into(mThumbnailPreview);
         }
+
+        TextView txtNome = (TextView) inflatedLayout.findViewById(R.id.txtNomePetEncontrado1);
+        txtNome.setText(petLeft.getNome());
+
+        TextView txtIdadeAproximada = (TextView) inflatedLayout.findViewById(R.id.txtIdadePetEncontrado1);
+        txtIdadeAproximada.setText(petLeft.getIdadeAproximade().toString());
+
+        LinearLayout llPetEncontrado = (LinearLayout) inflatedLayout.findViewById(R.id.llPetEncontradoLeft);
+        llPetEncontrado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
+
+                String bundleType = null;
+                switch (petLeft.getEspecie()){
+                    case "Cachorro":
+                        bundleType = petLeft.getEspecie();
+                        break;
+                    case "Gato":
+                        bundleType = petLeft.getEspecie();
+                        break;
+                    case "Hamster":
+                        bundleType = petLeft.getEspecie();
+                        break;
+                    case "Pássaro":
+                        bundleType = petLeft.getEspecie();
+                        break;
+                }
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(bundleType, petLeft);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        LinearLayout llPetEncontradoRight = (LinearLayout) inflatedLayout.findViewById(R.id.llPetEncontradoRight);
+        if(petRight != null) {
+
+            if(petRight.getImagens() != null) {
+                String img = petRight.getImagens().get(0);
+
+                ImageView mThumbnailPreview2 = (ImageView) inflatedLayout.findViewById(R.id.imgPetEncontrado2);
+                Picasso.with(this).load(img).into(mThumbnailPreview2);
+            }
+
+            TextView txtNome2 = (TextView) inflatedLayout.findViewById(R.id.txtNomePetEncontrado2);
+            txtNome2.setText(petRight.getNome());
+
+            TextView txtIdadeAproximada2 = (TextView) inflatedLayout.findViewById(R.id.txtIdadePetEncontrado2);
+            txtIdadeAproximada2.setText(petRight.getIdadeAproximade().toString());
+
+
+
+            llPetEncontradoRight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getApplicationContext(), VisualizarPet.class);
+
+                    String bundleType = null;
+                    switch (petRight.getEspecie()){
+                        case "Cachorro":
+                            bundleType = petRight.getEspecie();
+                            break;
+                        case "Gato":
+                            bundleType = petRight.getEspecie();
+                            break;
+                        case "Hamster":
+                            bundleType = petRight.getEspecie();
+                            break;
+                        case "Pássaro":
+                            bundleType = petRight.getEspecie();
+                            break;
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(bundleType, petRight);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }else{
+            llPetEncontradoRight.setVisibility(View.GONE);
+        }
+
+        //add item_pet_encontrado to linear layout
+        linearLayout.addView(inflatedLayout);
 
     }
 
@@ -198,5 +234,5 @@ public class PetsEncontrados extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
 }
