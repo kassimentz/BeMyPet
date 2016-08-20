@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.bemypet.bemypet.R;
 
 /**
@@ -14,17 +17,13 @@ import br.com.bemypet.bemypet.R;
  */
 public class ImageAdapter extends PagerAdapter {
     Context context;
-    private int[] GalImages = new int[] {
-            android.R.drawable.btn_star,
-            android.R.drawable.btn_plus,
-            android.R.drawable.ic_dialog_info
-    };
+    private List<String> GalImages = new ArrayList<>();
     public ImageAdapter(Context context){
         this.context=context;
     }
     @Override
     public int getCount() {
-        return GalImages.length;
+        return GalImages.size();
     }
 
     @Override
@@ -38,7 +37,7 @@ public class ImageAdapter extends PagerAdapter {
         int padding = context.getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
         imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        imageView.setImageResource(GalImages[position]);
+        imageView.setImageResource(GalImages.indexOf(position));
         ((ViewPager) container).addView(imageView, 0);
         return imageView;
     }
