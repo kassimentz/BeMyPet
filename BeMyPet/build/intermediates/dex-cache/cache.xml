@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c47ec47c3f5dcfa0cc916fca85604fcba090f8e7">
+        <dex dex="/Users/Cassio/AndroidStudioProjects/bemypet/BeMyPet/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7e9bf7ca3fbd5ad19e572c66c7b6bfebef11fdaf/classes.dex" />
+    </item>
+
+</items>
