@@ -79,8 +79,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".VisualizarPet" />
-        <activity android:name=".ScrollingActivity"></activity>
+        <activity android:name=".VisualizarPet"
+            android:parentActivityName=".PetsEncontrados">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PetsEncontrados" />
+        </activity>
+        <activity android:name=".ScrollingActivity"
+            android:parentActivityName=".PetsEncontrados">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PetsEncontrados" />
+        </activity>
     </application>
 
 </manifest>

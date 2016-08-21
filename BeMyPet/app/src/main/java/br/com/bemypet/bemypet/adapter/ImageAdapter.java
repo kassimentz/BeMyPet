@@ -39,8 +39,6 @@ public class ImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
-        int padding = context.getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
-        imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         Picasso.with(context).load(GalImages.get(position)).into(imageView);
 
