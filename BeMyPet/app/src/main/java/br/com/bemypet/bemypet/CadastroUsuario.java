@@ -1,7 +1,14 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.identity.intents.Address;
+import com.google.android.gms.location.LocationServices;
+
+import java.util.List;
 
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
@@ -153,6 +165,9 @@ public class CadastroUsuario extends AppCompatActivity {
             endereco.setNumero(Integer.valueOf(txtLogradouroNroUsuario.getText().toString()));
             erro = false;
         }
+
+//        endereco.setLatitude(lat);
+//        endereco.setLongitude(lng);
 
         user.setEndereco(endereco);
 
