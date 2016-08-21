@@ -9,4 +9,6 @@ public class Constants {
     public static String CADASTRADO_NO_SISTEMA = "cadastrado";
     public static String USUARIO_NOME = "nome";
     public static String USUARIO_EMAIL = "email";
+
+    public static String DADO_NAO_INFORMADO = "Não Informado";
 }

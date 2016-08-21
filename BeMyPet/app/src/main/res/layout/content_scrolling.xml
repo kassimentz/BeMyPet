@@ -28,8 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_save_white_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtNomePetVisualizacao"
@@ -64,10 +63,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_warning_white_24px"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -86,7 +85,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_assignment_white_24px"
                 android:visibility="invisible" />
 
             <TextView
@@ -122,10 +120,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_favorite_white_24px"
                 android:checked="false"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -145,8 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_file_download_black_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtIdadeAproximadaPetVisualizacao"
@@ -185,7 +182,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_save_white_24px"
+                android:visibility="gone"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
@@ -207,7 +204,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_arrow_back"
                 android:visibility="invisible" />
 
             <TextView
@@ -247,9 +243,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_arrow_back"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -268,8 +264,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_favorite_white_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtRacaPetVisualizacao"
@@ -308,10 +303,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_save_white_24px"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -330,7 +325,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_file_download_black_24px"
                 android:visibility="invisible" />
 
             <TextView
@@ -370,9 +364,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_warning_white_24px"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -392,8 +386,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_favorite_white_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtSaudePetVisualizacao"
@@ -432,10 +425,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_save_white_24px"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -454,7 +447,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_file_download_black_24px"
                 android:visibility="invisible" />
 
             <TextView
@@ -494,9 +486,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_warning_white_24px"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -517,8 +509,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_favorite_white_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtTemperamentoPetVisualizacao"
@@ -557,10 +548,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_save_white_24px"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -579,7 +570,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_file_download_black_24px"
                 android:visibility="invisible" />
 
             <TextView
@@ -619,9 +609,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_warning_white_24px"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -641,8 +631,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_favorite_white_24px" />
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
             <TextView
                 android:id="@+id/txtHistoricoPetVisualizacao"
@@ -681,10 +670,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_save_white_24px"
                 android:checked="true"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
@@ -703,7 +692,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_file_download_black_24px"
                 android:visibility="invisible" />
 
             <TextView
@@ -743,9 +731,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:background="@drawable/ic_warning_white_24px"
                 android:padding="6dp"
                 android:textOff=""
+                android:visibility="gone"
                 android:textOn="" />
 
         </RelativeLayout>
