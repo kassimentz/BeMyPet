@@ -99,4 +99,15 @@ public class Usuario implements Serializable{
     public boolean devolverPet(Pet pet){
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "telefone='" + telefone + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco=" + endereco +
+                '}';
+    }
 }

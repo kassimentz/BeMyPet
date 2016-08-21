@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -20,10 +21,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.identity.intents.Address;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-import br.com.bemypet.bemypet.api.CheckFirebaseConnection;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
@@ -47,10 +55,25 @@ public class CadastroUsuario extends AppCompatActivity {
     @BindView(R.id.txtTelefoneUsuario) public EditText txtTelefoneUsuario;
     @BindView(R.id.txtCepUsuario) public EditText txtCepUsuario;
 
+    public static FirebaseDatabase database;
+    public static FirebaseStorage storage;
+    public static DatabaseReference dbRef;
+    public static StorageReference stRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!FirebaseApp.getApps(this).isEmpty())
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        database =  FirebaseDatabase.getInstance();
+        dbRef = database.getReference();
+        dbRef.keepSynced(true);
+
+        storage = FirebaseStorage.getInstance();
+        stRef = storage.getReference();
+
         setContentView(R.layout.activity_cadastro_usuario);
         ButterKnife.setDebug(true);
         ButterKnife.bind(this);
@@ -189,12 +212,26 @@ public class CadastroUsuario extends AppCompatActivity {
 
     private void salvarUsuario(Usuario user) {
 
-        if(CheckFirebaseConnection.firebaseConnection(((BeMyPetApplication)getApplication()).dbRef)){
-            ((BeMyPetApplication)getApplication()).dbRef.child("usuario").child(user.getCpf()).setValue(user);
-        }else{
-            Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_LONG);
-        }
+        final Usuario u = user;
 
+        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+                    dbRef.child("usuario").child(u.getCpf()).setValue(u);
+                    ManagerPreferences.saveString(getApplicationContext(), Constants.USUARIO_CPF, u.getCpf());
+                } else {
+                    Toast.makeText(getApplicationContext(), "Erro ao salvar", Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.i("Cancel", "Listener was cancelled");
+            }
+        });
 
     }
 

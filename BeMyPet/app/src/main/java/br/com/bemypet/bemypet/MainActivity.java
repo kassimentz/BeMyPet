@@ -17,18 +17,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import br.com.bemypet.bemypet.api.StringUtils;
+import br.com.bemypet.bemypet.controller.Constants;
+import br.com.bemypet.bemypet.controller.ManagerPreferences;
 import br.com.bemypet.bemypet.model.Pet;
+import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -50,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
     final HashMap<String, Pet> dogs = new HashMap<>();
     final HashMap<String, Pet> birds = new HashMap<>();
     final HashMap<String, Pet> hamsters = new HashMap<>();
+    List<Usuario> usuarioList = new ArrayList<>();
+
+    Usuario user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         ButterKnife.setDebug(true);
@@ -63,9 +75,31 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initNavigationDrawer();
 
-        
+
+    if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
+        getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
+    }
+
         getPets();
 
+    }
+
+    private void getUser(String cpf) {
+
+        final String cpfUser = cpf;
+        CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
+            new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    usuarioList.add(dataSnapshot.getValue(Usuario.class));
+                    Log.i("usuarioList", usuarioList.toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
+                }
+            });
     }
 
     /**
@@ -75,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void getPets() {
 
-        DatabaseReference myRef = ((BeMyPetApplication)getApplication()).dbRef.child("pet").getRef();
+        DatabaseReference myRef = CadastroUsuario.dbRef.child("pet").getRef();
         Query query = myRef.orderByChild("id");
         final List<Pet> pets = new ArrayList<>();
         query.addValueEventListener(new ValueEventListener() {
@@ -166,10 +200,7 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.menu_quero_doar:
-
-                        Intent iNewDoador = new Intent(MainActivity.this, CadastroPet.class);
-                        startActivity(iNewDoador);
-                        drawerLayout.closeDrawers();
+                        cadastroPet();
                         break;
 
                     case R.id.menu_meus_pets:
@@ -223,9 +254,17 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void cadastroPet(View v){
+    public void cadastroPet(){
+
+        Bundle bundle = new Bundle();
+        if(!usuarioList.isEmpty()){
+            Log.i("usuarioList.get(0)", usuarioList.get(0).toString());
+            bundle.putSerializable("doador", usuarioList.get(0));
+        }
         Intent intent = new Intent(MainActivity.this, CadastroPet.class);
+        intent.putExtras(bundle);
         startActivity(intent);
+        drawerLayout.closeDrawers();
     }
 
     //menu

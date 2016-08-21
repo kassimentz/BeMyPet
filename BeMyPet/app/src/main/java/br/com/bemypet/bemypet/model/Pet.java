@@ -35,6 +35,7 @@ public class Pet implements Serializable{
     private Boolean castrado;
 
     public Pet() {
+        imagens = new ArrayList<>();
     }
 
     public String getNome() {

@@ -1,8 +1,6 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
@@ -28,17 +26,19 @@ import com.darsh.multipleimageselect.helpers.Constants;
 import com.darsh.multipleimageselect.models.Image;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-
-import br.com.bemypet.bemypet.api.CheckFirebaseConnection;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.model.Pet;
+import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -59,7 +59,10 @@ public class CadastroPet extends AppCompatActivity {
     @BindView(R.id.txtHistorico) public TextView txtHistorico;
     @BindView(R.id.txtRaca) public TextView txtRaca;
     @BindView(R.id.rgOpcoesCadastroPetAtivo) public RadioGroup rgOpcoesCadastroPetAtivo;
+
     Pet pet;
+    Usuario doador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +86,16 @@ public class CadastroPet extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinEspecie.setAdapter(adapter);
 
+        getBundle();
 
+
+    }
+
+    private void getBundle() {
+
+        if (getIntent().getSerializableExtra("doador") != null){
+            doador = (Usuario) getIntent().getSerializableExtra("doador");
+        }
     }
 
 
@@ -112,7 +124,8 @@ public class CadastroPet extends AppCompatActivity {
 
     private void cadastrarPet() {
 
-        Boolean erro;
+        Boolean erro, erroImagem;
+
 
 
         if(StringUtils.isNullOrEmpty(txtNomePet.getText().toString())){
@@ -155,6 +168,15 @@ public class CadastroPet extends AppCompatActivity {
             erro = false;
         }
 
+        if(pet.getImagens().isEmpty()){
+            //deixar o botao de salvar ativo só quando tiver as imagens carregadas
+            Toast.makeText(getApplicationContext(), "Não foram encontradas imagens", Toast.LENGTH_LONG);
+            erroImagem = true;
+
+        }else{
+            erroImagem = false;
+        }
+
 
         pet.setSaude(txtSaude.getText().toString());
         final String sexo = ((RadioButton)findViewById(rgOpcoesSexoPet.getCheckedRadioButtonId() )).getText().toString();
@@ -164,7 +186,11 @@ public class CadastroPet extends AppCompatActivity {
         pet.setTemperamento(txtTemperamento.getText().toString());
         pet.setId(String.valueOf(System.currentTimeMillis()));
 
-        if(!erro){
+
+
+        pet.setDoador(doador);
+
+        if(!erro && !erroImagem){
             salvarPet(pet);
             this.finish();
         }
@@ -172,11 +198,26 @@ public class CadastroPet extends AppCompatActivity {
     }
 
     private void salvarPet(Pet pet) {
-        if(CheckFirebaseConnection.firebaseConnection(((BeMyPetApplication)getApplication()).dbRef)) {
-            ((BeMyPetApplication) getApplication()).dbRef.child("pet").child(pet.getId()).setValue(pet);
-        }else{
-            Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_LONG);
-        }
+
+        final Pet p = pet;
+
+        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+                    CadastroUsuario.dbRef.child("pet").child(p.getId()).setValue(p);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Erro ao salvar", Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.i("Cancel", "Listener was cancelled");
+            }
+        });
     }
 
 
@@ -206,7 +247,7 @@ public class CadastroPet extends AppCompatActivity {
    private void storeImageToFirebase(Image img) {
 
        Uri file = Uri.fromFile(new File(img.path));
-       StorageReference imgRef = ((BeMyPetApplication)getApplication()).stRef.child("images/"+file.getLastPathSegment());
+       StorageReference imgRef = CadastroUsuario.stRef.child("images/"+file.getLastPathSegment());
        UploadTask uploadTask = imgRef.putFile(file);
 
        // Register observers to listen for when the download is done or if it fails
@@ -222,6 +263,7 @@ public class CadastroPet extends AppCompatActivity {
                Uri downloadUrl = taskSnapshot.getDownloadUrl();
                Log.i("url", downloadUrl.toString());
                pet.addImage(downloadUrl.toString());
+               //deixar o botao de salvar ativo só quando tiver as imagens carregadas
            }
        });
 

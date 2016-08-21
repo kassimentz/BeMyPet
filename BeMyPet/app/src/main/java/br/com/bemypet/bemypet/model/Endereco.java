@@ -1,9 +1,11 @@
 package br.com.bemypet.bemypet.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Kassi on 30/07/16.
  */
-public class Endereco {
+public class Endereco implements Serializable{
 
     private String logradouro;
     private Integer numero;
