@@ -20,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.darsh.multipleimageselect.activities.AlbumSelectActivity;
@@ -35,6 +36,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.bemypet.bemypet.api.CheckFirebaseConnection;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.model.Pet;
 import butterknife.BindView;
@@ -170,7 +172,11 @@ public class CadastroPet extends AppCompatActivity {
     }
 
     private void salvarPet(Pet pet) {
-        ((BeMyPetApplication)getApplication()).dbRef.child("pet").child(pet.getId()).setValue(pet);
+        if(CheckFirebaseConnection.firebaseConnection(((BeMyPetApplication)getApplication()).dbRef)) {
+            ((BeMyPetApplication) getApplication()).dbRef.child("pet").child(pet.getId()).setValue(pet);
+        }else{
+            Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_LONG);
+        }
     }
 
 
@@ -196,15 +202,6 @@ public class CadastroPet extends AppCompatActivity {
         }
     }
 
-    /*private byte[] imageToBytes(Image img) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        Bitmap bitmap = BitmapFactory.decodeFile(img.path, options);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] bytes = baos.toByteArray();
-
-        return bytes;
-    }*/
 
    private void storeImageToFirebase(Image img) {
 
@@ -216,7 +213,7 @@ public class CadastroPet extends AppCompatActivity {
        uploadTask.addOnFailureListener(new OnFailureListener() {
            @Override
            public void onFailure(@NonNull Exception exception) {
-               // Handle unsuccessful uploads
+               Toast.makeText(getApplicationContext(), "Falha ao fazer upload de imagem", Toast.LENGTH_LONG);
            }
        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
            @Override

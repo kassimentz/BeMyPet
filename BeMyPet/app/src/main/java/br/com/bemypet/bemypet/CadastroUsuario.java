@@ -23,6 +23,7 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.List;
 
+import br.com.bemypet.bemypet.api.CheckFirebaseConnection;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
@@ -188,7 +189,12 @@ public class CadastroUsuario extends AppCompatActivity {
 
     private void salvarUsuario(Usuario user) {
 
-        ((BeMyPetApplication)getApplication()).dbRef.child("usuario").child(user.getCpf()).setValue(user);
+        if(CheckFirebaseConnection.firebaseConnection(((BeMyPetApplication)getApplication()).dbRef)){
+            ((BeMyPetApplication)getApplication()).dbRef.child("usuario").child(user.getCpf()).setValue(user);
+        }else{
+            Toast.makeText(getApplicationContext(), "Sem conexão com a internet", Toast.LENGTH_LONG);
+        }
+
 
     }
 
