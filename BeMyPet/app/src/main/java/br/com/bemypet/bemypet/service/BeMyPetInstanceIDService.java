@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.bemypet.bemypet.CadastroUsuario;
-import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
@@ -81,4 +80,6 @@ public class BeMyPetInstanceIDService extends FirebaseInstanceIdService {
                 }
             });
     }
+
+
 }

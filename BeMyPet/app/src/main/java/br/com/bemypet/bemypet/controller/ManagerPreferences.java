@@ -26,6 +26,13 @@ public class ManagerPreferences {
         edit.apply();
     }
 
+    public static void saveInt(Context ctx, String key, Integer value){
+        SharedPreferences preferences = ctx.getSharedPreferences(namePref, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putInt(key, value);
+        edit.apply();
+    }
+
     public static boolean getBoolean(Context ctx, String key){
         SharedPreferences preferences = ctx.getSharedPreferences(namePref, Context.MODE_PRIVATE);
         return preferences.getBoolean(key, false);
@@ -34,6 +41,11 @@ public class ManagerPreferences {
     public static String getString(Context ctx, String key){
         SharedPreferences preferences = ctx.getSharedPreferences(namePref, Context.MODE_PRIVATE);
         return preferences.getString(key, null);
+    }
+
+    public static Integer getInt(Context ctx, String key){
+        SharedPreferences preferences = ctx.getSharedPreferences(namePref, Context.MODE_PRIVATE);
+        return  preferences.getInt(key, 0);
     }
 
 

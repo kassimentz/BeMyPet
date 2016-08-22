@@ -113,6 +113,7 @@ public class VerificacaoAdocao extends AppCompatActivity {
         if(!usuarioList.isEmpty()){
             bundle.putSerializable("adotante", adotante);
         }
+        bundle.putSerializable("pet", pet);
         return bundle;
     }
 
