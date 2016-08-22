@@ -101,6 +101,7 @@
     <string name="required_sexo_pet_message">Informe o Sexo</string>
     <string name="required_castrado_pet_message">Informe se é Castrado</string>
     <string name="required_cadastro_pet_ativo_message">Informe se o cadastro está ativo</string>
+    <string name="required_imagens_pet">Selecione imagens</string>
 
 
 </resources>

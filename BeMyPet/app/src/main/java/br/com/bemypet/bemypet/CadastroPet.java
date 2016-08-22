@@ -1,6 +1,7 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -59,6 +61,7 @@ public class CadastroPet extends AppCompatActivity {
     @BindView(R.id.txtHistorico) public TextView txtHistorico;
     @BindView(R.id.txtRaca) public TextView txtRaca;
     @BindView(R.id.rgOpcoesCadastroPetAtivo) public RadioGroup rgOpcoesCadastroPetAtivo;
+    @BindView(R.id.btnAddImage) public Button btnAddImage;
 
     Pet pet;
     Usuario doador;
@@ -170,7 +173,7 @@ public class CadastroPet extends AppCompatActivity {
 
         if(pet.getImagens().isEmpty()){
             //deixar o botao de salvar ativo só quando tiver as imagens carregadas
-            Toast.makeText(getApplicationContext(), "Não foram encontradas imagens", Toast.LENGTH_LONG);
+            btnAddImage.setError(getString(R.string.required_imagens_pet));
             erroImagem = true;
 
         }else{
@@ -263,7 +266,6 @@ public class CadastroPet extends AppCompatActivity {
                Uri downloadUrl = taskSnapshot.getDownloadUrl();
                Log.i("url", downloadUrl.toString());
                pet.addImage(downloadUrl.toString());
-               //deixar o botao de salvar ativo só quando tiver as imagens carregadas
            }
        });
 

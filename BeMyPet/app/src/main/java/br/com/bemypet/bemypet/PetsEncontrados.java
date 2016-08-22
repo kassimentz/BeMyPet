@@ -214,13 +214,7 @@ public class PetsEncontrados extends AppCompatActivity {
             hamsters = (List<Pet>) getIntent().getSerializableExtra("hamsters");
         }
     }
-    
-    //menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_cadastro, menu);
-        return true;
-    }
+
 
 
     @Override
