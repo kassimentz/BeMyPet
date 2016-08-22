@@ -32,7 +32,7 @@ public class Pet implements Serializable{
     private List<String> imagens;
     private Usuario dono;
     private StatusAdocao statusAdocao;
-    private Boolean castrado;
+    private String castrado;
 
     public Pet() {
         imagens = new ArrayList<>();
@@ -166,11 +166,11 @@ public class Pet implements Serializable{
         this.statusAdocao = statusAdocao;
     }
 
-    public Boolean getCastrado() {
+    public String getCastrado() {
         return castrado;
     }
 
-    public void setCastrado(Boolean castrado) {
+    public void setCastrado(String castrado) {
         this.castrado = castrado;
     }
 

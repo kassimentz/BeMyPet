@@ -100,28 +100,37 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginLeft="40dp">
+                    android:layout_marginLeft="10dp">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
+                    <RadioGroup
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/aceito_termos"
-                        android:id="@+id/ckbAceitoTermos"
-                        android:textSize="18dp"
-                        android:textColor="@color/anakiwaDarker"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"/>
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/nao_aceito_termos"
-                        android:id="@+id/ckbNaoAceitoTermos"
-                        android:textSize="18dp"
-                        android:textColor="@color/anakiwaDarker"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"/>
+                        <RadioButton
+                            style="@style/CustomFontStyle"
+                            android:id="@+id/rbNaoAceitoTermos"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/aceito_termos"
+                            android:textSize="18dp"
+                            android:textColor="@color/anakiwaDarker"/>
+
+                        <RadioButton
+                            style="@style/CustomFontStyle"
+                            android:id="@+id/rbNaoTenhoTela"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nao_aceito_termos"
+                            android:textSize="18dp"
+                            android:textColor="@color/anakiwaDarker"/>
+
+                    </RadioGroup>
 
                 </LinearLayout>
             </LinearLayout>

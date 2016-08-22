@@ -8,7 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import br.com.bemypet.bemypet.model.Usuario;
+
 public class TermosAdocao extends AppCompatActivity {
+
+    Usuario adotante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +25,22 @@ public class TermosAdocao extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
+        getBundle();
+    }
+
+
+    private void getBundle() {
+
+        if (getIntent().getSerializableExtra("adotante") != null){
+            adotante = (Usuario) getIntent().getSerializableExtra("doador");
+        }
     }
 
     //menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_cadastro, menu);
+        getMenuInflater().inflate(R.menu.menu_prosseguir, menu);
         return true;
     }
 
@@ -38,8 +52,10 @@ public class TermosAdocao extends AppCompatActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.menuSave:
-                //salvar pet
+            case R.id.menuForward:
+                //adicionar o adotante no bundle somente se ele clicar em aceito
+                //se o aceito tiver clicado, envia uma solicitacao de adocao para o dono do pet
+                // envia notificacao firebase xmpp
 
         }
         return super.onOptionsItemSelected(item);

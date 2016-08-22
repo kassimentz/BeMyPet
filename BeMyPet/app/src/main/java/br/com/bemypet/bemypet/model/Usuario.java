@@ -1,7 +1,9 @@
 package br.com.bemypet.bemypet.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Kassi on 30/07/16.
@@ -14,9 +16,10 @@ public class Usuario implements Serializable{
     private Endereco endereco;
     private String telefone;
     private List<Pet> pets;
+    private String tokenFCM;
 
     //atributos de adotante
-    private Boolean jaTevePete;
+    private String jaTevePete;
     private Boolean possuiTelaNasJanelas;
 
     public Usuario() {
@@ -70,11 +73,11 @@ public class Usuario implements Serializable{
         this.pets = pets;
     }
 
-    public Boolean getJaTevePete() {
+    public String getJaTevePete() {
         return jaTevePete;
     }
 
-    public void setJaTevePete(Boolean jaTevePete) {
+    public void setJaTevePete(String jaTevePete) {
         this.jaTevePete = jaTevePete;
     }
 
@@ -84,6 +87,14 @@ public class Usuario implements Serializable{
 
     public void setPossuiTelaNasJanelas(Boolean possuiTelaNasJanelas) {
         this.possuiTelaNasJanelas = possuiTelaNasJanelas;
+    }
+
+    public String getTokenFCM() {
+        return tokenFCM;
+    }
+
+    public void setTokenFCM(String tokenFCM) {
+        this.tokenFCM = tokenFCM;
     }
 
     //métodos para quando é doador
@@ -103,11 +114,30 @@ public class Usuario implements Serializable{
     @Override
     public String toString() {
         return "Usuario{" +
-                "telefone='" + telefone + '\'' +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
                 ", endereco=" + endereco +
+                ", telefone='" + telefone + '\'' +
+                ", pets=" + pets +
+                ", tokenFCM='" + tokenFCM + '\'' +
+                ", jaTevePete='" + jaTevePete + '\'' +
+                ", possuiTelaNasJanelas=" + possuiTelaNasJanelas +
                 '}';
+    }
+
+    public Map<String,Object> toMap() {
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("nome", nome);
+        result.put("cpf", cpf);
+        result.put("email", email);
+        result.put("endereco", endereco);
+        result.put("telefone", telefone);
+        result.put("tokenFCM", tokenFCM);
+        result.put("jaTevePete", jaTevePete);
+        result.put("possuiTelaNasJanelas", possuiTelaNasJanelas);
+
+        return result;
     }
 }

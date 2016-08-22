@@ -129,8 +129,6 @@ public class CadastroPet extends AppCompatActivity {
 
         Boolean erro, erroImagem;
 
-
-
         if(StringUtils.isNullOrEmpty(txtNomePet.getText().toString())){
             txtNomePet.setError(getString(R.string.required_nome_pet_message));
             erro = true;
@@ -141,7 +139,7 @@ public class CadastroPet extends AppCompatActivity {
 
         final Boolean cadastroAtivo = ((RadioButton)findViewById(rgOpcoesCadastroPetAtivo.getCheckedRadioButtonId())).getText().toString().equalsIgnoreCase("Sim");
         pet.setCadastroAtivo(cadastroAtivo);
-        final Boolean castrado = ((RadioButton)findViewById(rgOpcoesCastrado.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Sim");
+        final String castrado = getSelectedRadioOption(rgOpcoesCastrado);
         pet.setCastrado(castrado);
 
         pet.setEspecie(spinEspecie.getSelectedItem().toString());
@@ -198,6 +196,19 @@ public class CadastroPet extends AppCompatActivity {
             this.finish();
         }
 
+    }
+
+    private String getSelectedRadioOption(RadioGroup radioGroup) {
+        if(radioGroup.getCheckedRadioButtonId()!=-1){
+            int id = radioGroup.getCheckedRadioButtonId();
+            View radioButton = radioGroup.findViewById(id);
+            int radioId = radioGroup.indexOfChild(radioButton);
+            RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
+            String selection = (String) btn.getText();
+            return selection;
+        }else{
+            return null;
+        }
     }
 
     private void salvarPet(Pet pet) {

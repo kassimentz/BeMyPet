@@ -123,22 +123,18 @@ public class MainActivity extends AppCompatActivity {
                         case "Cachorro":
                             if (!dogs.containsKey(pet.getId()))
                                 dogs.put(pet.getId(), pet);
-                            Log.i("pets", pet.getNome() + " dog add");
                             break;
                         case "Gato":
                             if (!cats.containsKey(pet.getId()))
                                 cats.put(pet.getId(), pet);
-                            Log.i("pets", pet.getNome() + " cat add");
                             break;
                         case "Hamster":
                             if (!hamsters.containsKey(pet.getId()))
                                 hamsters.put(pet.getId(), pet);
-                            Log.i("pets", pet.getNome() + " hamster add");
                             break;
                         case "Pássaro":
                             if (!birds.containsKey(pet.getId()))
                                 birds.put(pet.getId(), pet);
-                            Log.i("pets", pet.getNome() + " bird add");
                             break;
 
 
@@ -258,7 +254,6 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         if(!usuarioList.isEmpty()){
-            Log.i("usuarioList.get(0)", usuarioList.get(0).toString());
             bundle.putSerializable("doador", usuarioList.get(0));
         }
         Intent intent = new Intent(MainActivity.this, CadastroPet.class);

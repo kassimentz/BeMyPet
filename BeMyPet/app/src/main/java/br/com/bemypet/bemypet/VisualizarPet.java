@@ -1,5 +1,6 @@
 package br.com.bemypet.bemypet;
 
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -83,7 +85,6 @@ public class VisualizarPet extends AppCompatActivity {
 
     private void setPet() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        Log.i("pet", pet.toString());
         ImageAdapter adapter = new ImageAdapter(this, pet.getImagens());
         viewPager.setAdapter(adapter);
 
@@ -191,6 +192,15 @@ public class VisualizarPet extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void queroAdotar(View v){
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("pet", pet);
+        Intent intent = new Intent(VisualizarPet.this, VerificacaoAdocao.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 
 }
