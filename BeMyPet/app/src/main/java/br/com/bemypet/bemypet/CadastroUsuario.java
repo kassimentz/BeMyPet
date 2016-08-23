@@ -38,6 +38,7 @@ import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
 import br.com.bemypet.bemypet.model.Endereco;
 import br.com.bemypet.bemypet.model.Usuario;
+import br.com.bemypet.bemypet.service.GPSTracker;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,6 +61,10 @@ public class CadastroUsuario extends AppCompatActivity {
     public static FirebaseStorage storage;
     public static DatabaseReference dbRef;
     public static StorageReference stRef;
+
+    // GPSTracker class
+    GPSTracker gps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,8 +196,14 @@ public class CadastroUsuario extends AppCompatActivity {
             erro = false;
         }
 
-//        endereco.setLatitude(lat);
-//        endereco.setLongitude(lng);
+        gps = new GPSTracker(CadastroUsuario.this);
+        if(gps.canGetLocation()) {
+            endereco.setLatitude(gps.getLatitude());
+            endereco.setLongitude(gps.getLongitude());
+        } else {
+            gps.showSettingsAlert();
+        }
+
 
         user.setEndereco(endereco);
 

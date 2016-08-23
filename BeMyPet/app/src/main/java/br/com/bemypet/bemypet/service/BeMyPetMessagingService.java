@@ -35,6 +35,10 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
                         .setSmallIcon(R.drawable.ic_pets_black_24px)
                         .setContentTitle("Notificação Be My Pet")
                         .setContentText(remoteMessage.getNotification().getBody());
+        /**
+         * TODO arrumar para a intent receber o bundle do pet antes de abrir a visualizacao do pet.
+         * talvez receber o id do pet na notificacao para fazer o select
+         */
         // Creates an explicit intent for an Activity in your app
         // como trazer o pet na notificacao?
         Intent resultIntent = new Intent(this, VisualizarPet.class);
