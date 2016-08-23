@@ -1,6 +1,8 @@
 package br.com.bemypet.bemypet.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Kassi on 30/07/16.
@@ -64,5 +66,19 @@ public class Endereco implements Serializable{
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+
+    public Map<String,Object> toMap() {
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("logradouro", logradouro);
+        result.put("numero", numero);
+        result.put("complemento", complemento);
+        result.put("cep", cep);
+        result.put("latitude", latitude);
+        result.put("longitude", longitude);
+
+        return result;
     }
 }

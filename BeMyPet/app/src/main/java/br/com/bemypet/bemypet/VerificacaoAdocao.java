@@ -28,10 +28,12 @@ import br.com.bemypet.bemypet.controller.ManagerPreferences;
 import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class VerificacaoAdocao extends AppCompatActivity {
 
     List<Usuario> usuarioList = new ArrayList<>();
+
     @BindView(R.id.rgOpcoesTemPets) public RadioGroup rgOpcoesTemPets;
     @BindView(R.id.rgOpcoesTemTela) public RadioGroup rgOpcoesTemTela;
 
@@ -41,7 +43,8 @@ public class VerificacaoAdocao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verificacao_adocao);
-
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.verificacaoAdocaoToolbar);
         setSupportActionBar(myToolbar);
 
@@ -97,11 +100,12 @@ public class VerificacaoAdocao extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private Bundle updateAdotante() {
 
         Usuario adotante = usuarioList.get(0);
 
-        String jaTevePet = getSelectedRadioOption(rgOpcoesTemPets);
+        final String jaTevePet = ((RadioButton) findViewById(rgOpcoesTemPets.getCheckedRadioButtonId())).getText().toString();
         adotante.setJaTevePete(jaTevePet);
 
         final Boolean possuiTelas = ((RadioButton)findViewById(rgOpcoesTemTela.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Sim");
@@ -122,24 +126,14 @@ public class VerificacaoAdocao extends AppCompatActivity {
         String key = CadastroUsuario.dbRef.child("usuario").child(adotante.getCpf()).getKey();
         Map<String, Object> userValues = adotante.toMap();
 
+
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/usuario/" + key, userValues);
+        //TODO esta atualizando o usuario OK> mas tem que atualizar o usuario dentro do PET
 
         CadastroUsuario.dbRef.updateChildren(childUpdates);
     }
 
-    private String getSelectedRadioOption(RadioGroup radioGroup) {
-        if(radioGroup.getCheckedRadioButtonId()!=-1){
-            int id = radioGroup.getCheckedRadioButtonId();
-            View radioButton = radioGroup.findViewById(id);
-            int radioId = radioGroup.indexOfChild(radioButton);
-            RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
-            String selection = (String) btn.getText();
-            return selection;
-        }else{
-            return null;
-        }
-    }
 
     private void getUser(String cpf) {
 

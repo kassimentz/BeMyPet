@@ -132,7 +132,7 @@ public class Usuario implements Serializable{
         result.put("nome", nome);
         result.put("cpf", cpf);
         result.put("email", email);
-        result.put("endereco", endereco);
+        result.put("endereco", endereco.toMap());
         result.put("telefone", telefone);
         result.put("tokenFCM", tokenFCM);
         result.put("jaTevePete", jaTevePete);

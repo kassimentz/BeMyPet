@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -214,6 +215,10 @@ public class CadastroUsuario extends AppCompatActivity {
 
         final Usuario u = user;
 
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("FirebaseInstanceId", "Refreshed token: " + refreshedToken);
+
+        u.setTokenFCM(refreshedToken);
         DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
         connectedRef.addValueEventListener(new ValueEventListener() {
             @Override

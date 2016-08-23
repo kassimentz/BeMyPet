@@ -22,6 +22,7 @@ import java.io.IOException;
 
 import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
+import butterknife.ButterKnife;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -40,6 +41,8 @@ public class TermosAdocao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termos_adocao);
+        ButterKnife.setDebug(true);
+        ButterKnife.bind(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.termosAdocaoToolbar);
         setSupportActionBar(myToolbar);
@@ -55,7 +58,7 @@ public class TermosAdocao extends AppCompatActivity {
     private void getBundle() {
 
         if (getIntent().getSerializableExtra("adotante") != null){
-            adotante = (Usuario) getIntent().getSerializableExtra("doador");
+            adotante = (Usuario) getIntent().getSerializableExtra("adotante");
         }
 
         if(getIntent().getSerializableExtra("pet") != null){
@@ -91,7 +94,7 @@ public class TermosAdocao extends AppCompatActivity {
                         .build());*/
 
 
-                jsonArray.put(pet.getDono().getTokenFCM());
+                jsonArray.put(pet.getDoador().getTokenFCM());
                 sendMessage(jsonArray,"Hello","How r u","Http:\\google.com","My Name is Vishal");
 
         }

@@ -31,19 +31,19 @@ public class BeMyPetInstanceIDService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("FirebaseInstanceId", "Refreshed token: " + refreshedToken);
+
 
         // TODO: Implement this method to send any registration to your app's servers.
         //sendRegistrationToServer(refreshedToken);
         //get usuario atual e salvar o token nele
-
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.e("TESTEFCM", "token no service: " + token);
 
         if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
             getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
         }
 
-        updateUser(refreshedToken);
+        updateUser(token);
 
     }
 
