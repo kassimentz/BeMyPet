@@ -6,7 +6,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -44,6 +43,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BeMyPetMessagingService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.50291544">
+              <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BeMyPetInstanceIDService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetInstanceIDService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -131,11 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TermosAdocao.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TermosAdocao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/TermosAdocao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5947522">
-              <caret line="117" column="57" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -2386,8 +2395,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/CadastroPet.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Endereco.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Usuario.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/TermosAdocao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VerificacaoAdocao.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/TermosAdocao.java" />
       </list>
     </option>
   </component>
@@ -2477,6 +2486,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bemypet" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeMyPet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bemypet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3310,16 +3341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Pet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3333,16 +3354,6 @@
         <state vertical-scroll-proportion="-18.833334">
           <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetInstanceIDService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3431,8 +3442,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/TermosAdocao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5947522">
-          <caret line="117" column="57" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetInstanceIDService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50291544">
+          <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
           <folding />
         </state>
       </provider>

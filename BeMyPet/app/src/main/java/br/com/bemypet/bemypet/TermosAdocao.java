@@ -85,17 +85,20 @@ public class TermosAdocao extends AppCompatActivity {
                 //adicionar o adotante no bundle somente se ele clicar em aceito
                 //se o aceito tiver clicado, envia uma solicitacao de adocao para o dono do pet
                 // envia notificacao firebase xmpp
-                /*RemoteMessage.Builder builder = new RemoteMessage.Builder(pet.getDono().getTokenFCM());
+                RemoteMessage.Builder builder = new RemoteMessage.Builder(pet.getDoador().getTokenFCM());
+
+
 
                 FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                fm.send(builder
-                        .setMessageId((String.valueOf(System.currentTimeMillis())))
-                        .addData("Be My Pet", "O Usuário " + adotante.getNome() + "deseja adotar o Pet " + pet.getNome())
-                        .build());*/
+                fm.send(new RemoteMessage.Builder(pet.getDoador().getTokenFCM() + "@gcm.googleapis.com")
+                        .setMessageId(String.valueOf(System.currentTimeMillis()))
+                        .addData("my_message", "Hello World")
+                        .addData("my_action","SAY_HELLO")
+                        .build());
+                Log.i("FM", "depois do envio");
 
-
-                jsonArray.put(pet.getDoador().getTokenFCM());
-                sendMessage(jsonArray,"Hello","How r u","Http:\\google.com","My Name is Vishal");
+                //jsonArray.put(pet.getDoador().getTokenFCM());
+                //sendMessage(jsonArray,"Hello","How r u","Http:\\google.com","My Name is Vishal");
 
         }
         return super.onOptionsItemSelected(item);
