@@ -278,9 +278,11 @@ public class MainActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.menuMoreOptions:
-                //chamar tela opcoes
+                Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
             case R.id.menuConfigSearch:
-                // chamar tela de configuracao de busca
+                Intent intent = new Intent(MainActivity.this, FiltrarPet.class);
+                startActivity(intent);
+
         }
         return super.onOptionsItemSelected(item);
     }
