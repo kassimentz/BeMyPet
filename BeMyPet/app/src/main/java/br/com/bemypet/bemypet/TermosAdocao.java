@@ -85,26 +85,22 @@ public class TermosAdocao extends AppCompatActivity {
                 //adicionar o adotante no bundle somente se ele clicar em aceito
                 //se o aceito tiver clicado, envia uma solicitacao de adocao para o dono do pet
                 // envia notificacao firebase xmpp
-                RemoteMessage.Builder builder = new RemoteMessage.Builder(pet.getDoador().getTokenFCM());
+                String to = pet.getDoador().getTokenFCM(); // the notification key
+                Log.i("TO", to);
+                String title = "Be My Pet";
+                String body = "Alguém quer me adotar";
 
-
-
-                FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                fm.send(new RemoteMessage.Builder(pet.getDoador().getTokenFCM() + "@gcm.googleapis.com")
-                        .setMessageId(String.valueOf(System.currentTimeMillis()))
-                        .addData("my_message", "Hello World")
-                        .addData("my_action","SAY_HELLO")
-                        .build());
-                Log.i("FM", "depois do envio");
-
-                //jsonArray.put(pet.getDoador().getTokenFCM());
-                //sendMessage(jsonArray,"Hello","How r u","Http:\\google.com","My Name is Vishal");
+                int icon = R.drawable.ic_pets_black_24px;
+                String message = "O usuario " + adotante.getNome() + " quer adotar o pet "+ pet.getNome();
+                jsonArray.put(to);
+                //to, title, body, icon, message
+                sendMessage(jsonArray,title,body,icon,message);
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(final JSONArray recipients, final String title, final String body, final String icon, final String message) {
+    public void sendMessage(final JSONArray recipients, final String title, final String body, final int icon, final String message) {
 
         new AsyncTask<String, String, String>() {
             @Override
@@ -156,7 +152,7 @@ public class TermosAdocao extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url(FCM_MESSAGE_URL)
                 .post(body)
-                .addHeader("Authorization", "key=" + "your server key")
+                .addHeader("Authorization", "key=AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ")
                 .build();
         Response response = mClient.newCall(request).execute();
         return response.body().string();

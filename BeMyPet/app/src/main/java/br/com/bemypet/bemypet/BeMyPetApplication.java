@@ -1,6 +1,8 @@
 package br.com.bemypet.bemypet;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.facebook.FacebookSdk;
 import com.google.firebase.FirebaseApp;
@@ -19,4 +21,5 @@ public class BeMyPetApplication extends Application{
         super.onCreate();
         FacebookSdk.sdkInitialize(getApplicationContext());
     }
+
 }
