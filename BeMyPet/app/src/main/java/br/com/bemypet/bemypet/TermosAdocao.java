@@ -1,5 +1,6 @@
 package br.com.bemypet.bemypet;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -20,8 +23,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -31,10 +36,11 @@ import okhttp3.Response;
 
 public class TermosAdocao extends AppCompatActivity {
 
+    @BindView(R.id.rgTermosAdocao) public RadioGroup rgTermosAdocao;
+
     Usuario adotante;
     Pet pet;
     JSONArray jsonArray = new JSONArray();
-    public static final String FCM_MESSAGE_URL = "https://fcm.googleapis.com/fcm/send";
     OkHttpClient mClient = new OkHttpClient();
 
     @Override
@@ -85,22 +91,29 @@ public class TermosAdocao extends AppCompatActivity {
                 //adicionar o adotante no bundle somente se ele clicar em aceito
                 //se o aceito tiver clicado, envia uma solicitacao de adocao para o dono do pet
                 // envia notificacao firebase xmpp
-                String to = pet.getDoador().getTokenFCM(); // the notification key
-                Log.i("TO", to);
-                String title = "Be My Pet";
-                String body = "Alguém quer me adotar";
 
-                int icon = R.drawable.ic_pets_black_24px;
-                String message = "O usuario " + adotante.getNome() + " quer adotar o pet "+ pet.getNome();
-                jsonArray.put(to);
-                //to, title, body, icon, message
-                sendMessage(jsonArray,title,body,icon,message);
+                if(((RadioButton)findViewById(rgTermosAdocao.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Aceito")){
+                    String to = pet.getDoador().getTokenFCM(); // the notification key
+                    Log.i("TO", to);
+                    String title = "Be My Pet";
+                    String body = pet.getNome()+ " diz: Alguém quer me adotar";
+
+                    int icon = R.drawable.ic_pets_black_24px;
+                    String message = "O usuario " + adotante.getNome() + " quer adotar o pet "+ pet.getNome();
+                    jsonArray.put(to);
+                    //to, title, body, icon, message
+                    sendMessage(jsonArray,title,body,icon,message, adotante.getCpf());
+
+                }else{
+                    Toast.makeText(TermosAdocao.this, "Você só poderá prosseguir após aceitar os termos de adoção! ", Toast.LENGTH_LONG).show();
+                }
+
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(final JSONArray recipients, final String title, final String body, final int icon, final String message) {
+    public void sendMessage(final JSONArray recipients, final String title, final String body, final int icon, final String message, final String cpfAdotante) {
 
         new AsyncTask<String, String, String>() {
             @Override
@@ -114,6 +127,7 @@ public class TermosAdocao extends AppCompatActivity {
 
                     JSONObject data = new JSONObject();
                     data.put("message", message);
+                    data.put("cpfAdotante", cpfAdotante);
                     root.put("notification", notification);
                     root.put("data", data);
                     root.put("registration_ids", recipients);
@@ -134,10 +148,13 @@ public class TermosAdocao extends AppCompatActivity {
                     int success, failure;
                     success = resultJson.getInt("success");
                     failure = resultJson.getInt("failure");
-                    Toast.makeText(TermosAdocao.this, "Message Success: " + success + "Message Failed: " + failure, Toast.LENGTH_LONG).show();
+                    Toast.makeText(TermosAdocao.this, "Solicitação enviada com sucesso. Aguarde a análise do dono do pet.", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(TermosAdocao.this, "Message Failed, Unknown error occurred.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TermosAdocao.this, "Falha no envio da solicitação. Um erro ocorreu. Tente novamente.", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute();
@@ -150,9 +167,9 @@ public class TermosAdocao extends AppCompatActivity {
 
         RequestBody body = RequestBody.create(JSON, bodyString);
         Request request = new Request.Builder()
-                .url(FCM_MESSAGE_URL)
+                .url(Constants.FCM_MESSAGE_URL)
                 .post(body)
-                .addHeader("Authorization", "key=AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ")
+                .addHeader("Authorization", "key="+ Constants.NOTIFICATION_KEY)
                 .build();
         Response response = mClient.newCall(request).execute();
         return response.body().string();

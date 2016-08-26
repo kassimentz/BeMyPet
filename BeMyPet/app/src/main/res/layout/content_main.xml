@@ -27,7 +27,6 @@
                 android:layout_margin="10dp"
                 android:id="@+id/imgBird"
                 android:onClick="viewBirds"
-                android:background="@drawable/border"
                 android:layout_weight=".5"/>
 
             <ImageView
@@ -35,7 +34,6 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
                 app:srcCompat="@drawable/ic_hamster"
-                android:background="@drawable/border"
                 android:id="@+id/imgHamster"
                 android:onClick="viewHamsters"
                 android:layout_weight=".5"/>
@@ -54,7 +52,6 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
                 app:srcCompat="@drawable/ic_dog"
-                android:background="@drawable/border"
                 android:id="@+id/imgDog"
                 android:onClick="viewDogs"
                 android:layout_weight=".5"/>
@@ -64,7 +61,6 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
                 app:srcCompat="@drawable/ic_cat"
-                android:background="@drawable/border"
                 android:id="@+id/imgCat"
                 android:onClick="viewCats"
                 android:layout_weight=".5"/>

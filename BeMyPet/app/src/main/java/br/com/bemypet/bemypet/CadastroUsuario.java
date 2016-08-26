@@ -106,7 +106,7 @@ public class CadastroUsuario extends AppCompatActivity {
             ActivityCompat.requestPermissions(CadastroUsuario.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         } else {
-            Toast.makeText(getApplicationContext(), "Você precisa permitir o acesso", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Você precisa permitir o acesso", Toast.LENGTH_SHORT).show();
             gps = new GPSTracker(getApplicationContext(), CadastroUsuario.this);
             if (gps.canGetLocation()) {
                 latitude = gps.getLatitude();

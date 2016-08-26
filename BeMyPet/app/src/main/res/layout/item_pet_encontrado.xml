@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/border"
         android:id="@+id/llPetEncontradoLeft"
         android:padding="5dp"
         android:layout_margin="5dp">
@@ -74,7 +73,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/border"
         android:id="@+id/llPetEncontradoRight"
         android:padding="5dp"
         android:layout_margin="5dp">
@@ -96,7 +94,7 @@
                 style="@style/CustomFontStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nome_pet"
+                android:text="@string/nome"
                 android:id="@+id/lblNomePetEncontrado2"
                 android:textAlignment="center"
                 android:paddingRight="5dp"/>

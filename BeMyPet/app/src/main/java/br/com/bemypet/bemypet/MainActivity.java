@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUser(String cpf) {
-
+        //TODO verificar pq da erro quando o app esta fechado e tenta abrir pela primeira vez. na segunda vez funciona.
+        // verificar pq deixa inserir sem preencher todos os campos necessarios
         final String cpfUser = cpf;
         CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
             new ValueEventListener() {
