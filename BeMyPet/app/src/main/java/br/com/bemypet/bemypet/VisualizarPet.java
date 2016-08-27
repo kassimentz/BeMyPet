@@ -88,7 +88,7 @@ public class VisualizarPet extends AppCompatActivity {
         ImageAdapter adapter = new ImageAdapter(this, pet.getImagens());
         viewPager.setAdapter(adapter);
 
-        if(StringUtils.isNullOrEmpty(pet.getNome())){
+        if(pet.getNome() == null || StringUtils.isNullOrEmpty(pet.getNome())){
             txtNomePetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtNomePetVisualizacao.setText(pet.getNome());
@@ -100,61 +100,62 @@ public class VisualizarPet extends AppCompatActivity {
             txtEspeciePetVisualizacao.setText(pet.getEspecie());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getIdadeAproximade().toString())){
+        if(pet.getIdadeAproximade() == null || StringUtils.isNullOrEmpty(pet.getIdadeAproximade().toString())){
             txtIdadeAproximadaPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtIdadeAproximadaPetVisualizacao.setText(pet.getIdadeAproximade().toString());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getPesoAproximado().toString())){
+        if(pet.getPesoAproximado() == null || StringUtils.isNullOrEmpty(pet.getPesoAproximado().toString())){
             txtPesoAproximadoPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else {
             txtPesoAproximadoPetVisualizacao.setText(pet.getPesoAproximado().toString());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getRaca())){
+
+        if(pet.getRaca() == null || StringUtils.isNullOrEmpty(pet.getRaca())){
             txtRacaPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtRacaPetVisualizacao.setText(pet.getRaca());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getSexo())){
+        if(pet.getSexo() == null || StringUtils.isNullOrEmpty(pet.getSexo())){
             txtSexoPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else {
             txtSexoPetVisualizacao.setText(pet.getSexo());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getSaude())){
+        if(pet.getSaude() == null || StringUtils.isNullOrEmpty(pet.getSaude())){
             txtSaudePetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtSaudePetVisualizacao.setText(pet.getSaude());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getCastrado().toString())){
+        if(pet.getCadastroAtivo() != null || StringUtils.isNullOrEmpty(pet.getCadastroAtivo().toString())){
             txtCadastroPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
-            txtCadastroPetVisualizacao.setText(StringUtils.booleanToString(pet.getCastrado().toString()));
+            txtCadastroPetVisualizacao.setText(StringUtils.booleanToString(pet.getCadastroAtivo().toString()));
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getCastrado().toString())){
+        if(pet.getCastrado() != null || StringUtils.isNullOrEmpty(pet.getCastrado().toString())){
             txtCastradoPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtCastradoPetVisualizacao.setText(StringUtils.booleanToString(pet.getCastrado().toString()));
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getTemperamento())){
+        if(pet.getTemperamento() != null || StringUtils.isNullOrEmpty(pet.getTemperamento())){
             txtTemperamentoPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else {
             txtTemperamentoPetVisualizacao.setText(pet.getTemperamento());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getSociavelCom())){
+        if(pet.getSociavelCom() != null || StringUtils.isNullOrEmpty(pet.getSociavelCom())){
             txtSociavelPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else {
             txtSociavelPetVisualizacao.setText(pet.getSociavelCom());
         }
 
-        if(StringUtils.isNullOrEmpty(pet.getHistorico())){
+        if(pet.getHistorico() != null || StringUtils.isNullOrEmpty(pet.getHistorico())){
             txtHistoricoPetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);
         }else{
             txtHistoricoPetVisualizacao.setText(pet.getHistorico());

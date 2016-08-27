@@ -28,12 +28,7 @@ import br.com.bemypet.bemypet.model.Usuario;
 public class BeMyPetMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // TODO(developer): Handle FCM messages here.
-        // If the application is in the foreground handle both data and notification messages here.
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
-        Log.d("onMessageReceived", "From: " + remoteMessage.getFrom());
-        Log.d("onMessageReceived", "Notification Message Body: " + remoteMessage.getNotification().getBody());
+
         ArrayMap<String, String> data = (ArrayMap<String, String>) remoteMessage.getData();
         String cpfAdotante = data.get("cpfAdotante");
 
@@ -45,28 +40,15 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
                         .setSmallIcon(R.drawable.ic_pets_black_24px)
                         .setContentTitle("Notificação Be My Pet")
                         .setContentText(remoteMessage.getNotification().getBody());
-        /**
-         * TODO arrumar para a intent receber o bundle do pet antes de abrir a visualizacao do pet.
-         * talvez receber o id do pet na notificacao para fazer o select
-         */
-        // Creates an explicit intent for an Activity in your app
-        // como trazer o pet na notificacao?
-        Intent resultIntent = new Intent(this, VisualizarUsuario.class);
 
-        // The stack builder object will contain an artificial back stack for the
-        // started Activity.
-        // This ensures that navigating backward from the Activity leads out of
-        // your application to the Home screen.
+        Intent resultIntent = new Intent(this, VisualizarUsuario.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        // Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(VisualizarPet.class);
-        // Adds the Intent that starts the Activity to the top of the stack
         resultIntent.putExtras(bundle);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // mId allows you to update the notification later on.
         mNotificationManager.notify((int) System.currentTimeMillis(), mBuilder.build());
     }
 

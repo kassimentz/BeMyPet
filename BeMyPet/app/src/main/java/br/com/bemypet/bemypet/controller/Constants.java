@@ -13,6 +13,7 @@ public class Constants {
 
     public static String DADO_NAO_INFORMADO = "Não Informado";
 
+
     public static String WIFI_ENABLED = "Wifi Ativada";
     public static String MOBILE_DATA_ENABLED = "3G Ativada";
     public static String NO_INTERNET_CONNECTION = "Sem conexão à internet";

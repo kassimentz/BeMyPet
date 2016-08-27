@@ -48,10 +48,8 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!FirebaseApp.getApps(this).isEmpty())
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        setContentView(R.layout.activity_login);
 
+        setContentView(R.layout.activity_login);
 
         if(ManagerPreferences.getBoolean(this, Constants.LOGADO_NO_SISTEMA)){
 
@@ -60,7 +58,7 @@ public class Login extends AppCompatActivity {
             CreateBundleLogado(nome, email);
         }
 
-        //Google Sign In
+        //Google Sign InConstants.USUARIO_CPF
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();

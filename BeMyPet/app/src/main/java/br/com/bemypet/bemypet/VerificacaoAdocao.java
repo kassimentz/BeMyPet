@@ -113,6 +113,7 @@ public class VerificacaoAdocao extends AppCompatActivity {
         
         updateUser(adotante);
 
+
         Bundle bundle = new Bundle();
         if(!usuarioList.isEmpty()){
             bundle.putSerializable("adotante", adotante);
@@ -121,16 +122,24 @@ public class VerificacaoAdocao extends AppCompatActivity {
         return bundle;
     }
 
+    //essa atualizacao só sera feita quando o dono aceitar a adocao.
+    //agora so atualizo o cadastro do usuario.
+    private void updatePet(Usuario adotante) {
+        pet.setAdotante(adotante);
+
+        String key = CadastroUsuario.dbRef.child("pet").child(pet.getId()).getKey();
+        Map<String, Object> userValues = pet.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/pet/" + key, userValues);
+        CadastroUsuario.dbRef.updateChildren(childUpdates);
+    }
+
     private void updateUser(Usuario adotante) {
 
         String key = CadastroUsuario.dbRef.child("usuario").child(adotante.getCpf()).getKey();
         Map<String, Object> userValues = adotante.toMap();
-
-
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/usuario/" + key, userValues);
-        //TODO esta atualizando o usuario OK> mas tem que atualizar o usuario dentro do PET
-
         CadastroUsuario.dbRef.updateChildren(childUpdates);
     }
 

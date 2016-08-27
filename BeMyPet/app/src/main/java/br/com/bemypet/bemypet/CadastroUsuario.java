@@ -73,9 +73,6 @@ public class CadastroUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!FirebaseApp.getApps(this).isEmpty())
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         database =  FirebaseDatabase.getInstance();
         dbRef = database.getReference();
         dbRef.keepSynced(true);

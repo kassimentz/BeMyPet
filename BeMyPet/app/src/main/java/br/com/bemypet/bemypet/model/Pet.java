@@ -6,7 +6,9 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.bemypet.bemypet.enums.StatusAdocao;
 
@@ -211,5 +213,31 @@ public class Pet implements Serializable{
                 ", statusAdocao=" + statusAdocao +
                 ", castrado=" + castrado +
                 '}';
+    }
+
+
+    public Map<String,Object> toMap() {
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("id", id);
+        result.put("nome", nome);
+        result.put("especie", especie);
+        result.put("idadeAproximade", idadeAproximade);
+        result.put("pesoAproximado", pesoAproximado);
+        result.put("sexo", sexo);
+        result.put("raca", raca);
+        result.put("saude", saude);
+        result.put("temperamento", temperamento);
+        result.put("sociavelCom", sociavelCom);
+        result.put("historico", historico);
+        result.put("cadastroAtivo", cadastroAtivo);
+        result.put("doador", doador.toMap());
+        result.put("adotante", adotante.toMap());
+        result.put("imagens", imagens);
+        result.put("dono", dono.toMap());
+        result.put("statusAdocao", statusAdocao.toMap());
+        result.put("castrado", castrado);
+
+        return result;
     }
 }

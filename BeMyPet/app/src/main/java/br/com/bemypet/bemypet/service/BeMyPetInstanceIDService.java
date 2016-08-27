@@ -32,8 +32,6 @@ public class BeMyPetInstanceIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         // Get updated InstanceID token.
 
-
-        // TODO: Implement this method to send any registration to your app's servers.
         //sendRegistrationToServer(refreshedToken);
         //get usuario atual e salvar o token nele
         String token = FirebaseInstanceId.getInstance().getToken();
