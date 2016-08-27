@@ -1,6 +1,7 @@
 package br.com.bemypet.bemypet.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class Usuario implements Serializable{
     private Boolean possuiTelaNasJanelas;
 
     public Usuario() {
+        pets = new ArrayList<Pet>();
     }
 
     public String getNome() {
@@ -66,11 +68,18 @@ public class Usuario implements Serializable{
     }
 
     public List<Pet> getPets() {
-        return pets;
+        return this.pets;
     }
 
     public void setPets(List<Pet> pets) {
         this.pets = pets;
+    }
+
+    public void addPet(Pet pet){
+        if(pets == null){
+            pets = new ArrayList<Pet>();
+        }
+        this.pets.add(pet);
     }
 
     public String getJaTevePete() {

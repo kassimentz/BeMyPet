@@ -251,7 +251,7 @@ public class CadastroPet extends AppCompatActivity {
    private void storeImageToFirebase(Image img) {
 
        Uri file = Uri.fromFile(new File(img.path));
-       StorageReference imgRef = CadastroUsuario.stRef.child("images/"+file.getLastPathSegment());
+       StorageReference imgRef = CadastroUsuario.stRef.child("images/"+String.valueOf(System.currentTimeMillis()+file.getLastPathSegment()));
        UploadTask uploadTask = imgRef.putFile(file);
 
        // Register observers to listen for when the download is done or if it fails

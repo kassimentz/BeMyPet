@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.imgDog) public ImageView imgDog;
 
     private Unbinder unbinder;
+    final HashMap<String, Pet> pets = new HashMap<>();
     final HashMap<String, Pet> cats = new HashMap<>();
     final HashMap<String, Pet> dogs = new HashMap<>();
     final HashMap<String, Pet> birds = new HashMap<>();
@@ -75,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initNavigationDrawer();
 
-    Log.i("Constants.USUARIO_CPF", Constants.USUARIO_CPF);
-    if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
-        getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
-    }
+        if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
+            getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
+        }
 
         getPets();
+
 
     }
 
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     usuarioList.add(dataSnapshot.getValue(Usuario.class));
                     Log.i("usuarioList", usuarioList.toString());
+                    getAllPets(dataSnapshot.getValue(Usuario.class));
                 }
 
                 @Override
@@ -181,6 +183,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void getAllPets(Usuario usuario){
+
+        user = usuario;
+        DatabaseReference myRef = CadastroUsuario.dbRef.child("pet").getRef();
+        Query query = myRef.orderByChild("id");
+        Log.i("user", user.toString());
+        query.addValueEventListener(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()){
+
+                    Pet pet = snap.getValue(Pet.class);
+                    if(pet.getDoador().getCpf().equalsIgnoreCase(usuarioList.get(0).getCpf())){
+                        user.addPet(pet);
+                    }
+                }
+                Log.i("user pet", user.toString());
+            }
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+
+    }
+
     public void initNavigationDrawer() {
 
         NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
@@ -200,9 +224,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_meus_pets:
-
-                        Toast.makeText(getApplicationContext(),"Lista de Pets do Usuario",Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
+                        listaPetsUsuario();
                         break;
 
                     case R.id.menu_meu_perfil:
@@ -236,6 +258,24 @@ public class MainActivity extends AppCompatActivity {
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+    }
+
+    private void listaPetsUsuario() {
+
+        Bundle bundle = new Bundle();
+        for (Pet p : user.getPets()) {
+            if (!pets.containsKey(p.getId()))
+                pets.put(p.getId(), p);
+        }
+
+        if(!pets.isEmpty()){
+            bundle.putSerializable("allPets", new ArrayList<Pet>(pets.values()));
+        }
+
+        Intent intent = new Intent(MainActivity.this, ListaPetsUsuario.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        drawerLayout.closeDrawers();
     }
 
     static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>(){
