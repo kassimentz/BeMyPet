@@ -5,11 +5,11 @@
     <item
         android:id="@+id/menuConfigSearch"
         android:title="Configurar Busca"
-        android:icon="@drawable/ic_filter_list_white_48px"
+        android:icon="@drawable/ic_search_white_24px"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menuMoreOptions"
-        android:title="Opções"
+        android:title="Sair"
         android:icon="@drawable/ic_more_vert_white_48px"
         app:showAsAction="always"/>
 

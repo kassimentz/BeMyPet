@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     usuarioList.add(dataSnapshot.getValue(Usuario.class));
-                    Log.i("usuarioList", usuarioList.toString());
                     getAllPets(dataSnapshot.getValue(Usuario.class));
                 }
 
@@ -113,33 +112,34 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference myRef = CadastroUsuario.dbRef.child("pet").getRef();
         Query query = myRef.orderByChild("id");
-        final List<Pet> pets = new ArrayList<>();
+
         query.addValueEventListener(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
 
                     Pet pet = snap.getValue(Pet.class);
-                    pets.add(pet);
+                    if(pet.getAdotante() == null) {
 
-                    switch (pet.getEspecie()){
-                        case "Cachorro":
-                            if (!dogs.containsKey(pet.getId()))
-                                dogs.put(pet.getId(), pet);
-                            break;
-                        case "Gato":
-                            if (!cats.containsKey(pet.getId()))
-                                cats.put(pet.getId(), pet);
-                            break;
-                        case "Hamster":
-                            if (!hamsters.containsKey(pet.getId()))
-                                hamsters.put(pet.getId(), pet);
-                            break;
-                        case "Pássaro":
-                            if (!birds.containsKey(pet.getId()))
-                                birds.put(pet.getId(), pet);
-                            break;
+                        switch (pet.getEspecie()) {
+                            case "Cachorro":
+                                if (!dogs.containsKey(pet.getId()))
+                                    dogs.put(pet.getId(), pet);
+                                break;
+                            case "Gato":
+                                if (!cats.containsKey(pet.getId()))
+                                    cats.put(pet.getId(), pet);
+                                break;
+                            case "Hamster":
+                                if (!hamsters.containsKey(pet.getId()))
+                                    hamsters.put(pet.getId(), pet);
+                                break;
+                            case "Pássaro":
+                                if (!birds.containsKey(pet.getId()))
+                                    birds.put(pet.getId(), pet);
+                                break;
 
 
+                        }
                     }
 
                 }
@@ -188,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
         user = usuario;
         DatabaseReference myRef = CadastroUsuario.dbRef.child("pet").getRef();
         Query query = myRef.orderByChild("id");
-        Log.i("user", user.toString());
         query.addValueEventListener(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
@@ -198,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
                         user.addPet(pet);
                     }
                 }
-                Log.i("user pet", user.toString());
             }
             public void onCancelled(DatabaseError databaseError) { }
         });
