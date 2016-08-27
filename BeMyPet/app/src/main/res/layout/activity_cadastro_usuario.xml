@@ -218,6 +218,7 @@
                         android:id="@+id/txtEstadoUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/estado"
+                        android:maxLength="2"
                         android:layout_weight="1"
                         android:layout_marginTop="5dp"/>
 
@@ -237,6 +238,7 @@
                         android:id="@+id/txtPaisUsuario"
                         android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                         android:hint="@string/pais"
+                        android:maxLength="2"
                         android:layout_weight="1"
                         android:layout_marginTop="5dp"/>
 

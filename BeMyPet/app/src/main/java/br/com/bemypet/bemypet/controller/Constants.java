@@ -10,6 +10,7 @@ public class Constants {
     public static String USUARIO_NOME = "nome";
     public static String USUARIO_EMAIL = "email";
     public static String USUARIO_CPF = "cpf";
+    public static String USUARIO_IMAGEM = "imagem";
 
     public static String DADO_NAO_INFORMADO = "Não Informado";
 

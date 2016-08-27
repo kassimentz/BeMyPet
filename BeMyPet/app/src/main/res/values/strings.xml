@@ -117,5 +117,8 @@
     <string name="castrado_indiferente_filtro">Indiferente</string>
     <string name="title_activity_lista_pets_usuario">ListaPetsUsuario</string>
 
+    <string name="endereco">Endereço</string>
+
+
 
 </resources>

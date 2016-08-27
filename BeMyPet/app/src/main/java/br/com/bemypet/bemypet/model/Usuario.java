@@ -18,13 +18,15 @@ public class Usuario implements Serializable{
     private String telefone;
     private List<Pet> pets;
     private String tokenFCM;
+    private List<String> imagens;
 
     //atributos de adotante
-    private String jaTevePete;
+    private String jaTevePet;
     private Boolean possuiTelaNasJanelas;
 
     public Usuario() {
         pets = new ArrayList<Pet>();
+        imagens = new ArrayList<>();
     }
 
     public String getNome() {
@@ -82,12 +84,12 @@ public class Usuario implements Serializable{
         this.pets.add(pet);
     }
 
-    public String getJaTevePete() {
-        return jaTevePete;
+    public String getJaTevePet() {
+        return jaTevePet;
     }
 
-    public void setJaTevePete(String jaTevePete) {
-        this.jaTevePete = jaTevePete;
+    public void setJaTevePet(String jaTevePet) {
+        this.jaTevePet = jaTevePet;
     }
 
     public Boolean getPossuiTelaNasJanelas() {
@@ -104,6 +106,21 @@ public class Usuario implements Serializable{
 
     public void setTokenFCM(String tokenFCM) {
         this.tokenFCM = tokenFCM;
+    }
+
+    public List<String> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<String> imagens) {
+        this.imagens = imagens;
+    }
+
+    public void addImage(String img){
+        if(imagens == null){
+            imagens = new ArrayList<>();
+        }
+        this.imagens.add(img);
     }
 
     //métodos para quando é doador
@@ -130,7 +147,7 @@ public class Usuario implements Serializable{
                 ", telefone='" + telefone + '\'' +
                 ", pets=" + pets +
                 ", tokenFCM='" + tokenFCM + '\'' +
-                ", jaTevePete='" + jaTevePete + '\'' +
+                ", jaTevePete='" + jaTevePet + '\'' +
                 ", possuiTelaNasJanelas=" + possuiTelaNasJanelas +
                 '}';
     }
@@ -144,8 +161,9 @@ public class Usuario implements Serializable{
         result.put("endereco", endereco.toMap());
         result.put("telefone", telefone);
         result.put("tokenFCM", tokenFCM);
-        result.put("jaTevePete", jaTevePete);
+        result.put("jaTevePet", jaTevePet);
         result.put("possuiTelaNasJanelas", possuiTelaNasJanelas);
+        result.put("imagens", imagens);
 
         return result;
     }

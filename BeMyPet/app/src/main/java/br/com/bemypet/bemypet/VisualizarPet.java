@@ -84,9 +84,11 @@ public class VisualizarPet extends AppCompatActivity {
     }
 
     private void setPet() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        ImageAdapter adapter = new ImageAdapter(this, pet.getImagens());
-        viewPager.setAdapter(adapter);
+        if(!pet.getImagens().isEmpty()) {
+            ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+            ImageAdapter adapter = new ImageAdapter(this, pet.getImagens());
+            viewPager.setAdapter(adapter);
+        }
 
         if(pet.getNome() == null || StringUtils.isNullOrEmpty(pet.getNome())){
             txtNomePetVisualizacao.setText(Constants.DADO_NAO_INFORMADO);

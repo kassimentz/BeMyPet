@@ -13,6 +13,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.internal.ImageRequest;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -55,7 +56,8 @@ public class Login extends AppCompatActivity {
 
             String nome = ManagerPreferences.getString(this, Constants.USUARIO_NOME);
             String email = ManagerPreferences.getString(this, Constants.USUARIO_EMAIL);
-            CreateBundleLogado(nome, email);
+            String urlImagem = ManagerPreferences.getString(this, Constants.USUARIO_IMAGEM);
+            CreateBundleLogado(nome, email, urlImagem);
         }
 
         //Google Sign InConstants.USUARIO_CPF
@@ -102,7 +104,8 @@ public class Login extends AppCompatActivity {
                             Log.i("log", bFacebookData.toString());
                             String nome = bFacebookData.getString("first_name") + " " + bFacebookData.getString("last_name");
                             String email = bFacebookData.getString("email");
-                            cadastroUsuario(nome, email);
+                            String profileImageUrl = ImageRequest.getProfilePictureUri(object.optString("id"), 500, 500).toString();
+                            cadastroUsuario(nome, email, profileImageUrl);
                             //{"id":"1138061596265568","first_name":"Kassiane","last_name":"Mentz","email":"kassimentz@gmail.com","gender":"female","birthday":"01\/08\/1987"}
                             //redirecionar aqui passando o bundle para a proxima activity
                         }
@@ -185,8 +188,9 @@ public class Login extends AppCompatActivity {
             GoogleSignInAccount acct = result.getSignInAccount();
             Log.i("BeMyPet", "displayname: " + acct.getDisplayName());
             Log.i("BeMyPet", "displayname: " + acct.getEmail());
+            Log.i("BeMyPet", "displayname: " + acct.getPhotoUrl().toString());
 
-            cadastroUsuario(acct.getDisplayName(), acct.getEmail());
+            cadastroUsuario(acct.getDisplayName(), acct.getEmail(), acct.getPhotoUrl().toString());
             //inicial();
         } else {
             Log.d("CURSO", result.getStatus().toString());
@@ -202,19 +206,20 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-    public void cadastroUsuario(String nome, String email){
+    public void cadastroUsuario(String nome, String email, String urlImagem){
 
         ManagerPreferences.saveBoolean(this, Constants.LOGADO_NO_SISTEMA, true);
         ManagerPreferences.saveString(this, Constants.USUARIO_NOME, nome);
-        ManagerPreferences.saveString(this, Constants.USUARIO_EMAIL, email);
+        ManagerPreferences.saveString(this, Constants.USUARIO_IMAGEM, urlImagem);
 
-        CreateBundleLogado(nome, email);
+        CreateBundleLogado(nome, email, urlImagem);
     }
 
-    private void CreateBundleLogado(String nome, String email) {
+    private void CreateBundleLogado(String nome, String email, String urlImagem) {
         Bundle bundle = new Bundle();
         bundle.putString("nome", nome);
         bundle.putString("email", email);
+        bundle.putString("urlImagem", urlImagem);
         Intent intent = new Intent(getApplicationContext(), CadastroUsuario.class);
         intent.putExtras(bundle);
         startActivity(intent);

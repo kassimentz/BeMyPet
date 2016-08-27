@@ -106,7 +106,7 @@ public class VerificacaoAdocao extends AppCompatActivity {
         Usuario adotante = usuarioList.get(0);
 
         final String jaTevePet = ((RadioButton) findViewById(rgOpcoesTemPets.getCheckedRadioButtonId())).getText().toString();
-        adotante.setJaTevePete(jaTevePet);
+        adotante.setJaTevePet(jaTevePet);
 
         final Boolean possuiTelas = ((RadioButton)findViewById(rgOpcoesTemTela.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Sim");
         adotante.setPossuiTelaNasJanelas(possuiTelas);

@@ -68,6 +68,7 @@ public class CadastroUsuario extends AppCompatActivity {
     Double latitude;
     Double longitude;
 
+    String urlImagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +125,11 @@ public class CadastroUsuario extends AppCompatActivity {
         if (getIntent().getExtras().getString("email") != null) {
             txtEmailUsuario.setText(getIntent().getExtras().getString("email"));
         }
+
+        if (getIntent().getExtras().getString("urlImagem") != null) {
+            urlImagem = getIntent().getExtras().getString("urlImagem");
+        }
+
     }
 
 
@@ -197,6 +203,7 @@ public class CadastroUsuario extends AppCompatActivity {
         }
 
         endereco.setComplemento(txtLogradouroComplementoUsuario.getText().toString());
+
         if(StringUtils.isNullOrEmpty(txtLogradouroUsuario.getText().toString())){
             txtLogradouroUsuario.setError(getString(R.string.required_logradouro_message));
             erro = true;
@@ -212,9 +219,15 @@ public class CadastroUsuario extends AppCompatActivity {
             erro = false;
         }
 
+        endereco.setBairro(txtBairroUsuario.getText().toString());
+        endereco.setCidade(txtCidadeUsuario.getText().toString());
+        endereco.setEstado(txtEstadoUsuario.getText().toString());
+        endereco.setPais(txtPaisUsuario.getText().toString());
+
         endereco.setLatitude(latitude);
         endereco.setLongitude(longitude);
 
+        user.addImage(urlImagem);
         user.setEndereco(endereco);
 
         if(!erro) {
