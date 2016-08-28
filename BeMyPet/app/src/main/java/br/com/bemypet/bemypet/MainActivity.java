@@ -118,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
 
                     Pet pet = snap.getValue(Pet.class);
-                    if(pet.getAdotante() == null) {
+
+                    if(pet.getAdotante() == null && (!pet.getDono().getCpf().equalsIgnoreCase(user.getCpf()))) {
 
                         switch (pet.getEspecie()) {
                             case "Cachorro":
@@ -213,10 +214,11 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
 
                 switch (id){
-                    case R.id.menu_quero_adotar:
-                        Toast.makeText(getApplicationContext(),"Quero Adotar",Toast.LENGTH_SHORT).show();
+                    case R.id.menu_adocoes_aprovar:
+                        Toast.makeText(getApplicationContext(),"Lista de adocoes para aprovar / notificacoes ",Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
+
                     case R.id.menu_quero_doar:
                         cadastroPet();
                         break;
@@ -229,9 +231,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Meu Perfil",Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
+
                     case R.id.menu_politica_adocao:
-                        Toast.makeText(getApplicationContext(),"Política de Adoção",Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
+                        visualizarPolitica();
                         break;
 
                 }
@@ -256,6 +258,12 @@ public class MainActivity extends AppCompatActivity {
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+    }
+
+    private void visualizarPolitica() {
+        Intent intent = new Intent(MainActivity.this, VisualizarPoliticaAdocao.class);
+        startActivity(intent);
+        drawerLayout.closeDrawers();
     }
 
     private void listaPetsUsuario() {

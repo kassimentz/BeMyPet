@@ -189,6 +189,7 @@ public class CadastroPet extends AppCompatActivity {
         pet.setId(String.valueOf(System.currentTimeMillis()));
 
 
+        pet.setDono(doador);
 
         pet.setDoador(doador);
 

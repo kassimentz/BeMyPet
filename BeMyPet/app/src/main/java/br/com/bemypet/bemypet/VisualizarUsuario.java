@@ -177,6 +177,6 @@ public class VisualizarUsuario extends AppCompatActivity {
     }
 
     public void reprovarAdocao(View v){
-        Toast.makeText(getApplicationContext(),"aprovar adocao",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"reprovar adocao",Toast.LENGTH_SHORT).show();
     }
 }

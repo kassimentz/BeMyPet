@@ -102,7 +102,7 @@ public class TermosAdocao extends AppCompatActivity {
                     String message = "O usuario " + adotante.getNome() + " quer adotar o pet "+ pet.getNome();
                     jsonArray.put(to);
                     //to, title, body, icon, message
-                    sendMessage(jsonArray,title,body,icon,message, adotante.getCpf());
+                    sendMessage(jsonArray,title,body,icon,message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId());
 
                 }else{
                     Toast.makeText(TermosAdocao.this, "Você só poderá prosseguir após aceitar os termos de adoção! ", Toast.LENGTH_LONG).show();
@@ -113,7 +113,9 @@ public class TermosAdocao extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(final JSONArray recipients, final String title, final String body, final int icon, final String message, final String cpfAdotante) {
+    public void sendMessage(final JSONArray recipients, final String title, final String body,
+                            final int icon, final String message, final String cpfAdotante,
+                            final String cpfDoador, final String idPet) {
 
         new AsyncTask<String, String, String>() {
             @Override
@@ -128,6 +130,8 @@ public class TermosAdocao extends AppCompatActivity {
                     JSONObject data = new JSONObject();
                     data.put("message", message);
                     data.put("cpfAdotante", cpfAdotante);
+                    data.put("cpfDoador", cpfDoador);
+                    data.put("idPet", idPet);
                     root.put("notification", notification);
                     root.put("data", data);
                     root.put("registration_ids", recipients);

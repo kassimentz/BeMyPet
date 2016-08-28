@@ -29,8 +29,9 @@
     <string name="escolher_imagens">Escolher imagens</string>
 
     <!--menu drawer-->
-    <string name="quero_adotar">Quero Adotar</string>
+    <string name="adocoes_aprovar">Adoções para Aprovar</string>
     <string name="quero_doar">Quero Doar</string>
+    <string name="quero_adotar">Quero Adotar</string>
     <string name="meus_pets">Meus Pets</string>
     <string name="meu_perfil">Meu Perfil</string>
     <string name="politica_adocao">Política de Adoção</string>
@@ -62,6 +63,7 @@
 
     <!--Termos de Adocao-->
     <string name="quero_adotar_termos">Quero Adotar - Termos de Adoção</string>
+    <string name="adotar_termos">Política de Adoção</string>
     <string name="termos_aviso">Este aplicativo não se responsabiliza pela veracidade das informações cadastradas pelos usuários. Não somos responsáveis pelo processo de adoção ou cuidados dos animais cadastrados neste aplicativo.</string>
     <string name="criterios1">1. Só doamos pets para casas e apartamentos seguros, de onde o pet não possa sair ou fugir.</string>
     <string name="criterios2">2. O adotante precisa ter condições de alimentar o pet, vaciná-lo anualmente e levá-lo ao veterinário sempre que necessário.</string>
@@ -118,7 +120,6 @@
     <string name="title_activity_lista_pets_usuario">ListaPetsUsuario</string>
 
     <string name="endereco">Endereço</string>
-
 
 
 </resources>

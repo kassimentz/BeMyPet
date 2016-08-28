@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import br.com.bemypet.bemypet.api.StringUtils;
 
 /**
  * Created by Kassi on 30/07/16.
@@ -19,6 +22,7 @@ public class Usuario implements Serializable{
     private List<Pet> pets;
     private String tokenFCM;
     private List<String> imagens;
+    private List<Notificacao> notificacoes;
 
     //atributos de adotante
     private String jaTevePet;
@@ -27,6 +31,7 @@ public class Usuario implements Serializable{
     public Usuario() {
         pets = new ArrayList<Pet>();
         imagens = new ArrayList<>();
+        notificacoes = new ArrayList<Notificacao>();
     }
 
     public String getNome() {
@@ -137,6 +142,21 @@ public class Usuario implements Serializable{
         return false;
     }
 
+    public List<Notificacao> getNotificacoes() {
+        return notificacoes;
+    }
+
+    public void setNotificacoes(List<Notificacao> notificacoes) {
+        this.notificacoes = notificacoes;
+    }
+
+    public void addNotificacao(Notificacao notificacao){
+        if(notificacoes == null){
+            notificacoes = new ArrayList<>();
+        }
+        this.notificacoes.add(notificacao);
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -147,7 +167,9 @@ public class Usuario implements Serializable{
                 ", telefone='" + telefone + '\'' +
                 ", pets=" + pets +
                 ", tokenFCM='" + tokenFCM + '\'' +
-                ", jaTevePete='" + jaTevePet + '\'' +
+                ", imagens=" + imagens +
+                ", notificacoes=" + notificacoes +
+                ", jaTevePet='" + jaTevePet + '\'' +
                 ", possuiTelaNasJanelas=" + possuiTelaNasJanelas +
                 '}';
     }
@@ -164,7 +186,16 @@ public class Usuario implements Serializable{
         result.put("jaTevePet", jaTevePet);
         result.put("possuiTelaNasJanelas", possuiTelaNasJanelas);
         result.put("imagens", imagens);
-
+        result.put("notificacoes", notificacoesToMap());
         return result;
+    }
+
+    private List<Map<String,Object>> notificacoesToMap(){
+        List<Map<String,Object>> listaNotificacoes = new ArrayList<>();
+        Map<String,Object> mapNotificacoes = new HashMap<>();
+        for (Notificacao not : notificacoes) {
+            listaNotificacoes.add(not.toMap());
+        }
+        return listaNotificacoes;
     }
 }

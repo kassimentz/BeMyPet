@@ -3,8 +3,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_quero_adotar"
-            android:title="@string/quero_adotar"
+            android:id="@+id/menu_adocoes_aprovar"
+            android:title="@string/adocoes_aprovar"
             android:icon="@drawable/ic_loyalty_white_24px"/>
         <item
             android:id="@+id/menu_quero_doar"
