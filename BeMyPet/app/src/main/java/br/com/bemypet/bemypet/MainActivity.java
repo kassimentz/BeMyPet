@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
 
                     Pet pet = snap.getValue(Pet.class);
-                    if(pet.getDoador().getCpf().equalsIgnoreCase(usuarioList.get(0).getCpf())){
+                    if(pet.getDono().getCpf().equalsIgnoreCase(usuarioList.get(0).getCpf())){
                         user.addPet(pet);
                     }
                 }
