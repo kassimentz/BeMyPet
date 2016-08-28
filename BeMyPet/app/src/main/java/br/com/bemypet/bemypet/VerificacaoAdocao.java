@@ -122,17 +122,7 @@ public class VerificacaoAdocao extends AppCompatActivity {
         return bundle;
     }
 
-    //essa atualizacao só sera feita quando o dono aceitar a adocao.
-    //agora so atualizo o cadastro do usuario.
-    private void updatePet(Usuario adotante) {
-        pet.setAdotante(adotante);
-
-        String key = CadastroUsuario.dbRef.child("pet").child(pet.getId()).getKey();
-        Map<String, Object> userValues = pet.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/pet/" + key, userValues);
-        CadastroUsuario.dbRef.updateChildren(childUpdates);
-    }
+    //TODO posso fazer um update no pet aqui para setar o status da adocao para em andamento
 
     private void updateUser(Usuario adotante) {
 

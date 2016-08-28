@@ -22,4 +22,10 @@ public class Constants {
     public static String NOTIFICATION_KEY = "AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ";
     public static final String FCM_MESSAGE_URL = "https://fcm.googleapis.com/fcm/send";
 
+//    status adocao
+    public static String DISPONIVEL = "Disponível";
+    public static String EM_ANDAMENTO = "Em Andamento";
+    public static String ADOTADO = "Adotato";
+
+
 }

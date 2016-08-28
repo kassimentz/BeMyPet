@@ -1,16 +1,10 @@
 package br.com.bemypet.bemypet.model;
 
-import android.net.Uri;
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import br.com.bemypet.bemypet.enums.StatusAdocao;
 
 /**
  * Created by Kassi on 30/07/16.
@@ -33,7 +27,7 @@ public class Pet implements Serializable{
     private Usuario adotante;
     private List<String> imagens;
     private Usuario dono;
-    private StatusAdocao statusAdocao;
+    private String statusAdocao;
     private String castrado;
 
     public Pet() {
@@ -160,11 +154,11 @@ public class Pet implements Serializable{
         this.dono = dono;
     }
 
-    public StatusAdocao getStatusAdocao() {
+    public String getStatusAdocao() {
         return statusAdocao;
     }
 
-    public void setStatusAdocao(StatusAdocao statusAdocao) {
+    public void setStatusAdocao(String statusAdocao) {
         this.statusAdocao = statusAdocao;
     }
 
@@ -235,7 +229,7 @@ public class Pet implements Serializable{
         result.put("adotante", adotante.toMap());
         result.put("imagens", imagens);
         result.put("dono", dono.toMap());
-        result.put("statusAdocao", statusAdocao.toMap());
+        result.put("statusAdocao", statusAdocao);
         result.put("castrado", castrado);
 
         return result;

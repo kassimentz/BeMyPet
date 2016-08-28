@@ -1,5 +1,7 @@
 package br.com.bemypet.bemypet;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -18,20 +20,34 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.com.bemypet.bemypet.adapter.ImageAdapter;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
+import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class VisualizarUsuario extends AppCompatActivity {
 
-    String cpfAdotante;
-    List<Usuario> usuarioList = new ArrayList<>();
+    String cpfAdotante, idPet;
+    Usuario adotante = new Usuario();
+    Pet pet = new Pet();
+    JSONArray jsonArray = new JSONArray();
+    OkHttpClient mClient = new OkHttpClient();
 
     @BindView(R.id.ivUsuarioItem1) public ImageView ivUsuarioItem1;
     @BindView(R.id.ivUsuarioItem2) public ImageView ivUsuarioItem2;
@@ -71,19 +87,27 @@ public class VisualizarUsuario extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
 
-        cpfAdotante = getBundle();
+        getBundle();
         if(!StringUtils.isNullOrEmpty(cpfAdotante)){
             getUser(cpfAdotante);
         }
 
+        if(!StringUtils.isNullOrEmpty(idPet)){
+            getPet(idPet);
+        }
+
     }
 
-    private String getBundle() {
+
+
+    private void getBundle() {
 
         if (getIntent().getExtras().getString("cpfAdotante") != null) {
-            return cpfAdotante = getIntent().getExtras().getString("cpfAdotante");
-        }else{
-            return null;
+            cpfAdotante = getIntent().getExtras().getString("cpfAdotante");
+        }
+
+        if (getIntent().getExtras().getString("idPet") != null) {
+            idPet = getIntent().getExtras().getString("idPet");
         }
 
     }
@@ -96,13 +120,33 @@ public class VisualizarUsuario extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     verificaValoresNulos(dataSnapshot.getValue(Usuario.class));
+                    adotante = dataSnapshot.getValue(Usuario.class);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
                 }
-            });
+            }
+        );
+    }
+
+    private void getPet(String idPet) {
+
+        final String id = idPet;
+        CadastroUsuario.dbRef.child("pet").child(id).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        pet = dataSnapshot.getValue(Pet.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
+                    }
+                }
+        );
     }
 
     private void verificaValoresNulos(Usuario usuario) {
@@ -173,10 +217,101 @@ public class VisualizarUsuario extends AppCompatActivity {
     }
 
     public void aprovarAdocao(View v){
-        Toast.makeText(getApplicationContext(),"aprovar adocao",Toast.LENGTH_SHORT).show();
+        //setar adotante
+        //setar dono
+        //update pet
+        pet.setDono(adotante);
+        pet.setAdotante(adotante);
+        pet.setStatusAdocao(Constants.ADOTADO);
+        updatePet(pet);
     }
 
     public void reprovarAdocao(View v){
-        Toast.makeText(getApplicationContext(),"reprovar adocao",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"reprovar adocao",Toast.LENGTH_SHORT).show();
+
+        String to = adotante.getTokenFCM(); // the notification key
+        String title = "Be My Pet";
+        String body = pet.getNome()+ " diz: Status Adoção Negada";
+
+        int icon = R.drawable.ic_pets_black_24px;
+        String message = "O usuario " + pet.getDono().getNome() + " não autorizou a adoção do pet "+ pet.getNome();
+        jsonArray.put(to);
+        //to, title, body, icon, message
+        sendMessage(jsonArray,title,body,icon,message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId());
+    }
+
+    private void updatePet(Pet pPet) {
+
+        String key = CadastroUsuario.dbRef.child("pet").child(pPet.getId()).getKey();
+        Map<String, Object> userValues = pPet.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/pet/" + key, userValues);
+        CadastroUsuario.dbRef.updateChildren(childUpdates);
+    }
+
+    public void sendMessage(final JSONArray recipients, final String title, final String body,
+                            final int icon, final String message, final String cpfAdotante,
+                            final String cpfDoador, final String idPet) {
+
+        new AsyncTask<String, String, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                try {
+                    JSONObject root = new JSONObject();
+                    JSONObject notification = new JSONObject();
+                    notification.put("body", body);
+                    notification.put("title", title);
+                    notification.put("icon", icon);
+
+                    JSONObject data = new JSONObject();
+                    data.put("message", message);
+                    data.put("cpfAdotante", cpfAdotante);
+                    data.put("cpfDoador", cpfDoador);
+                    data.put("idPet", idPet);
+                    root.put("notification", notification);
+                    root.put("data", data);
+                    root.put("registration_ids", recipients);
+
+                    String result = postToFCM(root.toString());
+                    Log.d("TermosAdocao", "Result: " + result);
+                    return result;
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                try {
+                    JSONObject resultJson = new JSONObject(result);
+                    int success, failure;
+                    success = resultJson.getInt("success");
+                    failure = resultJson.getInt("failure");
+                    Toast.makeText(getApplicationContext(), "Solicitação enviada com sucesso. Aguarde a análise do dono do pet.", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Falha no envio da solicitação. Um erro ocorreu. Tente novamente.", Toast.LENGTH_LONG).show();
+                }
+            }
+        }.execute();
+    }
+
+    String postToFCM(String bodyString) throws IOException {
+
+        final MediaType JSON
+                = MediaType.parse("application/json; charset=utf-8");
+
+        RequestBody body = RequestBody.create(JSON, bodyString);
+        Request request = new Request.Builder()
+                .url(Constants.FCM_MESSAGE_URL)
+                .post(body)
+                .addHeader("Authorization", "key="+ Constants.NOTIFICATION_KEY)
+                .build();
+        Response response = mClient.newCall(request).execute();
+        return response.body().string();
     }
 }

@@ -37,8 +37,6 @@ import br.com.bemypet.bemypet.model.Usuario;
 
 public class BeMyPetMessagingService extends FirebaseMessagingService {
 
-    List<Usuario> usuarioList = new ArrayList<>();
-    List<Pet> pets = new ArrayList<>();
     HashMap<String, Object> adotanteDoador = new HashMap<>();
     String idPet;
     String cpfAdotante,cpfDoador;
@@ -51,6 +49,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         cpfDoador = data.get("cpfDoador");
         idPet = data.get("idPet");
 
+
         HashMap<String, String> cpfs = new HashMap<>();
         cpfs.put("adotante",cpfAdotante);
         cpfs.put("doador",cpfDoador);
@@ -59,6 +58,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         Bundle bundle = new Bundle();
         bundle.putString("cpfAdotante", cpfAdotante);
+        bundle.putString("idPet", idPet);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)

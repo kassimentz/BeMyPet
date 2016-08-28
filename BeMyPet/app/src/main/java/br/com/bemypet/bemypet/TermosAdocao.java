@@ -94,7 +94,6 @@ public class TermosAdocao extends AppCompatActivity {
 
                 if(((RadioButton)findViewById(rgTermosAdocao.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Aceito")){
                     String to = pet.getDoador().getTokenFCM(); // the notification key
-                    Log.i("TO", to);
                     String title = "Be My Pet";
                     String body = pet.getNome()+ " diz: Alguém quer me adotar";
 

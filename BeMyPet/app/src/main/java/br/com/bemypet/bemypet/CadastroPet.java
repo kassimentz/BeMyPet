@@ -1,7 +1,6 @@
 package br.com.bemypet.bemypet;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
@@ -43,6 +42,8 @@ import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+
 
 public class CadastroPet extends AppCompatActivity {
 
@@ -188,7 +189,7 @@ public class CadastroPet extends AppCompatActivity {
         pet.setTemperamento(txtTemperamento.getText().toString());
         pet.setId(String.valueOf(System.currentTimeMillis()));
 
-
+        pet.setStatusAdocao(br.com.bemypet.bemypet.controller.Constants.DISPONIVEL);
         pet.setDono(doador);
 
         pet.setDoador(doador);

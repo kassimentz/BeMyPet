@@ -228,8 +228,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_meu_perfil:
-                        Toast.makeText(getApplicationContext(),"Meu Perfil",Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
+                        visualizarPerfil();
                         break;
 
                     case R.id.menu_politica_adocao:
@@ -264,6 +263,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, VisualizarPoliticaAdocao.class);
         startActivity(intent);
         drawerLayout.closeDrawers();
+    }
+
+    private void visualizarPerfil(){
+        Bundle bundle = new Bundle();
+        if(!usuarioList.isEmpty()){
+            bundle.putSerializable("usuario", usuarioList.get(0));
+        }
+        Intent intent = new Intent(getApplicationContext(), VisualizarPerfilUsuarioLogado.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        drawerLayout.closeDrawers();
+
     }
 
     private void listaPetsUsuario() {
