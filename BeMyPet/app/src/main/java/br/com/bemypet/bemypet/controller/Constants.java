@@ -14,7 +14,6 @@ public class Constants {
 
     public static String DADO_NAO_INFORMADO = "Não Informado";
 
-
     public static String WIFI_ENABLED = "Wifi Ativada";
     public static String MOBILE_DATA_ENABLED = "3G Ativada";
     public static String NO_INTERNET_CONNECTION = "Sem conexão à internet";
@@ -22,10 +21,15 @@ public class Constants {
     public static String NOTIFICATION_KEY = "AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ";
     public static final String FCM_MESSAGE_URL = "https://fcm.googleapis.com/fcm/send";
 
-//    status adocao
+    //status adocao
     public static String DISPONIVEL = "Disponível";
     public static String EM_ANDAMENTO = "Em Andamento";
-    public static String ADOTADO = "Adotato";
+    public static String ADOTADO = "Adotado";
+
+    //tipos de notificacao
+    public static String QUERO_ADOTAR = "queroAdotar";
+    public static String ADOCAO_REPROVADA = "adocaoReprovada";
+    public static String ADOCAO_APROVADA = "adocaoAprovada";
 
 
 }

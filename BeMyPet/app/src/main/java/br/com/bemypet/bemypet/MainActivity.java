@@ -1,5 +1,7 @@
 package br.com.bemypet.bemypet;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Parcelable;
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     Usuario user;
 
+    String message, tipoNotificacao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +84,32 @@ public class MainActivity extends AppCompatActivity {
             getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
         }
 
+        getBundle();
         getPets();
 
+
+    }
+
+    private void getBundle() {
+
+        if (getIntent().getExtras().getString("tipoNotificacao") != null) {
+            tipoNotificacao = getIntent().getExtras().getString("tipoNotificacao");
+        }
+
+        if (getIntent().getExtras().getString("message") != null) {
+            message = getIntent().getExtras().getString("message");
+        }
+
+        if(!StringUtils.isNullOrEmpty(tipoNotificacao) && (!StringUtils.isNullOrEmpty(message))){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage(message).setTitle("Adoção Reprovada");
+            AlertDialog dialog = builder.create();
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+        }
 
     }
 

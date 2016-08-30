@@ -93,6 +93,7 @@ public class TermosAdocao extends AppCompatActivity {
                 // envia notificacao firebase xmpp
 
                 if(((RadioButton)findViewById(rgTermosAdocao.getCheckedRadioButtonId() )).getText().toString().equalsIgnoreCase("Aceito")){
+
                     String to = pet.getDoador().getTokenFCM(); // the notification key
                     String title = "Be My Pet";
                     String body = pet.getNome()+ " diz: Alguém quer me adotar";
@@ -100,8 +101,8 @@ public class TermosAdocao extends AppCompatActivity {
                     int icon = R.drawable.ic_pets_black_24px;
                     String message = "O usuario " + adotante.getNome() + " quer adotar o pet "+ pet.getNome();
                     jsonArray.put(to);
-                    //to, title, body, icon, message
-                    sendMessage(jsonArray,title,body,icon,message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId());
+                    //to, title, body, icon, message, adotante, doador, pet, tipoNotificacao
+                    sendMessage(jsonArray,title,body,icon,message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId(), Constants.QUERO_ADOTAR);
 
                 }else{
                     Toast.makeText(TermosAdocao.this, "Você só poderá prosseguir após aceitar os termos de adoção! ", Toast.LENGTH_LONG).show();
@@ -114,7 +115,7 @@ public class TermosAdocao extends AppCompatActivity {
 
     public void sendMessage(final JSONArray recipients, final String title, final String body,
                             final int icon, final String message, final String cpfAdotante,
-                            final String cpfDoador, final String idPet) {
+                            final String cpfDoador, final String idPet, final String tipoNotificacao) {
 
         new AsyncTask<String, String, String>() {
             @Override
@@ -131,6 +132,7 @@ public class TermosAdocao extends AppCompatActivity {
                     data.put("cpfAdotante", cpfAdotante);
                     data.put("cpfDoador", cpfDoador);
                     data.put("idPet", idPet);
+                    data.put("tipoNotificacao", tipoNotificacao);
                     root.put("notification", notification);
                     root.put("data", data);
                     root.put("registration_ids", recipients);

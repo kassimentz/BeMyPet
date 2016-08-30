@@ -27,6 +27,7 @@ import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
 import br.com.bemypet.bemypet.VisualizarPet;
 import br.com.bemypet.bemypet.VisualizarUsuario;
+import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.model.Notificacao;
 import br.com.bemypet.bemypet.model.Pet;
 import br.com.bemypet.bemypet.model.Usuario;
@@ -38,8 +39,7 @@ import br.com.bemypet.bemypet.model.Usuario;
 public class BeMyPetMessagingService extends FirebaseMessagingService {
 
     HashMap<String, Object> adotanteDoador = new HashMap<>();
-    String idPet;
-    String cpfAdotante,cpfDoador;
+    String cpfAdotante,cpfDoador, tipoNotificacao, idPet, message;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -48,7 +48,12 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         cpfAdotante = data.get("cpfAdotante");
         cpfDoador = data.get("cpfDoador");
         idPet = data.get("idPet");
+        tipoNotificacao = data.get("tipoNotificacao");
+        message = data.get("message");
 
+        //if tipoNotificacao == queroAdotar, montar notificacao de quero adotar --> VisualizarUsuario
+        //if tipoNotificacao == adocaoReprovada, montar notificacao de adocao negada --> Mostra Alerta Informando Reprovacao e Direciona para Main
+        //if tipoNotificacao == adocaoAprovada, montar notificacao de adocao aprovada --> Visualizar Rota Para Buscar o Pet
 
         HashMap<String, String> cpfs = new HashMap<>();
         cpfs.put("adotante",cpfAdotante);
@@ -58,7 +63,13 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         Bundle bundle = new Bundle();
         bundle.putString("cpfAdotante", cpfAdotante);
+        bundle.putString("cpfDoador", cpfDoador);
         bundle.putString("idPet", idPet);
+        bundle.putString("message", message);
+
+        if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_REPROVADA)){
+            bundle.putString("tipoNotificacao", tipoNotificacao);
+        }
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -66,8 +77,18 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
                         .setContentTitle("Notificação Be My Pet")
                         .setContentText(remoteMessage.getNotification().getBody());
 
+        Intent resultIntent = null;
 
-        Intent resultIntent = new Intent(this, VisualizarUsuario.class);
+        if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
+            //TODO chamar a activity de mapa mostrando a rota. substituir depois
+            //resultIntent = new Intent(this, MainActivity.class);
+        }else if (tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_REPROVADA)){
+            //TODO testar se na mainActivity existir o bundle tipoNotificacao, mostrar um alerta informando a message
+            resultIntent = new Intent(this, MainActivity.class);
+        }else if(tipoNotificacao.equalsIgnoreCase(Constants.QUERO_ADOTAR)){
+            resultIntent = new Intent(this, VisualizarUsuario.class);
+        }
+
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(MainActivity.class);
 

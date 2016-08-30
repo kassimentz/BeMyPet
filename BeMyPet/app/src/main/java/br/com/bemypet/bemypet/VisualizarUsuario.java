@@ -224,20 +224,16 @@ public class VisualizarUsuario extends AppCompatActivity {
         pet.setAdotante(adotante);
         pet.setStatusAdocao(Constants.ADOTADO);
         updatePet(pet);
+
     }
 
     public void reprovarAdocao(View v){
-        //Toast.makeText(getApplicationContext(),"reprovar adocao",Toast.LENGTH_SHORT).show();
 
-        String to = adotante.getTokenFCM(); // the notification key
-        String title = "Be My Pet";
-        String body = pet.getNome()+ " diz: Status Adoção Negada";
-
-        int icon = R.drawable.ic_pets_black_24px;
+        String body = pet.getNome()+ " diz: Status Adoção Reprovada";
         String message = "O usuario " + pet.getDono().getNome() + " não autorizou a adoção do pet "+ pet.getNome();
-        jsonArray.put(to);
-        //to, title, body, icon, message
-        sendMessage(jsonArray,title,body,icon,message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId());
+        //to, title, body, icon, message, adotante, doador, pet, tipoNotificacao
+        sendNotification(adotante.getTokenFCM(), body, message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId(), Constants.ADOCAO_REPROVADA);
+
     }
 
     private void updatePet(Pet pPet) {
@@ -247,11 +243,24 @@ public class VisualizarUsuario extends AppCompatActivity {
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/pet/" + key, userValues);
         CadastroUsuario.dbRef.updateChildren(childUpdates);
+
+        String body = pet.getNome()+ " diz: Status Adoção Aprovada";
+        String message = "O usuario " + pet.getDono().getNome() + " autorizou a adoção do pet "+ pet.getNome();
+        sendNotification(adotante.getTokenFCM(), body, message, adotante.getCpf(), pet.getDoador().getCpf(), pet.getId(), Constants.ADOCAO_APROVADA);
+    }
+
+    private void sendNotification(String to, String body, String message, String adotante, String doador, String pet, String tipoNotificacao) {
+        String title = "Be My Pet";
+        int icon = R.drawable.ic_pets_black_24px;
+
+        jsonArray.put(to);
+        //to, title, body, icon, message, adotante, doador, pet, tipoNotificacao
+        sendMessage(jsonArray,title,body,icon,message, adotante, doador, pet, tipoNotificacao);
     }
 
     public void sendMessage(final JSONArray recipients, final String title, final String body,
                             final int icon, final String message, final String cpfAdotante,
-                            final String cpfDoador, final String idPet) {
+                            final String cpfDoador, final String idPet, final String tipoNotificacao) {
 
         new AsyncTask<String, String, String>() {
             @Override
@@ -268,6 +277,7 @@ public class VisualizarUsuario extends AppCompatActivity {
                     data.put("cpfAdotante", cpfAdotante);
                     data.put("cpfDoador", cpfDoador);
                     data.put("idPet", idPet);
+                    data.put("tipoNotificacao", tipoNotificacao);
                     root.put("notification", notification);
                     root.put("data", data);
                     root.put("registration_ids", recipients);
