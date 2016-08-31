@@ -21,7 +21,9 @@ import com.google.maps.android.PolyUtil;
 import com.google.maps.android.clustering.ClusterManager;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
@@ -60,7 +62,20 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
 
 
         if(getIntent() != null && getIntent().getExtras() != null){
-            Log.i("getExtras() ", getIntent().getExtras().toString() );
+
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null) {
+                Set<String> keys = bundle.keySet();
+                Iterator<String> it = keys.iterator();
+                Log.e("getExtras","Dumping Intent start");
+                while (it.hasNext()) {
+                    String key = it.next();
+                    Log.e("getExtras","[" + key + "=" + bundle.get(key)+"]");
+                }
+                Log.e("getExtras","Dumping Intent end");
+            }
+
+
             if (getIntent().getExtras().getString("origem") != null) {
                 origem = getIntent().getExtras().getString("origem");
             }
