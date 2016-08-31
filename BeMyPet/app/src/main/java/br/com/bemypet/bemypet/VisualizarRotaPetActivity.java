@@ -57,7 +57,10 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
 
     private void getBundle() {
 
+
+
         if(getIntent() != null && getIntent().getExtras() != null){
+            Log.i("getExtras() ", getIntent().getExtras().toString() );
             if (getIntent().getExtras().getString("origem") != null) {
                 origem = getIntent().getExtras().getString("origem");
             }
