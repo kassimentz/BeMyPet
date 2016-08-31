@@ -120,6 +120,7 @@
     <string name="title_activity_lista_pets_usuario">ListaPetsUsuario</string>
 
     <string name="endereco">Endereço</string>
+    <string name="title_activity_visualizar_rota_pet">Map</string>
 
 
 </resources>

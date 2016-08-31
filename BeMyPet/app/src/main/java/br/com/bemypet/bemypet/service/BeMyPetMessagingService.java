@@ -1,9 +1,12 @@
     package br.com.bemypet.bemypet.service;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -26,6 +29,7 @@ import br.com.bemypet.bemypet.CadastroUsuario;
 import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
 import br.com.bemypet.bemypet.VisualizarPet;
+import br.com.bemypet.bemypet.VisualizarRotaPetActivity;
 import br.com.bemypet.bemypet.VisualizarUsuario;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.model.Notificacao;
@@ -40,6 +44,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
     HashMap<String, Object> adotanteDoador = new HashMap<>();
     String cpfAdotante,cpfDoador, tipoNotificacao, idPet, message;
+    Bundle bundle;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -61,7 +66,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         getUser(cpfs);
 
-        Bundle bundle = new Bundle();
+        bundle = new Bundle();
         bundle.putString("cpfAdotante", cpfAdotante);
         bundle.putString("cpfDoador", cpfDoador);
         bundle.putString("idPet", idPet);
@@ -71,19 +76,23 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
             bundle.putString("tipoNotificacao", tipoNotificacao);
         }
 
+
+        //Define sound URI
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_pets_black_24px)
                         .setContentTitle("Notificação Be My Pet")
+                        .setSound(soundUri)
+                        .setAutoCancel(true)
                         .setContentText(remoteMessage.getNotification().getBody());
 
         Intent resultIntent = null;
 
         if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
-            //TODO chamar a activity de mapa mostrando a rota. substituir depois
-            //resultIntent = new Intent(this, MainActivity.class);
+            resultIntent = new Intent(this, VisualizarRotaPetActivity.class);
         }else if (tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_REPROVADA)){
-            //TODO testar se na mainActivity existir o bundle tipoNotificacao, mostrar um alerta informando a message
             resultIntent = new Intent(this, MainActivity.class);
         }else if(tipoNotificacao.equalsIgnoreCase(Constants.QUERO_ADOTAR)){
             resultIntent = new Intent(this, VisualizarUsuario.class);
@@ -111,6 +120,13 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         Usuario doador = (Usuario) adotanteDoador.get("doador");
         doador.addNotificacao(n);
         updateUser(doador);
+
+
+        if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
+            bundle.putString("origem", ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
+            bundle.putString("destino", ((Usuario) adotanteDoador.get("doador")).getEndereco().toString());
+        }
+
         return n;
     }
 

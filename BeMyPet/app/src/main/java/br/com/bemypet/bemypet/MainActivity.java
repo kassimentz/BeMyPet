@@ -109,11 +109,6 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage(message).setTitle("Adoção Reprovada");
             AlertDialog dialog = builder.create();
 
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
             dialog.show();
         }
 

@@ -31,5 +31,8 @@ public class Constants {
     public static String ADOCAO_REPROVADA = "adocaoReprovada";
     public static String ADOCAO_APROVADA = "adocaoAprovada";
 
+    //key mapa
+    public static String KEY_MAP = "AIzaSyCt81ZMdeKaP6glBy2SDT6EuHxGxo3R2fQ";
+
 
 }
