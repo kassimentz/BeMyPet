@@ -92,23 +92,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void getBundle() {
 
-        if (getIntent().getExtras().getString("tipoNotificacao") != null) {
-            tipoNotificacao = getIntent().getExtras().getString("tipoNotificacao");
+        if(getIntent() != null && getIntent().getExtras() != null){
+            if (getIntent().getExtras().getString("tipoNotificacao") != null) {
+                tipoNotificacao = getIntent().getExtras().getString("tipoNotificacao");
+            }
+
+            if (getIntent().getExtras().getString("message") != null) {
+                message = getIntent().getExtras().getString("message");
+            }
         }
 
-        if (getIntent().getExtras().getString("message") != null) {
-            message = getIntent().getExtras().getString("message");
-        }
+
 
         if(!StringUtils.isNullOrEmpty(tipoNotificacao) && (!StringUtils.isNullOrEmpty(message))){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setMessage(message).setTitle("Adoção Reprovada");
             AlertDialog dialog = builder.create();
+
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.dismiss();
                 }
             });
+            dialog.show();
         }
 
     }

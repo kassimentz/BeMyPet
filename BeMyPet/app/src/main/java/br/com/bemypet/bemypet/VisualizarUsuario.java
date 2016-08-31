@@ -298,7 +298,7 @@ public class VisualizarUsuario extends AppCompatActivity {
                     int success, failure;
                     success = resultJson.getInt("success");
                     failure = resultJson.getInt("failure");
-                    Toast.makeText(getApplicationContext(), "Solicitação enviada com sucesso. Aguarde a análise do dono do pet.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Notificação enviada.", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                     finish();
