@@ -10,13 +10,23 @@ import java.util.Map;
 
 public class Notificacao implements Serializable{
 
+    private Long id;
     private String cpfAdotante;
     private String cpfDoador;
     private String idPet;
     private Long data;
+    private String image;
 
     public Notificacao(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCpfAdotante() {
@@ -51,13 +61,23 @@ public class Notificacao implements Serializable{
         this.data = data;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Map<String,Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
+        result.put("id", id);
         result.put("adotante", cpfAdotante);
         result.put("doador", cpfDoador);
         result.put("pet", idPet);
         result.put("data", data);
+        result.put("image", image);
         return result;
     }
 

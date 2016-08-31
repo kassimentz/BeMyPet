@@ -183,7 +183,8 @@
 
         <activity
             android:name=".VisualizarRotaPetActivity"
-            android:label="@string/title_activity_visualizar_rota_pet"></activity>
+            android:label="@string/title_activity_visualizar_rota_pet" />
+        <activity android:name=".ListaNotificacoes"></activity>
     </application>
 
 </manifest>

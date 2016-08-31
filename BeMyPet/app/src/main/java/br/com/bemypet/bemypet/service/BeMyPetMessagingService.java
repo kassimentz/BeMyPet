@@ -110,11 +110,19 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
     }
 
     private Notificacao criarNotificacao(Pet pet) {
+
+        if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
+            bundle.putString("origem", ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
+            bundle.putString("destino", ((Usuario) adotanteDoador.get("doador")).getEndereco().toString());
+        }
+
         Notificacao n = new Notificacao();
+        n.setId(System.currentTimeMillis());
         n.setCpfAdotante(((Usuario) adotanteDoador.get("adotante")).getCpf());
         n.setCpfDoador(((Usuario) adotanteDoador.get("doador")).getCpf());
         n.setIdPet(pet.getId());
         n.setData(System.currentTimeMillis());
+        n.setImage(pet.getImagens().get(0));
         Log.i("notificacao", n.toString());
 
         Usuario doador = (Usuario) adotanteDoador.get("doador");
@@ -122,10 +130,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         updateUser(doador);
 
 
-        if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
-            bundle.putString("origem", ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
-            bundle.putString("destino", ((Usuario) adotanteDoador.get("doador")).getEndereco().toString());
-        }
+
 
         return n;
     }
