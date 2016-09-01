@@ -5,4 +5,5 @@ package br.com.bemypet.bemypet.model.maps;
  */
 public class Routes {
     public OverviewPolyline overview_polyline;
+    public Bounds bounds;
 }

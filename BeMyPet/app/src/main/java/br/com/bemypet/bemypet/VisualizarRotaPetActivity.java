@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ import java.util.Set;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.model.Usuario;
+import br.com.bemypet.bemypet.model.maps.Bounds;
 import br.com.bemypet.bemypet.model.maps.Retorno;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,8 +50,8 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         setContentView(R.layout.activity_visualizar_rota_pet);
 
 
-        origem = "DIOMARIO MOOJEN,150/101 - CRISTAL. POA, RS / BR";
-        destino = "GABRIEL FRANCO DA LUZ,560/206 - SARANDI. POA, RS / BR";
+        setOrigem("DIOMARIO MOOJEN,150/101 - CRISTAL. POA, RS / BR");
+        setDestino("GABRIEL FRANCO DA LUZ,560/206 - SARANDI. POA, RS / BR");
         //getBundle();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -63,73 +65,47 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
 
     private void getBundle() {
 
-
-
         if(getIntent() != null && getIntent().getExtras() != null){
 
             Bundle bundle = getIntent().getExtras();
-            if (bundle != null) {
-                Set<String> keys = bundle.keySet();
-                Iterator<String> it = keys.iterator();
-                Log.e("getExtras","Dumping Intent start");
-                while (it.hasNext()) {
-                    String key = it.next();
-                    Log.e("getExtras","[" + key + "=" + bundle.get(key)+"]");
-                }
-                Log.e("getExtras","Dumping Intent end");
-            }
-
 
             if (getIntent().getExtras().getString("origem") != null) {
-                origem = getIntent().getExtras().getString("origem");
+                setOrigem(getIntent().getExtras().getString("origem"));
             }
 
             if (getIntent().getExtras().getString("destino") != null) {
-                destino = getIntent().getExtras().getString("destino");
+                setDestino(getIntent().getExtras().getString("destino"));
             }
         }
-        Log.i("origem", "origem: "+ origem);
-        Log.i("destino", "destino: "+ destino);
-        if(!(StringUtils.isNullOrEmpty(origem) && StringUtils.isNullOrEmpty(destino))) {
-            showRota(origem, destino);
-        }
+
     }
 
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mClusterManager = new ClusterManager<>(this, mMap);
         mMap.setOnCameraChangeListener(mClusterManager);
-        showRota(origem, destino);
+        showRota(getOrigem(), getDestino());
     }
 
-    public void showRota(String origem, String destino){
+    public void showRota(String localOrigem, String localDestino){
 
-        Log.i("origem", origem);
-        Log.i("destino", destino);
-        String key = "AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ";
-        Call<Retorno> call = ((BeMyPetApplication) getApplication()).service.searchPositions(origem, destino, key);
+        String key = Constants.KEY_MAP_SERVER;
+        Call<Retorno> call = ((BeMyPetApplication) getApplication()).service.searchPositions(localOrigem, localDestino, key);
 
         call.enqueue(new Callback<Retorno>() {
             @Override
             public void onResponse(Call<Retorno> call, Response<Retorno> response) {
                 String points = response.body().routes.get(0).overview_polyline.points;
+                Bounds bounds = response.body().routes.get(0).bounds;
                 PolylineOptions polylineOptions = new PolylineOptions();
                 polylineOptions.addAll(PolyUtil.decode(points));
                 polylineOptions.color(Color.BLUE);
                 mMap.addPolyline(polylineOptions);
+                mMap.setLatLngBoundsForCameraTarget(new LatLngBounds(new LatLng(bounds.southwest.lat, bounds.southwest.lng),
+                        new LatLng(bounds.northeast.lat, bounds.northeast.lng)));
+
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(10.0f));
 
             }
 
@@ -140,5 +116,21 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
 
 
         mMap.setOnCameraChangeListener(mClusterManager);
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 }
