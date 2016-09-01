@@ -112,6 +112,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
     private Notificacao criarNotificacao(Pet pet) {
 
         if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
+            Log.i("bundle put", ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
             bundle.putString("origem", ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
             bundle.putString("destino", ((Usuario) adotanteDoador.get("doador")).getEndereco().toString());
         }
