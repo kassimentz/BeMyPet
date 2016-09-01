@@ -244,7 +244,9 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (id){
                     case R.id.menu_adocoes_aprovar:
-                        Toast.makeText(getApplicationContext(),"Lista de adocoes para aprovar / notificacoes ",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"Lista de adocoes para aprovar / notificacoes ",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
+                        startActivity(i);
                         drawerLayout.closeDrawers();
                         break;
 

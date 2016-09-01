@@ -91,4 +91,16 @@ public class Notificacao implements Serializable{
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Notificacao{" +
+                "id=" + id +
+                ", cpfAdotante='" + cpfAdotante + '\'' +
+                ", cpfDoador='" + cpfDoador + '\'' +
+                ", idPet='" + idPet + '\'' +
+                ", data=" + data +
+                ", image='" + image + '\'' +
+                ", statusNotificacao='" + statusNotificacao + '\'' +
+                '}';
+    }
 }

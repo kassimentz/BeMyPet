@@ -38,23 +38,27 @@ public class ListaNotificacoes extends AppCompatActivity {
 
         data = getNotificacoes();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
 
     private List<Notificacao> getNotificacoes() {
 
-        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(usuarioCpf).getRef();
-        Query query = myRef.orderByChild("notificacoes");
+        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(usuarioCpf).child("notificacoes").getRef();
+        Query query = myRef.orderByChild("id");
 
         query.addValueEventListener(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
-                    data.add(snap.getValue(Notificacao.class));
+                    Notificacao notificacao = snap.getValue(Notificacao.class);
+                    Log.i("getNotificacao", notificacao.toString());
+                    data.add(notificacao);
                 }
+
+//                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+//                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
+//                recyclerView.setAdapter(adapter);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
             public void onCancelled(DatabaseError databaseError) { }
         });
