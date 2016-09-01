@@ -1,6 +1,5 @@
     package br.com.bemypet.bemypet.service;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -22,16 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import br.com.bemypet.bemypet.CadastroUsuario;
 import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
-import br.com.bemypet.bemypet.VisualizarPet;
 import br.com.bemypet.bemypet.VisualizarRotaPetActivity;
 import br.com.bemypet.bemypet.VisualizarUsuario;
 import br.com.bemypet.bemypet.controller.Constants;
@@ -47,7 +42,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
     HashMap<String, Object> adotanteDoador = new HashMap<>();
     String cpfAdotante,cpfDoador, tipoNotificacao, idPet, message, origem, destino;
-    Bundle bundle;
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -58,6 +53,8 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         idPet = data.get("idPet");
         tipoNotificacao = data.get("tipoNotificacao");
         message = data.get("message");
+        origem = data.get("origem");
+        destino = data.get("destino");
 
         //if tipoNotificacao == queroAdotar, montar notificacao de quero adotar --> VisualizarUsuario
         //if tipoNotificacao == adocaoReprovada, montar notificacao de adocao negada --> Mostra Alerta Informando Reprovacao e Direciona para Main
@@ -69,7 +66,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         getUser(cpfs);
 
-        bundle = new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString("cpfAdotante", cpfAdotante);
         bundle.putString("cpfDoador", cpfDoador);
         bundle.putString("idPet", idPet);
@@ -90,8 +87,6 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         if(tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_APROVADA)){
             resultIntent = new Intent(this, VisualizarRotaPetActivity.class);
-            Log.i("bundle origem", origem);
-            Log.i("bundle destino", destino);
             bundle.putString("origem", origem);
             bundle.putString("destino", destino);
         }else if (tipoNotificacao.equalsIgnoreCase(Constants.ADOCAO_REPROVADA)){
@@ -113,8 +108,6 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
     }
 
     private Notificacao criarNotificacao(Pet pet) {
-        origem = ((Usuario) adotanteDoador.get("adotante")).getEndereco().toString();
-        destino = ((Usuario) adotanteDoador.get("doador")).getEndereco().toString();
 
         Notificacao n = new Notificacao();
         n.setId(System.currentTimeMillis());
@@ -123,7 +116,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         n.setIdPet(pet.getId());
         n.setData(System.currentTimeMillis());
         n.setImage(pet.getImagens().get(0));
-        Log.i("notificacao", n.toString());
+        n.setStatusNotificacao(tipoNotificacao);
 
         Usuario doador = (Usuario) adotanteDoador.get("doador");
         doador.addNotificacao(n);
@@ -137,20 +130,13 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
     private void updateUser(final Usuario doador) {
 
-        /*String key = CadastroUsuario.dbRef.child("usuario").child(doador.getCpf()).getKey();
-        Map<String, Object> userValues = doador.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/usuario/" + key, userValues);
-        CadastroUsuario.dbRef.updateChildren(childUpdates);*/
-
-
         DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
         connectedRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 boolean connected = snapshot.getValue(Boolean.class);
                 if (connected) {
-                    CadastroUsuario.dbRef.child("usuario").child(doador.getCpf()).child("notificacoes").setValue(doador);
+                    CadastroUsuario.dbRef.child("usuario").child(doador.getCpf()).child("notificacoes").setValue(doador.getNotificacoes());
                 } else {
                     Toast.makeText(getApplicationContext(), "Erro ao salvar", Toast.LENGTH_LONG);
                 }

@@ -16,6 +16,7 @@ public class Notificacao implements Serializable{
     private String idPet;
     private Long data;
     private String image;
+    private String statusNotificacao;
 
     public Notificacao(){
 
@@ -69,6 +70,14 @@ public class Notificacao implements Serializable{
         this.image = image;
     }
 
+    public String getStatusNotificacao() {
+        return statusNotificacao;
+    }
+
+    public void setStatusNotificacao(String statusNotificacao) {
+        this.statusNotificacao = statusNotificacao;
+    }
+
     public Map<String,Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
@@ -78,6 +87,7 @@ public class Notificacao implements Serializable{
         result.put("pet", idPet);
         result.put("data", data);
         result.put("image", image);
+        result.put("statusNotificacao", statusNotificacao);
         return result;
     }
 

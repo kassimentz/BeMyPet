@@ -133,6 +133,8 @@ public class TermosAdocao extends AppCompatActivity {
                     data.put("cpfDoador", cpfDoador);
                     data.put("idPet", idPet);
                     data.put("tipoNotificacao", tipoNotificacao);
+                    data.put("origem", "");
+                    data.put("destino", "");
                     root.put("notification", notification);
                     root.put("data", data);
                     root.put("registration_ids", recipients);
