@@ -32,7 +32,11 @@ public class Constants {
     public static String ADOCAO_APROVADA = "adocaoAprovada";
 
     //key mapa
-    public static String KEY_MAP = "AIzaSyCt81ZMdeKaP6glBy2SDT6EuHxGxo3R2fQ";
+    //<!--pc casa-->
+    //<!--AIzaSyCt81ZMdeKaP6glBy2SDT6EuHxGxo3R2fQ-->
+    //<!--pc oe-->
+
+    public static String KEY_MAP = "AIzaSyA2gqKWjXbF93R-KikbpFC6rUq23HDk1Pw";
 
 
 }

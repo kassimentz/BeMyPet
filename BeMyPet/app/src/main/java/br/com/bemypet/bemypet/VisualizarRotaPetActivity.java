@@ -46,7 +46,11 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_rota_pet);
-        getBundle();
+
+
+        origem = "DIOMARIO MOOJEN,150/101 - CRISTAL. POA, RS / BR";
+        destino = "GABRIEL FRANCO DA LUZ,560/206 - SARANDI. POA, RS / BR";
+        //getBundle();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -106,13 +110,16 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mClusterManager = new ClusterManager<>(this, mMap);
+        mMap.setOnCameraChangeListener(mClusterManager);
+        showRota(origem, destino);
     }
 
     public void showRota(String origem, String destino){
 
         Log.i("origem", origem);
         Log.i("destino", destino);
-        String key = Constants.KEY_MAP;
+        String key = "AIzaSyDMcNsndv2KmK99T9z7C8jKqgFHUhu6xDQ";
         Call<Retorno> call = ((BeMyPetApplication) getApplication()).service.searchPositions(origem, destino, key);
 
         call.enqueue(new Callback<Retorno>() {
@@ -130,6 +137,7 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
             public void onFailure(Call<Retorno> call, Throwable t) {
             }
         });
+
 
         mMap.setOnCameraChangeListener(mClusterManager);
     }

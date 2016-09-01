@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     final HashMap<String, Pet> hamsters = new HashMap<>();
     List<Usuario> usuarioList = new ArrayList<>();
 
-    Usuario user;
+    Usuario user = new Usuario();
 
     String message, tipoNotificacao;
 
@@ -117,19 +118,35 @@ public class MainActivity extends AppCompatActivity {
     private void getUser(String cpf) {
 
         final String cpfUser = cpf;
-        CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
-            new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    usuarioList.add(dataSnapshot.getValue(Usuario.class));
-                    getAllPets(dataSnapshot.getValue(Usuario.class));
-                }
+        CadastroUsuario.dbRef.child("usuario").child(cpfUser).addChildEventListener(
+                new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
-                }
-            });
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        Log.i("dataSnapshot",dataSnapshot.getValue(Usuario.class) + " s: " + s );
+                        user = dataSnapshot.getValue(Usuario.class);
+                        getAllPets(dataSnapshot.getValue(Usuario.class));
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     /**
@@ -245,7 +262,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.menu_adocoes_aprovar:
                         //Toast.makeText(getApplicationContext(),"Lista de adocoes para aprovar / notificacoes ",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
+                        //Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
+                        Intent i = new Intent(getApplicationContext(), VisualizarRotaPetActivity.class);
+
                         startActivity(i);
                         drawerLayout.closeDrawers();
                         break;

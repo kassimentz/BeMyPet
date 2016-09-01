@@ -14,7 +14,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/BeMyPetTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -189,7 +188,10 @@
         <activity
             android:name=".VisualizarRotaPetActivity"
             android:label="@string/title_activity_visualizar_rota_pet" />
-        <activity android:name=".ListaNotificacoes"></activity>
+        <activity android:name=".ListaNotificacoes" />
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>

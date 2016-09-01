@@ -121,6 +121,7 @@
 
     <string name="endereco">Endereço</string>
     <string name="title_activity_visualizar_rota_pet">Map</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
