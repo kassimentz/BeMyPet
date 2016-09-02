@@ -60,13 +60,25 @@
       <file leaf-file-name="RecyclerViewAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="108" column="91" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="91" />
               <folding>
-                <element signature="e#2307#2515#0" expanded="true" />
-                <element signature="e#2514#2515#0" expanded="true" />
-                <element signature="e#4860#4861#0" expanded="true" />
-                <element signature="e#4933#4934#0" expanded="true" />
+                <element signature="e#2514#2722#0" expanded="true" />
+                <element signature="e#2721#2722#0" expanded="true" />
+                <element signature="e#6056#6057#0" expanded="true" />
+                <element signature="e#6129#6130#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VisualizarRotaPetActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarRotaPetActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1206">
+              <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,8 +87,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="50" />
+            <state relative-caret-position="292">
+              <caret line="115" column="4" selection-start-line="115" selection-start-column="4" selection-end-line="131" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VisualizarUsuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarUsuario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="109" column="17" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -90,6 +112,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="587">
               <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeMyPetMessagingService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="626">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -2496,7 +2528,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_cadastro_pet.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_visualizar_rota_pet.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarRotaPetActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Notificacao.java" />
@@ -2510,6 +2541,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/ViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java" />
       </list>
     </option>
@@ -2613,6 +2645,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bemypet" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeMyPet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bemypet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3190,13 +3244,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_visualizar_perfil_usuario_logado.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarPerfilUsuarioLogado.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3328,14 +3375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="247" column="70" selection-start-line="247" selection-start-column="70" selection-end-line="247" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Pet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="631">
@@ -3453,6 +3492,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3471,16 +3511,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/controller/MontarRota.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarRotaPetActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/TermosAdocao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -3497,10 +3527,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/ViewHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="119" column="23" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+        <state relative-caret-position="144">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="37" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -3516,31 +3546,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/ViewHolder.java">
+    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-24/android.jar!/android/app/Activity.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="37" selection-end-column="1" />
+        <state relative-caret-position="292">
+          <caret line="696" column="16" selection-start-line="696" selection-start-column="16" selection-end-line="696" selection-end-column="16" />
+          <folding>
+            <element signature="e#19794#19795#0" expanded="true" />
+            <element signature="e#19845#19846#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="109" column="17" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarRotaPetActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1206">
+          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="50" />
+        <state relative-caret-position="292">
+          <caret line="115" column="4" selection-start-line="115" selection-start-column="4" selection-end-line="131" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="462">
+          <caret line="108" column="91" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="91" />
           <folding>
-            <element signature="e#2307#2515#0" expanded="true" />
-            <element signature="e#2514#2515#0" expanded="true" />
-            <element signature="e#4860#4861#0" expanded="true" />
-            <element signature="e#4933#4934#0" expanded="true" />
+            <element signature="e#2514#2722#0" expanded="true" />
+            <element signature="e#2721#2722#0" expanded="true" />
+            <element signature="e#6056#6057#0" expanded="true" />
+            <element signature="e#6129#6130#0" expanded="true" />
           </folding>
         </state>
       </provider>

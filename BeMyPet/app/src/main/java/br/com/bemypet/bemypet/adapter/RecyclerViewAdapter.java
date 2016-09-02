@@ -1,6 +1,8 @@
 package br.com.bemypet.bemypet.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +23,10 @@ import java.util.Collections;
 import java.util.List;
 
 import br.com.bemypet.bemypet.CadastroUsuario;
+import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
+import br.com.bemypet.bemypet.VisualizarPoliticaAdocao;
+import br.com.bemypet.bemypet.VisualizarUsuario;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
@@ -44,6 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.context = context;
 
         cpfLogado = ManagerPreferences.getString(context, Constants.USUARIO_CPF);
+
 
     }
 
@@ -75,24 +81,50 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private void verificaNotificacao(Notificacao notificacao) {
+        Bundle bundle = new Bundle();
+        Intent resultIntent = null;
+        List<String> cpfs = new ArrayList<>();
+        Usuario adotante = new Usuario();
+        Usuario doador = new Usuario();
+
+        cpfs.add(notificacao.getCpfAdotante());
+        cpfs.add(notificacao.getCpfDoador());
+
+        getUsers(cpfs);
+
         if(notificacao.getStatusNotificacao().equalsIgnoreCase("queroAdotar")){
 
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
                 //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
             }else{
+
                 //clicar mostrar o perfil do Usuário adotante (mesmos passos para aprovar adoção)
-                //(verificar o que precisa receber de bundle)
+                //(verificar o que precisa receber de bundle) - cpfAdotante, idPet
+                bundle.putString("cpfAdotante", notificacao.getCpfAdotante());
+                bundle.putString("idPet", notificacao.getIdPet());
+                resultIntent = new Intent(context, VisualizarUsuario.class);
+                resultIntent.putExtras(bundle);
             }
         }else if(notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoAprovada")){
-            //fazer outro if para o tipo de usuario -- buscar usuario
+            //mostrando a rota para buscar o pet - verificar o que precisa passar de bundle
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
-                //mostrando a rota para buscar o pet - verificar o que precisa passar de bunle
+
+                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
+                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
+                if(adotante != null && doador != null){
+                    bundle.putString("origem", adotante.getEndereco().toString());
+                    bundle.putString("destino", doador.getEndereco().toString());
+                }
+
             }else{
                 //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
             }
         }else if (notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoReprovada")){
             //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
         }
+
+        context.startActivity(resultIntent);
+
     }
 
     @Override
@@ -162,4 +194,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onClick(View view, int position, boolean isLongClick);
     }
 
+    private void getUsers(List<String> cpfs) {
+
+        for (String cpf : cpfs) {
+            final String cpfUser = cpf;
+            CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            usuarioList.add(dataSnapshot.getValue(Usuario.class));
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
+        }
+
+    }
 }
