@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BeMyPet</string>
 
+    <string name="quero_cadastrar">Quero Me Cadastrar</string>
+
     <!--Cadastro Pet-->
     <string name="submenu_pet">Cadastro Pet</string>
     <string name="nome_pet">Nome do Pet</string>
@@ -19,5 +21,107 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="nao_sei">Não Sei</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="voltar">Voltar</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Fechar</string>
+    <string name="raca">Raça</string>
+    <string name="escolher_imagens">Escolher imagens</string>
+
+    <!--menu drawer-->
+    <string name="adocoes_aprovar">Adoções para Aprovar</string>
+    <string name="quero_doar">Quero Doar</string>
+    <string name="quero_adotar">Quero Adotar</string>
+    <string name="meus_pets">Meus Pets</string>
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="politica_adocao">Política de Adoção</string>
+
+    <!--Cadastro Usuário-->
+    <string name="submenu_usuario">Cadastro Usuário</string>
+    <string name="nome">Nome</string>
+    <string name="cpf">CPF</string>
+    <string name="logradouro">Logradouro</string>
+    <string name="nro_lougradouro">Nro</string>
+    <string name="complemento">Complemento</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="estado">Estado</string>
+    <string name="pais">País</string>
+    <string name="telefone">Telefone</string>
+    <string name="email">Email</string>
+    <string name="cep">CEP</string>
+
+
+    <!--Verificacao Adocao-->
+    <string name="texto_verificacao_adocao">Antes de prosseguirmos para a adoção, precisamos fazer algumas perguntas:</string>
+    <string name="jaTevePets">Tem ou já teve pets?</string>
+    <string name="telaNasJanelas">Possui Telas ou Redes nas Janelas?</string>
+    <string name="tenho">Tenho</string>
+    <string name="jaTive">Já Tive</string>
+    <string name="nunca">Nunca Tive</string>
+
+
+    <!--Termos de Adocao-->
+    <string name="quero_adotar_termos">Quero Adotar - Termos de Adoção</string>
+    <string name="adotar_termos">Política de Adoção</string>
+    <string name="termos_aviso">Este aplicativo não se responsabiliza pela veracidade das informações cadastradas pelos usuários. Não somos responsáveis pelo processo de adoção ou cuidados dos animais cadastrados neste aplicativo.</string>
+    <string name="criterios1">1. Só doamos pets para casas e apartamentos seguros, de onde o pet não possa sair ou fugir.</string>
+    <string name="criterios2">2. O adotante precisa ter condições de alimentar o pet, vaciná-lo anualmente e levá-lo ao veterinário sempre que necessário.</string>
+    <string name="criterios3">3. O adotante precisa estar comprometido com o pet e disposto a cuidar e se responsabilizar por ele até o final da sua vida.</string>
+    <string name="aceito_termos">Aceito</string>
+    <string name="nao_aceito_termos">Não Aceito</string>
+
+    <string name="facebook_app_id">598689693637456</string>
+
+
+    <!--spinner especie-->
+    <string name="escolha_especie">Escolha a Espécie</string>
+
+    <string-array name="especie_array">
+        <item>Cachorro</item>
+        <item>Gato</item>
+        <item>Hamster</item>
+        <item>Pássaro</item>
+    </string-array>
+
+    <!--error messages-->
+    <string name="required_email_message">Digite o email</string>
+    <string name="required_nome_message">Digite o nome</string>
+    <string name="required_cpf_message">Digite o CPF</string>
+    <string name="required_telefone_message">Digite o telefone</string>
+    <string name="required_cep_message">Digite o CEP</string>
+    <string name="required_logradouro_message">Digite o logradouro</string>
+    <string name="required_numero_message">Digite o numero</string>
+
+    <!--//nome,especie,raca,idade,peso,sexo,castrado,cadastro ativo-->
+
+    <string name="required_nome_pet_message">Digite o Nome</string>
+    <string name="required_especie_pet_message">Escolha a Espécie</string>
+    <string name="required_raca_pet_message">Digite a Raça</string>
+    <string name="required_idade_pet_message">Digite a Idade</string>
+    <string name="required_peso_pet_message">Digite o Peso</string>
+    <string name="required_sexo_pet_message">Informe o Sexo</string>
+    <string name="required_castrado_pet_message">Informe se é Castrado</string>
+    <string name="required_cadastro_pet_ativo_message">Informe se o cadastro está ativo</string>
+    <string name="required_imagens_pet">Selecione imagens</string>
+
+    <!--filtrar pet-->
+    <string name="filtrar_pet">Escolha os filtros para encontrar um Pet:</string>
+    <string name="raio_filtro">Raio em KM:</string>
+    <string name="cidade_filtro">Cidade:</string>
+    <string name="estado_filtro">Estado:</string>
+    <string name="pais_filtro">País:</string>
+    <string name="idade_aproximada_filtro">Idade Aproximada:</string>
+    <string name="sexo_filtro">Sexo:</string>
+    <string name="castrado_filtro">Castrado:</string>
+    <string name="especie_filtro">Espécie:</string>
+    <string name="raca_filtro">Raça:</string>
+    <string name="castrado_indiferente_filtro">Indiferente</string>
+    <string name="title_activity_lista_pets_usuario">ListaPetsUsuario</string>
+
+    <string name="endereco">Endereço</string>
+    <string name="title_activity_visualizar_rota_pet">Map</string>
+    <string name="title_activity_maps">Map</string>
+
 
 </resources>

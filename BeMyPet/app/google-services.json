@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "444560656502",
+    "firebase_url": "https://bemypet-61485.firebaseio.com",
+    "project_id": "bemypet-61485",
+    "storage_bucket": "bemypet-61485.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444560656502:android:f684f47d4fe157c1",
+        "android_client_info": {
+          "package_name": "br.com.bemypet.bemypet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444560656502-q1b64k27r0hblpbtl7vhrejc9aqb4bbi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.bemypet.bemypet",
+            "certificate_hash": "71BADDD629055E8077ED49ED32F3D5B3EE8FD430"
+          }
+        },
+        {
+          "client_id": "444560656502-c23np41489b7iecs1jcg8o8bje2abhfk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.bemypet.bemypet",
+            "certificate_hash": "1EF8928E5688FC7F5294D587CFEDC5E60904E8F2"
+          }
+        },
+        {
+          "client_id": "444560656502-1702671ho4b89ugf450k8dg7973bsc6k.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "444560656502-ielaj7c6p6cpr3n4ae5s8au0rlpako13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC3K76h3K_95rtxbnOrPTpF4gqP-OY_wM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444560656502-1702671ho4b89ugf450k8dg7973bsc6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

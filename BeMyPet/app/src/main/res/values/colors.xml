@@ -31,7 +31,20 @@
     <color name="anakiwaDarker">#2889d9</color>
     <color name="lilas">#aa66cc</color>
     <color name="purple">#ac13ff</color>
+    <color name="anakiwaWhite">#dcedfb</color>
+    <color name="black">#000000</color>
 
+    <!--image selector colors-->
+    <color name="multiple_image_select_primary">#2889d9</color>
+    <color name="multiple_image_select_primaryDark">#512DA8</color>
+    <color name="multiple_image_select_primaryLight">#D1C4E9</color>
+    <color name="multiple_image_select_accent">#536DFE</color>
+    <color name="multiple_image_select_primaryText">#aa66cc</color>
+    <color name="multiple_image_select_secondaryText">#727272</color>
+    <color name="multiple_image_select_divider">#B6B6B6</color>
+    <color name="multiple_image_select_toolbarPrimaryText">#FFFFFF</color>
+    <color name="multiple_image_select_albumTextBackground">#99FFFFFF</color>
+    <color name="multiple_image_select_imageSelectBackground">#000000</color>
 </resources>
 
 
