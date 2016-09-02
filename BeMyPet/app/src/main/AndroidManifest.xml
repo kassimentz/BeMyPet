@@ -194,14 +194,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ListaNotificacoes"
+        <activity
+            android:name=".ListaNotificacoes"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
+        <activity android:name=".VisualizarNotificacaoPadrao"></activity>
     </application>
 
 </manifest>
