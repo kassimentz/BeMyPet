@@ -23,32 +23,25 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp" />
-
 
             <TextView
-                android:id="@+id/titleAdotante"
+                android:id="@+id/titleTipoNotificacao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView"
-                android:text="Adotante"
-                android:layout_weight=".33"/>
+                android:text="Tipo de Notificação"
+                android:layout_weight="0.33"/>
+
+
+
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/titleData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView"
-                android:text="Title"
-                android:layout_weight=".33"/>
+                android:text="Data Notificação"
+                android:layout_weight="0.35"/>
 
 
         </LinearLayout>
@@ -60,26 +53,31 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-
-        <TextView
-            android:id="@+id/doador"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_toRightOf="@+id/imageView"
-            android:text="Doador"
-            android:layout_marginLeft="70dp"
-            android:layout_weight=".33"/>
+            <TextView
+                android:id="@+id/tipoNotificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="notificacao"
+                android:layout_weight="0.37"/>
 
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
-            android:layout_toRightOf="@+id/imageView"
-            android:text="Description"
-            android:layout_weight=".33"/>
+            android:text="data"
+            android:layout_weight=".5"/>
+
+
+
+
+
+
+
+
+
 
         </LinearLayout>
 

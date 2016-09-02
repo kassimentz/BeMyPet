@@ -117,7 +117,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         n.setData(System.currentTimeMillis());
         n.setImage(pet.getImagens().get(0));
         n.setStatusNotificacao(tipoNotificacao);
-        n.setLida("false");
+        n.setLida(false);
 
         Usuario doador = (Usuario) adotanteDoador.get("doador");
         doador.addNotificacao(n);
