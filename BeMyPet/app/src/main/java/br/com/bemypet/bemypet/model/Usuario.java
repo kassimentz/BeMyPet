@@ -186,11 +186,14 @@ public class Usuario implements Serializable{
         result.put("jaTevePet", jaTevePet);
         result.put("possuiTelaNasJanelas", possuiTelaNasJanelas);
         result.put("imagens", imagens);
-        result.put("notificacoes", notificacoesToMap());
+        if(!notificacoes.isEmpty()){
+            result.put("notificacoes", notificacoesToMap());
+        }
         return result;
     }
 
     private List<Map<String,Object>> notificacoesToMap(){
+
         List<Map<String,Object>> listaNotificacoes = new ArrayList<>();
         Map<String,Object> mapNotificacoes = new HashMap<>();
         for (Notificacao not : notificacoes) {

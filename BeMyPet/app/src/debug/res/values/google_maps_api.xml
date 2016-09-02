@@ -17,8 +17,8 @@
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         <!--pc casa-->
-        <!--AIzaSyCt81ZMdeKaP6glBy2SDT6EuHxGxo3R2fQ-->
+        AIzaSyCt81ZMdeKaP6glBy2SDT6EuHxGxo3R2fQ
         <!--pc oe-->
-        AIzaSyA2gqKWjXbF93R-KikbpFC6rUq23HDk1Pw
+        <!--AIzaSyA2gqKWjXbF93R-KikbpFC6rUq23HDk1Pw-->
     </string>
 </resources>

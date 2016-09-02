@@ -245,7 +245,7 @@ public class VisualizarUsuario extends AppCompatActivity {
         CadastroUsuario.dbRef.updateChildren(childUpdates);
 
         String body = pet.getNome()+ " diz: Status Adoção Aprovada";
-        String message = "O usuario " + pet.getDono().getNome() + " autorizou a adoção do pet "+ pet.getNome();
+        String message = "O usuario " + pet.getDono().getNome() + " autorizou a adoção do pet "+ pet.getNome()+". Verifique a rota para buscá-lo.";
         sendNotification(adotante.getTokenFCM(), body, message, adotante.getCpf(),
                 pet.getDoador().getCpf(), pet.getId(), Constants.ADOCAO_APROVADA,
                 pet.getAdotante().getEndereco().toString(), pet.getDoador().getEndereco().toString());

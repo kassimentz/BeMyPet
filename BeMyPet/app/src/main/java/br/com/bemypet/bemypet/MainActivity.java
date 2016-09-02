@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     Usuario user = new Usuario();
 
-    String message, tipoNotificacao;
+    String message, tipoNotificacao, cpf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initNavigationDrawer();
-
-        if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
-            getUser(ManagerPreferences.getString(this, Constants.USUARIO_CPF));
+        cpf = ManagerPreferences.getString(this, Constants.USUARIO_CPF);
+        if(!StringUtils.isNullOrEmpty(cpf)) {
+            getUser(cpf);
         }
 
         getBundle();
@@ -106,11 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(!StringUtils.isNullOrEmpty(tipoNotificacao) && (!StringUtils.isNullOrEmpty(message))){
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setMessage(message).setTitle("Adoção Reprovada");
-            AlertDialog dialog = builder.create();
 
-            dialog.show();
+            new AlertDialog.Builder(this).setTitle("Adoção Reprovada")
+                    .setMessage(message).setPositiveButton("OK", null).show();
         }
 
     }
@@ -118,33 +116,17 @@ public class MainActivity extends AppCompatActivity {
     private void getUser(String cpf) {
 
         final String cpfUser = cpf;
-        CadastroUsuario.dbRef.child("usuario").child(cpfUser).addChildEventListener(
-                new ChildEventListener() {
+        CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
+                new ValueEventListener() {
                     @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                        Log.i("dataSnapshot",dataSnapshot.getValue(Usuario.class) + " s: " + s );
-                        user = dataSnapshot.getValue(Usuario.class);
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        usuarioList.add(dataSnapshot.getValue(Usuario.class));
                         getAllPets(dataSnapshot.getValue(Usuario.class));
                     }
 
                     @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
                     public void onCancelled(DatabaseError databaseError) {
-
+                        Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
                     }
                 });
     }
@@ -164,8 +146,9 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
 
                     Pet pet = snap.getValue(Pet.class);
+                    Log.i("pet", pet.toString());
 
-                    if(pet.getAdotante() == null && (!pet.getDono().getCpf().equalsIgnoreCase(user.getCpf()))) {
+                    if(pet.getAdotante() == null && (!pet.getDono().getCpf().equalsIgnoreCase(cpf))) {
 
                         switch (pet.getEspecie()) {
                             case "Cachorro":
@@ -262,9 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.menu_adocoes_aprovar:
                         //Toast.makeText(getApplicationContext(),"Lista de adocoes para aprovar / notificacoes ",Toast.LENGTH_SHORT).show();
-                        //Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
-                        Intent i = new Intent(getApplicationContext(), VisualizarRotaPetActivity.class);
-
+                        Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
                         startActivity(i);
                         drawerLayout.closeDrawers();
                         break;

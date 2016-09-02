@@ -1,5 +1,7 @@
 package br.com.bemypet.bemypet;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -13,22 +15,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.google.maps.android.PolyUtil;
 import com.google.maps.android.clustering.ClusterManager;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
-import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
-import br.com.bemypet.bemypet.model.Usuario;
 import br.com.bemypet.bemypet.model.maps.Bounds;
 import br.com.bemypet.bemypet.model.maps.Retorno;
 import retrofit2.Call;
@@ -41,7 +32,7 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private ClusterManager mClusterManager;
-    private String origem, destino;
+    private String origem, destino, mensagem;
 
 
     @Override
@@ -50,16 +41,13 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         setContentView(R.layout.activity_visualizar_rota_pet);
 
 
-        setOrigem("DIOMARIO MOOJEN,150/101 - CRISTAL. POA, RS / BR");
-        setDestino("GABRIEL FRANCO DA LUZ,560/206 - SARANDI. POA, RS / BR");
-        //getBundle();
+        //setOrigem("DIOMARIO MOOJEN,150/101 - CRISTAL. POA, RS / BR");
+        //setDestino("GABRIEL FRANCO DA LUZ,560/206 - SARANDI. POA, RS / BR");
+        getBundle();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
 
     }
 
@@ -76,6 +64,10 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
             if (getIntent().getExtras().getString("destino") != null) {
                 setDestino(getIntent().getExtras().getString("destino"));
             }
+
+            if (getIntent().getExtras().getString("message") != null) {
+                setMensagem(getIntent().getExtras().getString("message"));
+            }
         }
 
     }
@@ -86,9 +78,13 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         mClusterManager = new ClusterManager<>(this, mMap);
         mMap.setOnCameraChangeListener(mClusterManager);
         showRota(getOrigem(), getDestino());
+        Log.i("mensagem", getMensagem());
+        new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Aprovada")
+                .setMessage(getMensagem()).setPositiveButton("OK", null).show();
     }
 
     public void showRota(String localOrigem, String localDestino){
+
 
         String key = Constants.KEY_MAP_SERVER;
         Call<Retorno> call = ((BeMyPetApplication) getApplication()).service.searchPositions(localOrigem, localDestino, key);
@@ -118,6 +114,12 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         mMap.setOnCameraChangeListener(mClusterManager);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
     public String getOrigem() {
         return origem;
     }
@@ -132,5 +134,13 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
 
     public void setDestino(String destino) {
         this.destino = destino;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 }

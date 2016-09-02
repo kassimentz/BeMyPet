@@ -99,6 +99,7 @@ public class CadastroPet extends AppCompatActivity {
 
         if (getIntent().getSerializableExtra("doador") != null){
             doador = (Usuario) getIntent().getSerializableExtra("doador");
+            Log.i("doador", doador.toString());
         }
     }
 
