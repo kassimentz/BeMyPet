@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -41,7 +43,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtAdotante.setText(list.get(position).getCpfAdotante());
         holder.txtDoador.setText(list.get(position).getCpfDoador());
-        holder.imageView.setImageResource(list.get(position).getImage().charAt(0));
+        Picasso.with(context).load(list.get(position).getImage().charAt(0)).into(holder.imageView);
+
 
         //animate(holder);
     }

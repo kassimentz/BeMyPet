@@ -36,15 +36,17 @@ public class ListaNotificacoes extends AppCompatActivity {
             usuarioCpf = ManagerPreferences.getString(this, Constants.USUARIO_CPF);
         }
 
-        data = getNotificacoes();
+        getNotificacoes(usuarioCpf);
 
 
     }
 
 
-    private List<Notificacao> getNotificacoes() {
+    private void getNotificacoes(String usuarioCpf) {
+        Log.i("usuarioCpf", usuarioCpf);
+        final String cpf = usuarioCpf;
 
-        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(usuarioCpf).child("notificacoes").getRef();
+        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(cpf).child("notificacoes").getRef();
         Query query = myRef.orderByChild("id");
 
         query.addValueEventListener(new ValueEventListener() {
@@ -55,15 +57,15 @@ public class ListaNotificacoes extends AppCompatActivity {
                     data.add(notificacao);
                 }
 
-//                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-//                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
-//                recyclerView.setAdapter(adapter);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
             public void onCancelled(DatabaseError databaseError) { }
         });
 
-        return null;
+
     }
 
 

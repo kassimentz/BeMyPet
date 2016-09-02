@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/menuConfigSearch"
-        android:title="Configurar Busca"
-        android:icon="@drawable/ic_search_white_24px"
-        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/menuConfigSearch"-->
+        <!--android:title="Configurar Busca"-->
+        <!--android:icon="@drawable/ic_search_white_24px"-->
+        <!--app:showAsAction="always"/>-->
     <item
         android:id="@+id/menuMoreOptions"
         android:title="Sair"

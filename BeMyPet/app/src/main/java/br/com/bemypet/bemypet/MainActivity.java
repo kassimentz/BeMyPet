@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!StringUtils.isNullOrEmpty(tipoNotificacao) && (!StringUtils.isNullOrEmpty(message))){
 
-            new AlertDialog.Builder(this).setTitle("Adoção Reprovada")
+            new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Reprovada")
                     .setMessage(message).setPositiveButton("OK", null).show();
         }
 
@@ -146,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
 
                     Pet pet = snap.getValue(Pet.class);
-                    Log.i("pet", pet.toString());
 
                     if(pet.getAdotante() == null && (!pet.getDono().getCpf().equalsIgnoreCase(cpf))) {
 
@@ -366,10 +365,7 @@ public class MainActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.menuMoreOptions:
-                Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
-            case R.id.menuConfigSearch:
-                Intent intent = new Intent(MainActivity.this, FiltrarPet.class);
-                startActivity(intent);
+                finish();
 
         }
         return super.onOptionsItemSelected(item);

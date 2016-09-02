@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -78,7 +77,7 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         mClusterManager = new ClusterManager<>(this, mMap);
         mMap.setOnCameraChangeListener(mClusterManager);
         showRota(getOrigem(), getDestino());
-        Log.i("mensagem", getMensagem());
+
         new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Aprovada")
                 .setMessage(getMensagem()).setPositiveButton("OK", null).show();
     }

@@ -117,10 +117,15 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         n.setData(System.currentTimeMillis());
         n.setImage(pet.getImagens().get(0));
         n.setStatusNotificacao(tipoNotificacao);
+        n.setLida("false");
 
         Usuario doador = (Usuario) adotanteDoador.get("doador");
         doador.addNotificacao(n);
         updateUser(doador);
+
+        Usuario adotante = (Usuario) adotanteDoador.get("adotante");
+        adotante.addNotificacao(n);
+        updateUser(adotante);
 
 
 
@@ -128,7 +133,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
         return n;
     }
 
-    private void updateUser(final Usuario doador) {
+    private void updateUser(final Usuario usuario) {
 
         DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
         connectedRef.addValueEventListener(new ValueEventListener() {
@@ -136,7 +141,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
             public void onDataChange(DataSnapshot snapshot) {
                 boolean connected = snapshot.getValue(Boolean.class);
                 if (connected) {
-                    CadastroUsuario.dbRef.child("usuario").child(doador.getCpf()).child("notificacoes").setValue(doador.getNotificacoes());
+                    CadastroUsuario.dbRef.child("usuario").child(usuario.getCpf()).child("notificacoes").setValue(usuario.getNotificacoes());
                 } else {
                     Toast.makeText(getApplicationContext(), "Erro ao salvar", Toast.LENGTH_LONG);
                 }

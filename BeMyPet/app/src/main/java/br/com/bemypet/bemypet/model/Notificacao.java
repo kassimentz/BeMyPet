@@ -17,6 +17,7 @@ public class Notificacao implements Serializable{
     private Long data;
     private String image;
     private String statusNotificacao;
+    private String lida;
 
     public Notificacao(){
 
@@ -78,16 +79,26 @@ public class Notificacao implements Serializable{
         this.statusNotificacao = statusNotificacao;
     }
 
+    public String getLida() {
+        return lida;
+    }
+
+    public void setLida(String lida) {
+        this.lida = lida;
+    }
+
     public Map<String,Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
-        result.put("id", id);
-        result.put("adotante", cpfAdotante);
-        result.put("doador", cpfDoador);
-        result.put("pet", idPet);
-        result.put("data", data);
-        result.put("image", image);
-        result.put("statusNotificacao", statusNotificacao);
+        result.put("id", getId());
+        result.put("adotante", getCpfAdotante());
+        result.put("doador", getCpfDoador());
+        result.put("pet", getIdPet());
+        result.put("data", getData());
+        result.put("image", getImage());
+        result.put("lida", getLida());
+        result.put("statusNotificacao", getStatusNotificacao());
+
         return result;
     }
 
@@ -101,6 +112,7 @@ public class Notificacao implements Serializable{
                 ", data=" + data +
                 ", image='" + image + '\'' +
                 ", statusNotificacao='" + statusNotificacao + '\'' +
+                ", lida='" + lida + '\'' +
                 '}';
     }
 }
