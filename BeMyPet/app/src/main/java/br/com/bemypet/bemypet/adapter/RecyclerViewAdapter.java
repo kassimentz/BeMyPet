@@ -102,8 +102,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
                 bundle.putLong("data", notificacao.getData());
                 bundle.putSerializable("adotante", adotante);
-                bundle.putSerializable("adotante", doador);
+                bundle.putSerializable("doador", doador);
                 bundle.putString("idPet", notificacao.getIdPet());
+                bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
                 resultIntent.putExtras(bundle);
             }else{
 
@@ -134,8 +135,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
                 bundle.putLong("data", notificacao.getData());
                 bundle.putSerializable("adotante", adotante);
-                bundle.putSerializable("adotante", doador);
+                bundle.putSerializable("doador", doador);
                 bundle.putString("idPet", notificacao.getIdPet());
+                bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
                 resultIntent.putExtras(bundle);
             }
         }else if (notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoReprovada")){
@@ -145,8 +147,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
             bundle.putLong("data", notificacao.getData());
             bundle.putSerializable("adotante", adotante);
-            bundle.putSerializable("adotante", doador);
+            bundle.putSerializable("doador", doador);
             bundle.putString("idPet", notificacao.getIdPet());
+            bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
             resultIntent.putExtras(bundle);
         }
 

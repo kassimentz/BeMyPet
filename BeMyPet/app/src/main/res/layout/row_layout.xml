@@ -62,22 +62,13 @@
                 android:layout_weight="0.37"/>
 
 
-        <TextView
-            android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:text="data"
-            android:layout_weight=".5"/>
-
-
-
-
-
-
-
-
-
+            <TextView
+                android:id="@+id/data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="data"
+                android:layout_weight=".5"/>
 
         </LinearLayout>
 
