@@ -25,7 +25,9 @@ import java.util.List;
 import br.com.bemypet.bemypet.CadastroUsuario;
 import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
+import br.com.bemypet.bemypet.VisualizarNotificacaoPadrao;
 import br.com.bemypet.bemypet.VisualizarPoliticaAdocao;
+import br.com.bemypet.bemypet.VisualizarRotaPetActivity;
 import br.com.bemypet.bemypet.VisualizarUsuario;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
@@ -95,32 +97,57 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if(notificacao.getStatusNotificacao().equalsIgnoreCase("queroAdotar")){
 
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
-                //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
+                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
+                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
+                resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+                bundle.putLong("data", notificacao.getData());
+                bundle.putSerializable("adotante", adotante);
+                bundle.putSerializable("adotante", doador);
+                bundle.putString("idPet", notificacao.getIdPet());
+                resultIntent.putExtras(bundle);
             }else{
 
                 //clicar mostrar o perfil do Usuário adotante (mesmos passos para aprovar adoção)
                 //(verificar o que precisa receber de bundle) - cpfAdotante, idPet
+                resultIntent = new Intent(context, VisualizarUsuario.class);
                 bundle.putString("cpfAdotante", notificacao.getCpfAdotante());
                 bundle.putString("idPet", notificacao.getIdPet());
-                resultIntent = new Intent(context, VisualizarUsuario.class);
                 resultIntent.putExtras(bundle);
             }
         }else if(notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoAprovada")){
             //mostrando a rota para buscar o pet - verificar o que precisa passar de bundle
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
-
+                resultIntent = new Intent(context, VisualizarRotaPetActivity.class);
                 if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
                 if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
                 if(adotante != null && doador != null){
                     bundle.putString("origem", adotante.getEndereco().toString());
                     bundle.putString("destino", doador.getEndereco().toString());
                 }
+                resultIntent.putExtras(bundle);
 
             }else{
                 //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
+
+                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
+                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
+                resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+                bundle.putLong("data", notificacao.getData());
+                bundle.putSerializable("adotante", adotante);
+                bundle.putSerializable("adotante", doador);
+                bundle.putString("idPet", notificacao.getIdPet());
+                resultIntent.putExtras(bundle);
             }
         }else if (notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoReprovada")){
             //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
+            if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
+            if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
+            resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+            bundle.putLong("data", notificacao.getData());
+            bundle.putSerializable("adotante", adotante);
+            bundle.putSerializable("adotante", doador);
+            bundle.putString("idPet", notificacao.getIdPet());
+            resultIntent.putExtras(bundle);
         }
 
         context.startActivity(resultIntent);
