@@ -122,7 +122,6 @@ public class VerificacaoAdocao extends AppCompatActivity {
         return bundle;
     }
 
-    //TODO posso fazer um update no pet aqui para setar o status da adocao para em andamento
 
     private void updateUser(Usuario adotante) {
 

@@ -17,7 +17,7 @@ public class Notificacao implements Serializable{
     private Long data;
     private String image;
     private String statusNotificacao;
-    private String lida;
+    private Boolean lida;
 
     public Notificacao(){
 
@@ -79,11 +79,11 @@ public class Notificacao implements Serializable{
         this.statusNotificacao = statusNotificacao;
     }
 
-    public String getLida() {
+    public Boolean getLida() {
         return lida;
     }
 
-    public void setLida(String lida) {
+    public void setLida(Boolean lida) {
         this.lida = lida;
     }
 
@@ -112,7 +112,7 @@ public class Notificacao implements Serializable{
                 ", data=" + data +
                 ", image='" + image + '\'' +
                 ", statusNotificacao='" + statusNotificacao + '\'' +
-                ", lida='" + lida + '\'' +
+                ", lida=" + lida +
                 '}';
     }
 }
