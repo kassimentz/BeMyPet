@@ -4,18 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="br.com.bemypet.bemypet.VisualizarNotificacaoPadrao"
+    tools:context=".VisualizarNotificacaoPadrao"
     android:background="@color/windowBackground">
-
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/cadastroPetToolbar"
+            android:id="@+id/notificacoesPadraoToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -40,32 +39,27 @@
                 android:paddingRight="10dp"
                 android:weightSum="1">
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/dados_notificacao"
+                    android:id="@+id/textView"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/anakiwaDarker"
+                    android:textAlignment="center"
+                    android:textSize="28dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="39dp"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/dados_notificacao"
-                        android:id="@+id/textView"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:textColor="@color/anakiwaDarker"
-                        android:textAlignment="center"
-                        android:textSize="24dp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="15dp"/>
-                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:weightSum="1">
+                    android:weightSum="2" >
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -90,13 +84,12 @@
 
                 </LinearLayout>
 
-
-
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="2" >
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -121,14 +114,12 @@
 
                 </LinearLayout>
 
-                <!--proxima linha-->
-
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:weightSum="1">
+                    android:weightSum="2" >
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -138,7 +129,7 @@
                         android:text="@string/doador"
                         android:textSize="18dp"
                         android:textColor="@color/anakiwaDarker"
-                        android:layout_weight=".5"/>
+                        android:layout_weight="0.84"/>
 
 
                     <TextView
@@ -153,13 +144,12 @@
 
                 </LinearLayout>
 
-
-
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="2" >
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -169,7 +159,7 @@
                         android:text="@string/doador"
                         android:textSize="18dp"
                         android:textColor="@color/anakiwaDarker"
-                        android:layout_weight=".5"/>
+                        android:layout_weight="0.85"/>
 
 
                     <TextView
@@ -184,14 +174,12 @@
 
                 </LinearLayout>
 
-                <!--proxima linha-->
-
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    android:weightSum="1">
+                    android:weightSum="1" >
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -200,16 +188,8 @@
                         android:id="@+id/lblPet"
                         android:text="@string/pet"
                         android:textSize="18dp"
-                        android:textColor="@color/anakiwaDarker"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+                        android:textColor="@color/anakiwaDarker"
+                        android:layout_weight="0.32"/>
 
                     <TextView
                         style="@style/CustomFontStyle"
@@ -218,27 +198,26 @@
                         android:id="@+id/txtPet"
                         android:text="@string/pet"
                         android:textSize="18dp"
+                        android:layout_weight=".5"
                         android:textColor="@color/anakiwaDarker"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/imgPet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_dog"/>
 
                 </LinearLayout>
-
 
 
             </LinearLayout>

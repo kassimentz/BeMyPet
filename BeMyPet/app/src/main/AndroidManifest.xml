@@ -188,11 +188,11 @@
         <activity
             android:name=".VisualizarRotaPetActivity"
             android:label="@string/title_activity_visualizar_rota_pet"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListaNotificacoes"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".ListaNotificacoes" />
         </activity>
         <activity
             android:name=".ListaNotificacoes"
@@ -202,7 +202,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".VisualizarNotificacaoPadrao"></activity>
+        <activity android:name=".VisualizarNotificacaoPadrao"
+            android:parentActivityName=".ListaNotificacoes"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaNotificacoes" />
+        </activity>
     </application>
 
 </manifest>

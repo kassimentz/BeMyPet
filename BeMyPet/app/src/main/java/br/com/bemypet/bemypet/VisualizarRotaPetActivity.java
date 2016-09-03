@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 import com.google.maps.android.clustering.ClusterManager;
 
+import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.model.maps.Bounds;
 import br.com.bemypet.bemypet.model.maps.Retorno;
@@ -78,8 +79,10 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
         mMap.setOnCameraChangeListener(mClusterManager);
         showRota(getOrigem(), getDestino());
 
-        new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Aprovada")
-                .setMessage(getMensagem()).setPositiveButton("OK", null).show();
+        if(!StringUtils.isNullOrEmpty(getMensagem())){
+            new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Aprovada")
+                    .setMessage(getMensagem()).setPositiveButton("OK", null).show();
+        }
     }
 
     public void showRota(String localOrigem, String localDestino){

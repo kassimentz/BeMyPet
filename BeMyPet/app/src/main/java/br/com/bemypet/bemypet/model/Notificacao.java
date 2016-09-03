@@ -18,6 +18,12 @@ public class Notificacao implements Serializable{
     private String image;
     private String statusNotificacao;
     private Boolean lida;
+    private String nomeAdotante;
+    private String nomeDoador;
+    private String nomePet;
+    private String enderecoAdotante;
+    private String enderecoDoador;
+
 
     public Notificacao(){
 
@@ -87,6 +93,46 @@ public class Notificacao implements Serializable{
         this.lida = lida;
     }
 
+    public String getNomeAdotante() {
+        return nomeAdotante;
+    }
+
+    public void setNomeAdotante(String nomeAdotante) {
+        this.nomeAdotante = nomeAdotante;
+    }
+
+    public String getNomeDoador() {
+        return nomeDoador;
+    }
+
+    public void setNomeDoador(String nomeDoador) {
+        this.nomeDoador = nomeDoador;
+    }
+
+    public String getNomePet() {
+        return nomePet;
+    }
+
+    public void setNomePet(String nomePet) {
+        this.nomePet = nomePet;
+    }
+
+    public String getEnderecoAdotante() {
+        return enderecoAdotante;
+    }
+
+    public void setEnderecoAdotante(String enderecoAdotante) {
+        this.enderecoAdotante = enderecoAdotante;
+    }
+
+    public String getEnderecoDoador() {
+        return enderecoDoador;
+    }
+
+    public void setEnderecoDoador(String enderecoDoador) {
+        this.enderecoDoador = enderecoDoador;
+    }
+
     public Map<String,Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();
@@ -98,6 +144,11 @@ public class Notificacao implements Serializable{
         result.put("image", getImage());
         result.put("lida", getLida());
         result.put("statusNotificacao", getStatusNotificacao());
+        result.put("nomeAdotante", getNomeAdotante());
+        result.put("nomeDoador", getNomeDoador());
+        result.put("nomePet", getNomePet());
+        result.put("enderecoAdotante", getEnderecoAdotante());
+        result.put("enderecoDoador", getEnderecoDoador());
 
         return result;
     }
@@ -113,6 +164,11 @@ public class Notificacao implements Serializable{
                 ", image='" + image + '\'' +
                 ", statusNotificacao='" + statusNotificacao + '\'' +
                 ", lida=" + lida +
+                ", nomeAdotante='" + nomeAdotante + '\'' +
+                ", nomeDoador='" + nomeDoador + '\'' +
+                ", nomePet='" + nomePet + '\'' +
+                ", enderecoAdotante='" + enderecoAdotante + '\'' +
+                ", enderecoDoador='" + enderecoDoador + '\'' +
                 '}';
     }
 }

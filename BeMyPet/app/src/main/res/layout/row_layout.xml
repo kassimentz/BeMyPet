@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"
                 android:text="notificacao"
-                android:layout_weight="0.37"/>
+                android:layout_weight="0.42"/>
 
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"
                 android:text="data"
-                android:layout_weight=".5"/>
+                android:layout_weight="0.44"/>
 
         </LinearLayout>
 

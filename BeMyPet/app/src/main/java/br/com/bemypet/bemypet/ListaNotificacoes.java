@@ -1,10 +1,14 @@
 package br.com.bemypet.bemypet;
 
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +36,13 @@ public class ListaNotificacoes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_notificacoes);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.listaNotificacoesToolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
         if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
             usuarioCpf = ManagerPreferences.getString(this, Constants.USUARIO_CPF);
         }
@@ -41,6 +52,18 @@ public class ListaNotificacoes extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void getNotificacoes(String usuarioCpf) {
         Log.i("usuarioCpf", usuarioCpf);
@@ -53,7 +76,6 @@ public class ListaNotificacoes extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
                     Notificacao notificacao = snap.getValue(Notificacao.class);
-                    Log.i("getNotificacao", notificacao.toString());
                     data.add(notificacao);
                 }
 

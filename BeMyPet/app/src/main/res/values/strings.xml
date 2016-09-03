@@ -29,7 +29,7 @@
     <string name="escolher_imagens">Escolher imagens</string>
 
     <!--menu drawer-->
-    <string name="adocoes_aprovar">Adoções para Aprovar</string>
+    <string name="adocoes_aprovar">Notificações</string>
     <string name="quero_doar">Quero Doar</string>
     <string name="quero_adotar">Quero Adotar</string>
     <string name="meus_pets">Meus Pets</string>
@@ -129,5 +129,5 @@
     <string name="status_notificacao">Status Notificacao</string>
     <string name="doador">Doador</string>
     <string name="adotante">Adotante</string>
-    <string name="pet">Pet</string>
+    <string name="pet">Nome do Pet</string>
 </resources>

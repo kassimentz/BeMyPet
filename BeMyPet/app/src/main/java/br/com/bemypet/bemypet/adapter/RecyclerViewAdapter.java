@@ -83,77 +83,73 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private void verificaNotificacao(Notificacao notificacao) {
-        Bundle bundle = new Bundle();
-        Intent resultIntent = null;
-        List<String> cpfs = new ArrayList<>();
-        Usuario adotante = new Usuario();
-        Usuario doador = new Usuario();
 
-        cpfs.add(notificacao.getCpfAdotante());
-        cpfs.add(notificacao.getCpfDoador());
-
-        getUsers(cpfs);
-
-        if(notificacao.getStatusNotificacao().equalsIgnoreCase("queroAdotar")){
+        if(notificacao.getStatusNotificacao().equals("queroAdotar")){
 
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
-                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
-                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
-                resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+                Bundle bundle = new Bundle();
+                Intent resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
                 bundle.putLong("data", notificacao.getData());
-                bundle.putSerializable("adotante", adotante);
-                bundle.putSerializable("doador", doador);
-                bundle.putString("idPet", notificacao.getIdPet());
+                bundle.putString("adotante", notificacao.getNomeAdotante());
+                bundle.putString("doador", notificacao.getNomeDoador());
+                bundle.putString("pet", notificacao.getNomePet());
                 bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
+                bundle.putString("petImg", notificacao.getImage());
                 resultIntent.putExtras(bundle);
+                resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(resultIntent);
             }else{
 
                 //clicar mostrar o perfil do Usuário adotante (mesmos passos para aprovar adoção)
-                //(verificar o que precisa receber de bundle) - cpfAdotante, idPet
-                resultIntent = new Intent(context, VisualizarUsuario.class);
+                Bundle bundle = new Bundle();
+                Intent resultIntent = new Intent(context, VisualizarUsuario.class);
                 bundle.putString("cpfAdotante", notificacao.getCpfAdotante());
                 bundle.putString("idPet", notificacao.getIdPet());
                 resultIntent.putExtras(bundle);
+                resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(resultIntent);
             }
-        }else if(notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoAprovada")){
-            //mostrando a rota para buscar o pet - verificar o que precisa passar de bundle
+        }else if(notificacao.getStatusNotificacao().equals("adocaoAprovada")){
+            //mostrando a rota para buscar o pet
             if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
-                resultIntent = new Intent(context, VisualizarRotaPetActivity.class);
-                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
-                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
-                if(adotante != null && doador != null){
-                    bundle.putString("origem", adotante.getEndereco().toString());
-                    bundle.putString("destino", doador.getEndereco().toString());
-                }
+                Bundle bundle = new Bundle();
+                Intent resultIntent = new Intent(context, VisualizarRotaPetActivity.class);
+                bundle.putString("origem", notificacao.getEnderecoAdotante());
+                bundle.putString("destino", notificacao.getEnderecoDoador());
                 resultIntent.putExtras(bundle);
+                resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(resultIntent);
 
             }else{
                 //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
-
-                if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
-                if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
-                resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+                Bundle bundle = new Bundle();
+                Intent resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
                 bundle.putLong("data", notificacao.getData());
-                bundle.putSerializable("adotante", adotante);
-                bundle.putSerializable("doador", doador);
-                bundle.putString("idPet", notificacao.getIdPet());
+                bundle.putString("adotante", notificacao.getNomeAdotante());
+                bundle.putString("doador", notificacao.getNomeDoador());
+                bundle.putString("pet", notificacao.getNomePet());
                 bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
+                bundle.putString("petImg", notificacao.getImage());
                 resultIntent.putExtras(bundle);
+                resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(resultIntent);
             }
-        }else if (notificacao.getStatusNotificacao().equalsIgnoreCase("adocaoReprovada")){
+        }else if (notificacao.getStatusNotificacao().equals("adocaoReprovada")){
             //ao clicar mostrar Data de aprovação, nome do usuario que adotou, nome e foto do pet.
-            if(usuarioList.get(0) != null){adotante = usuarioList.get(0);}
-            if(usuarioList.get(1) != null){ doador = usuarioList.get(1);}
-            resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
+            Bundle bundle = new Bundle();
+            Intent resultIntent = new Intent(context, VisualizarNotificacaoPadrao.class);
             bundle.putLong("data", notificacao.getData());
-            bundle.putSerializable("adotante", adotante);
-            bundle.putSerializable("doador", doador);
-            bundle.putString("idPet", notificacao.getIdPet());
+            bundle.putString("adotante", notificacao.getNomeAdotante());
+            bundle.putString("doador", notificacao.getNomeDoador());
+            bundle.putString("pet", notificacao.getNomePet());
             bundle.putString("statusNotificacao", notificacao.getStatusNotificacao());
+            bundle.putString("petImg", notificacao.getImage());
             resultIntent.putExtras(bundle);
+            resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(resultIntent);
         }
 
-        context.startActivity(resultIntent);
+
 
     }
 
@@ -224,23 +220,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onClick(View view, int position, boolean isLongClick);
     }
 
-    private void getUsers(List<String> cpfs) {
 
-        for (String cpf : cpfs) {
-            final String cpfUser = cpf;
-            CadastroUsuario.dbRef.child("usuario").child(cpfUser).addListenerForSingleValueEvent(
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            usuarioList.add(dataSnapshot.getValue(Usuario.class));
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.i("onCancelled", "getUser:onCancelled", databaseError.toException());
-                        }
-                    });
-        }
-
-    }
 }
