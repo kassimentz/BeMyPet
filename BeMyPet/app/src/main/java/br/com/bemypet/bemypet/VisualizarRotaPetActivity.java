@@ -120,6 +120,7 @@ public class VisualizarRotaPetActivity extends FragmentActivity implements OnMap
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), ListaNotificacoes.class);
         startActivity(i);
+        finish();
     }
 
     public String getOrigem() {

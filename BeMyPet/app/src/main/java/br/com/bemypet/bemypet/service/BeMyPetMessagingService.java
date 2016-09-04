@@ -190,6 +190,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         adotanteDoador.put(key, dataSnapshot.getValue(Usuario.class));
+                        getPet(idPet);
                     }
 
                     @Override
@@ -200,7 +201,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
             );
         }
 
-        getPet(idPet);
+
     }
 
 }

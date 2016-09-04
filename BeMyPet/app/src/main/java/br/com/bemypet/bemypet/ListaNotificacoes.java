@@ -30,6 +30,7 @@ import br.com.bemypet.bemypet.model.Notificacao;
 public class ListaNotificacoes extends AppCompatActivity {
     String usuarioCpf;
     List<Notificacao> data = new ArrayList<>();
+    RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,15 @@ public class ListaNotificacoes extends AppCompatActivity {
         getNotificacoes(usuarioCpf);
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
+    }
+
+    private void init() {
     }
 
     @Override
