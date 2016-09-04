@@ -1,5 +1,6 @@
 package br.com.bemypet.bemypet.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import br.com.bemypet.bemypet.R;
 import br.com.bemypet.bemypet.VisualizarNotificacaoPadrao;
 import br.com.bemypet.bemypet.VisualizarRotaPetActivity;
 import br.com.bemypet.bemypet.VisualizarUsuario;
+import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
 import br.com.bemypet.bemypet.controller.ManagerPreferences;
 import br.com.bemypet.bemypet.model.Notificacao;
@@ -42,8 +44,9 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
             Class<Notificacao> modelClass,
             int modelLayout,
             Class<NotificacaoViewHolder> viewHolderClass,
-            Query ref ){
+            Query ref, String cpf ){
         super( modelClass, modelLayout, viewHolderClass, ref );
+        this.cpfLogado = cpf;
 
     }
 
@@ -78,11 +81,6 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
 
 
     private void verificaNotificacao(Notificacao notificacao) {
-        cpfLogado = ManagerPreferences.getString(context, Constants.USUARIO_CPF);
-        Log.i("cpfLogado", "cpfLogado" + cpfLogado);
-        Log.i("notificacao", "notificacao" + notificacao.toString());
-        Log.i("getCpfAdotante()", "notificacao cpf adotante: "+ notificacao.getCpfAdotante());
-        Log.i("getStatusNotificacao()", "notificacao status: "+notificacao.getStatusNotificacao());
 
         if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
             //quem está logado é adotante
@@ -114,13 +112,21 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
     }
 
     private void goToVisualizarUsuario(Notificacao notificacao) {
-        Bundle bundle = new Bundle();
-        Intent resultIntent = new Intent(context, VisualizarUsuario.class);
-        bundle.putString("cpfAdotante", notificacao.getCpfAdotante());
-        bundle.putString("idPet", notificacao.getIdPet());
-        resultIntent.putExtras(bundle);
-        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(resultIntent);
+        String cpfAdotante = null;
+        if(!StringUtils.isNullOrEmpty(notificacao.getCpfAdotante())){
+            cpfAdotante = notificacao.getCpfAdotante();
+            Bundle bundle = new Bundle();
+            Intent resultIntent = new Intent(context, VisualizarUsuario.class);
+            bundle.putString("cpfAdotante", cpfAdotante);
+            bundle.putString("idPet", notificacao.getIdPet());
+            resultIntent.putExtras(bundle);
+            resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(resultIntent);
+        }else{
+            new AlertDialog.Builder(context, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Notificações")
+                    .setMessage("Ocorreu um problema ao salvar os dados desta notificação.").setPositiveButton("OK", null).show();
+        }
+
     }
 
     private void goToVisualizarRotaPet(Notificacao notificacao) {

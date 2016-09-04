@@ -186,9 +186,8 @@ public class Usuario implements Serializable{
         result.put("jaTevePet", jaTevePet);
         result.put("possuiTelaNasJanelas", possuiTelaNasJanelas);
         result.put("imagens", imagens);
-        if(!notificacoes.isEmpty()){
-            result.put("notificacoes", notificacoesToMap());
-        }
+        result.put("notificacoes", notificacoesToMap());
+
         return result;
     }
 

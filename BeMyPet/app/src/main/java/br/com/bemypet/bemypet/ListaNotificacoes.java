@@ -51,9 +51,6 @@ public class ListaNotificacoes extends AppCompatActivity {
             init(usuarioCpf);
         }
 
-
-
-
     }
 
 
@@ -68,7 +65,7 @@ public class ListaNotificacoes extends AppCompatActivity {
                 Notificacao.class,
                 R.layout.row_layout,
                 NotificacaoViewHolder.class,
-                myRef);
+                myRef, usuarioCpf);
         rvNotificacoes.setAdapter(adapter);
 
     }
@@ -86,30 +83,6 @@ public class ListaNotificacoes extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    private void getNotificacoes(String usuarioCpf) {
-//        Log.i("usuarioCpf", usuarioCpf);
-//        final String cpf = usuarioCpf;
-//
-//        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(cpf).child("notificacoes").getRef();
-//        Query query = myRef.orderByChild("id");
-//
-//        query.addValueEventListener(new ValueEventListener() {
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snap : dataSnapshot.getChildren()){
-//                    Notificacao notificacao = snap.getValue(Notificacao.class);
-//                    data.add(notificacao);
-//                }
-//
-//                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-//                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
-//                recyclerView.setAdapter(adapter);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//            }
-//            public void onCancelled(DatabaseError databaseError) { }
-//        });
-//
-//
-//    }
 
 
 }
