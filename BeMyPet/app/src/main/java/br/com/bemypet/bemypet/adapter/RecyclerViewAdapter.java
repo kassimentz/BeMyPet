@@ -44,7 +44,7 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
             Class<NotificacaoViewHolder> viewHolderClass,
             Query ref ){
         super( modelClass, modelLayout, viewHolderClass, ref );
-        cpfLogado = ManagerPreferences.getString(context, Constants.USUARIO_CPF);
+
     }
 
     @Override
@@ -57,50 +57,32 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
 
 
 
+
     @Override
     public void onBindViewHolder(NotificacaoViewHolder viewHolder, int position) {
         super.onBindViewHolder(viewHolder, position);
 
-        Notificacao notificacao = getItem(position);
+        final Notificacao notificacao = getItem(position);
 
         viewHolder.txtTipoNotificacao.setText(notificacao.getStatusNotificacao());
         viewHolder.txtDataNotificacao.setText(new SimpleDateFormat("dd/MM/yyyy").format(notificacao.getData()));
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                verificaNotificacao(notificacao);
+            }
+        });
 
     }
 
-    //    @Override
-//    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        //Inflate the layout, initialize the View Holder
-//        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
-//        ViewHolder holder = new ViewHolder(v);
-//        return holder;
-//    }
-//
-//
-//    @Override
-//    public void onBindViewHolder(ViewHolder holder, int position) {
-//
-//        //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
-//        holder.txtTipoNotificacao.setText(list.get(position).getStatusNotificacao());
-//        holder.txtDataNotificacao.setText(new SimpleDateFormat("dd/MM/yyyy").format(list.get(position).getData()));
-//
-//        //list.get(position).getId();
-//        holder.setClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position, boolean isLongClick) {
-//                verificaNotificacao(list.get(position));
-//            }
-//        });
-//
-//    }
 
 
     private void verificaNotificacao(Notificacao notificacao) {
-
-        Log.i("cpfLogado", cpfLogado);
-        Log.i("notificacao", notificacao.toString());
-        Log.i("getCpfAdotante()", "notificacao: "+ notificacao.getCpfAdotante());
-        Log.i("getStatusNotificacao()", "notificacao: "+notificacao.getStatusNotificacao());
+        cpfLogado = ManagerPreferences.getString(context, Constants.USUARIO_CPF);
+        Log.i("cpfLogado", "cpfLogado" + cpfLogado);
+        Log.i("notificacao", "notificacao" + notificacao.toString());
+        Log.i("getCpfAdotante()", "notificacao cpf adotante: "+ notificacao.getCpfAdotante());
+        Log.i("getStatusNotificacao()", "notificacao status: "+notificacao.getStatusNotificacao());
 
         if(cpfLogado.equalsIgnoreCase(notificacao.getCpfAdotante())){
             //quem está logado é adotante

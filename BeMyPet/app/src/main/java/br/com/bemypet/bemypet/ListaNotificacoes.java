@@ -47,9 +47,11 @@ public class ListaNotificacoes extends AppCompatActivity {
 
         if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
             usuarioCpf = ManagerPreferences.getString(this, Constants.USUARIO_CPF);
+            Log.i("usuarioCpf", usuarioCpf);
+            init(usuarioCpf);
         }
 
-        init(usuarioCpf);
+
 
 
     }
@@ -57,6 +59,7 @@ public class ListaNotificacoes extends AppCompatActivity {
 
 
     private void init(String cpf) {
+        Log.i("init usuarioCpf", cpf);
         DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(cpf).child("notificacoes").getRef();
         RecyclerView rvNotificacoes = (RecyclerView) findViewById(R.id.recyclerview);
         rvNotificacoes.setHasFixedSize(true);

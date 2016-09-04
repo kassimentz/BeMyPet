@@ -137,15 +137,15 @@ public class Notificacao implements Serializable{
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("id", getId());
-        result.put("adotante", getCpfAdotante());
-        result.put("doador", getCpfDoador());
+        result.put("adotante", cpfAdotante);
+        result.put("doador", cpfDoador);
         result.put("pet", getIdPet());
         result.put("data", getData());
         result.put("image", getImage());
         result.put("lida", getLida());
         result.put("statusNotificacao", getStatusNotificacao());
-        result.put("nomeAdotante", getNomeAdotante());
-        result.put("nomeDoador", getNomeDoador());
+        result.put("nomeAdotante", nomeAdotante);
+        result.put("nomeDoador", nomeDoador);
         result.put("nomePet", getNomePet());
         result.put("enderecoAdotante", getEnderecoAdotante());
         result.put("enderecoDoador", getEnderecoDoador());
