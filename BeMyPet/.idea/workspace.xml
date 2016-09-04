@@ -63,12 +63,14 @@
       <file leaf-file-name="RecyclerViewAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="939">
-              <caret line="139" column="38" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="38" />
+            <state relative-caret-position="-212">
+              <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2487#2661#0" expanded="true" />
-                <element signature="e#2660#2661#0" expanded="true" />
+                <element signature="e#2630#2838#0" expanded="true" />
+                <element signature="e#2837#2838#0" expanded="true" />
+                <element signature="e#7934#7935#0" expanded="true" />
+                <element signature="e#8007#8008#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +79,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="105" column="78" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -109,8 +111,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+            <state relative-caret-position="306">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -148,21 +150,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BeMyPetMessagingService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
+      <file leaf-file-name="ListaNotificacoes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+            <state relative-caret-position="1050">
+              <caret line="93" column="1" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/controller/Constants.java">
+      <file leaf-file-name="BeMyPetMessagingService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="29" column="52" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="52" />
+            <state relative-caret-position="-51">
+              <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -218,11 +220,6 @@
                 <option name="description" value="Displays the sub-projects of root project 'BeMyPet'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui-database:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUiDatabase051Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -845,11 +842,6 @@
                 <option name="name" value="testReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui-auth:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUiAuth051Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-compat:24.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportCompat2420Library" />
@@ -986,11 +978,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileDebugAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUi051Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Generates Gradle wrapper files. [incubating]" />
@@ -1254,11 +1241,6 @@
                 <option name="description" value="Displays the sub-projects of project ':app'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui-database:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUiDatabase051Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1876,11 +1858,6 @@
                 <option name="name" value="testReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui-auth:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUiAuth051Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-compat:24.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportSupportCompat2420Library" />
@@ -2017,11 +1994,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileDebugAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare com.firebaseui:firebase-ui:0.5.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComFirebaseuiFirebaseUi051Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2273,7 +2245,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4413208837000" />
+        <entry key="$PROJECT_DIR$" value="4413219900000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2604,16 +2576,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarUsuario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/UserViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/NotificacaoViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Notificacao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/service/BeMyPetMessagingService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/controller/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/model/Usuario.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2735,6 +2707,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeMyPet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bemypet" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3270,7 +3264,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19978745" sideWeight="0.4370331" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40913922" sideWeight="0.5208333" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32624868" sideWeight="0.51067233" order="7" side_tool="true" content_ui="tabs" x="918" y="481" width="321" height="271" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32624868" sideWeight="0.51067233" order="7" side_tool="true" content_ui="tabs" x="918" y="481" width="321" height="271" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24813233" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32624868" sideWeight="0.48932764" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13713981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3630,9 +3624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3656,14 +3648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="59" column="70" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -3734,14 +3718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/VisualizarRotaPetActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -3760,22 +3736,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/ListaNotificacoes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="93" column="1" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="105" column="78" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/bemypet/bemypet/adapter/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="939">
-          <caret line="139" column="38" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="38" />
+        <state relative-caret-position="-212">
+          <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2487#2661#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2630#2838#0" expanded="true" />
+            <element signature="e#2837#2838#0" expanded="true" />
+            <element signature="e#7934#7935#0" expanded="true" />
+            <element signature="e#8007#8008#0" expanded="true" />
           </folding>
         </state>
       </provider>

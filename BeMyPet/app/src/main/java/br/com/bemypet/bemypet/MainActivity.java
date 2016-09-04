@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
             if (getIntent().getExtras().getString("message") != null) {
                 message = getIntent().getExtras().getString("message");
             }
+
+            if (getIntent().getExtras().getString("erroAdotante") != null) {
+                erroAdotante = getIntent().getExtras().getString("erroAdotante");
+            }
         }
 
 
@@ -113,8 +117,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(!StringUtils.isNullOrEmpty(erroAdotante)){
 
-            new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Erro - Notificação")
-                    .setMessage("Um erro ao salvar a notificao aconteceu e não será possivel exibi-la").setPositiveButton("OK", null).show();
+            if(erroAdotante.equalsIgnoreCase("erroAdotante")) {
+                new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Erro - Notificação")
+                        .setMessage("Um erro ao salvar a notificao aconteceu e não será possivel exibi-la").setPositiveButton("OK", null).show();
+            }
         }
 
     }
