@@ -3,28 +3,15 @@
 Be My Pet - Find Your New Best Friend.
 Rede social para adoção de pets.
 
-### What is this repository for? ###
+#Nesta versão:
 
-* Be My Pet é um aplicativo destinado a facilitar o acesso para doadores de pets encontrarem pessoas dispostas a adotarem, bem como ajudar pessoas que querem encontrar um novo amigo a entrar em contato com doadores.
-* Em Desenvolvimento)
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+- Google sign in
+- Facebook sign in
+- Cadastro de usuario (complemento dos dados)
+- Cadastro de pets para doação 
+- Busca de pets para adoção (tela principal)
+- Lista de todos os seus pets (cadastrados para doação e adotados)
+- Visualização dos termos de adoção
+- Visualização de seu perfil de usuário
+- Recebimento de notificações, permitindo visualizar o perfil do usuario que quer adotar o pet e a rota para buscar o pet após a aprovação da adoção.
+- Lista de notificações recebidas (As vezes pode acontecer lentidao no)
