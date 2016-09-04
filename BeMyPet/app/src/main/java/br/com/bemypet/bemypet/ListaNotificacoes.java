@@ -19,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bemypet.bemypet.adapter.NotificacaoViewHolder;
 import br.com.bemypet.bemypet.adapter.RecyclerViewAdapter;
 import br.com.bemypet.bemypet.api.StringUtils;
 import br.com.bemypet.bemypet.controller.Constants;
@@ -31,7 +30,6 @@ import br.com.bemypet.bemypet.model.Notificacao;
 public class ListaNotificacoes extends AppCompatActivity {
     String usuarioCpf;
     List<Notificacao> data = new ArrayList<>();
-    RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,26 +45,10 @@ public class ListaNotificacoes extends AppCompatActivity {
 
         if(!StringUtils.isNullOrEmpty(ManagerPreferences.getString(this, Constants.USUARIO_CPF))) {
             usuarioCpf = ManagerPreferences.getString(this, Constants.USUARIO_CPF);
-            Log.i("usuarioCpf", usuarioCpf);
-            init(usuarioCpf);
         }
 
-    }
+        getNotificacoes(usuarioCpf);
 
-
-
-    private void init(String cpf) {
-        Log.i("init usuarioCpf", cpf);
-        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(cpf).child("notificacoes").getRef();
-        RecyclerView rvNotificacoes = (RecyclerView) findViewById(R.id.recyclerview);
-        rvNotificacoes.setHasFixedSize(true);
-        rvNotificacoes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        adapter = new RecyclerViewAdapter(
-                Notificacao.class,
-                R.layout.row_layout,
-                NotificacaoViewHolder.class,
-                myRef, usuarioCpf);
-        rvNotificacoes.setAdapter(adapter);
 
     }
 
@@ -83,6 +65,30 @@ public class ListaNotificacoes extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void getNotificacoes(String usuarioCpf) {
+        Log.i("usuarioCpf", usuarioCpf);
+        final String cpf = usuarioCpf;
+
+        DatabaseReference myRef = CadastroUsuario.dbRef.child("usuario").child(cpf).child("notificacoes").getRef();
+        Query query = myRef.orderByChild("id");
+
+        query.addValueEventListener(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()){
+                    Notificacao notificacao = snap.getValue(Notificacao.class);
+                    data.add(notificacao);
+                }
+
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplication());
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            }
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+
+
+    }
 
 
 }
