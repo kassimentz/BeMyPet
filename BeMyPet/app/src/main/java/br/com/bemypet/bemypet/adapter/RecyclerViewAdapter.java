@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.Query;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.bemypet.bemypet.MainActivity;
 import br.com.bemypet.bemypet.R;
 import br.com.bemypet.bemypet.VisualizarNotificacaoPadrao;
 import br.com.bemypet.bemypet.VisualizarRotaPetActivity;
@@ -113,7 +115,7 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
 
     private void goToVisualizarUsuario(Notificacao notificacao) {
         String cpfAdotante = null;
-        if(!StringUtils.isNullOrEmpty(notificacao.getCpfAdotante())){
+        if(notificacao.getCpfAdotante() != null){
             cpfAdotante = notificacao.getCpfAdotante();
             Bundle bundle = new Bundle();
             Intent resultIntent = new Intent(context, VisualizarUsuario.class);
@@ -123,8 +125,14 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Notificacao, No
             resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(resultIntent);
         }else{
-            new AlertDialog.Builder(context, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Notificações")
-                    .setMessage("Ocorreu um problema ao salvar os dados desta notificação.").setPositiveButton("OK", null).show();
+
+            Intent resultIntent = new Intent(context, MainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("erroAdotante", "erroAdotante");
+            resultIntent.putExtras(bundle);
+            resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(resultIntent);
+
         }
 
     }
