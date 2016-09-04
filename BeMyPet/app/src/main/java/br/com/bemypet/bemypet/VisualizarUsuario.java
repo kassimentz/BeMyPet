@@ -2,6 +2,7 @@ package br.com.bemypet.bemypet;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -71,6 +72,8 @@ public class VisualizarUsuario extends AppCompatActivity {
     @BindView(R.id.chkState6) public ToggleButton chkState6;
     @BindView(R.id.chkState7) public ToggleButton chkState7;
 
+    FloatingActionButton fabAprovar;
+    FloatingActionButton fabReprovar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +89,12 @@ public class VisualizarUsuario extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
+        fabAprovar = (FloatingActionButton) findViewById(R.id.aprovarAdocao);
+        fabReprovar = (FloatingActionButton) findViewById(R.id.fbReprovarAdocao);
 
         getBundle();
+
+
         if(!StringUtils.isNullOrEmpty(cpfAdotante)){
             getUser(cpfAdotante);
         }
@@ -139,6 +146,13 @@ public class VisualizarUsuario extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         pet = dataSnapshot.getValue(Pet.class);
+                        if(pet.getAdotante() != null){
+                            fabReprovar.setVisibility(View.INVISIBLE);
+                            fabAprovar.setVisibility(View.INVISIBLE);
+                        }else{
+                            fabReprovar.setVisibility(View.VISIBLE);
+                            fabAprovar.setVisibility(View.VISIBLE);
+                        }
                     }
 
                     @Override

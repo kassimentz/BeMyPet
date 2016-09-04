@@ -111,13 +111,18 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
 
         Notificacao n = new Notificacao();
         n.setId(System.currentTimeMillis());
-        n.setCpfAdotante(((Usuario) adotanteDoador.get("adotante")).getCpf());
-        n.setCpfDoador(((Usuario) adotanteDoador.get("doador")).getCpf());
+        n.setCpfAdotante(cpfAdotante);
+        n.setCpfDoador(cpfDoador);
         n.setIdPet(pet.getId());
         n.setData(System.currentTimeMillis());
         n.setImage(pet.getImagens().get(0));
         n.setStatusNotificacao(tipoNotificacao);
-        n.setLida("false");
+        n.setLida(false);
+        n.setNomeAdotante(((Usuario) adotanteDoador.get("adotante")).getNome());
+        n.setNomeDoador(((Usuario) adotanteDoador.get("doador")).getNome());
+        n.setNomePet(pet.getNome());
+        n.setEnderecoAdotante(((Usuario) adotanteDoador.get("adotante")).getEndereco().toString());
+        n.setEnderecoDoador(((Usuario) adotanteDoador.get("doador")).getEndereco().toString());
 
         Usuario doador = (Usuario) adotanteDoador.get("doador");
         doador.addNotificacao(n);
@@ -185,6 +190,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         adotanteDoador.put(key, dataSnapshot.getValue(Usuario.class));
+                        getPet(idPet);
                     }
 
                     @Override
@@ -195,7 +201,7 @@ public class BeMyPetMessagingService extends FirebaseMessagingService {
             );
         }
 
-        getPet(idPet);
+
     }
 
 }

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     Usuario user = new Usuario();
 
-    String message, tipoNotificacao, cpf;
+    String message, tipoNotificacao, cpf, erroAdotante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
 
             new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Adoção Reprovada")
                     .setMessage(message).setPositiveButton("OK", null).show();
+        }
+
+        if(!StringUtils.isNullOrEmpty(erroAdotante)){
+
+            new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert).setTitle("Erro - Notificação")
+                    .setMessage("Um erro ao salvar a notificao aconteceu e não será possivel exibi-la").setPositiveButton("OK", null).show();
         }
 
     }
